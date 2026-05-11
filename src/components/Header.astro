@@ -11,6 +11,38 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
+const navItems = [
+  {
+    href: baseUrl,
+    key: "nav.main",
+    label: "Main",
+    visible: true,
+  },
+  {
+    href: `${baseUrl}about`,
+    key: "nav.about",
+    label: "About",
+    visible: true,
+  },
+  {
+    href: `${baseUrl}projects`,
+    key: "nav.projects",
+    label: "Projects",
+    visible: hasProjects,
+  },
+  {
+    href: `${baseUrl}experience`,
+    key: "nav.experience",
+    label: "Experience",
+    visible: hasExperience,
+  },
+  {
+    href: `${baseUrl}education`,
+    key: "nav.education",
+    label: "Education",
+    visible: hasEducation,
+  },
+];
 ---
 
 <header
@@ -58,28 +90,18 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     class="hidden border-t border-gray-200 bg-white px-4 py-3 shadow-lg sm:px-6 lg:px-8"
   >
     <div class="mx-auto grid max-w-7xl gap-2 sm:grid-cols-2 md:grid-cols-5">
-      <a href={baseUrl} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.main">Main</a>
-      <a href={`${baseUrl}about`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.about">About</a>
       {
-        hasProjects && (
-          <a href={`${baseUrl}projects`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.projects">
-            Projects
-          </a>
-        )
-      }
-      {
-        hasExperience && (
-          <a href={`${baseUrl}experience`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.experience">
-            Experience
-          </a>
-        )
-      }
-      {
-        hasEducation && (
-          <a href={`${baseUrl}education`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.education">
-            Education
-          </a>
-        )
+        navItems
+          .filter((item) => item.visible)
+          .map((item) => (
+            <a
+              href={item.href}
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black"
+              data-i18n={item.key}
+            >
+              {item.label}
+            </a>
+          ))
       }
     </div>
   </nav>

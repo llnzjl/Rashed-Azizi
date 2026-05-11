@@ -12,21 +12,7 @@ export const siteConfig = {
     github: "https://github.com/llnzjl",
   },
   aboutMe:
-    "I am a computer science student in South Korea who enjoys building practical projects and growing through programming, web development, and AI.",
-  aboutHighlights: [
-    {
-      label: "Study",
-      text: "Computer science student in South Korea.",
-    },
-    {
-      label: "Build",
-      text: "Programming, web development, and AI projects.",
-    },
-    {
-      label: "Grow",
-      text: "Clear communication, teamwork, and continuous learning.",
-    },
-  ],
+    "I am a computer science student in South Korea with a strong interest in programming, web development, and AI.\nI enjoy solving real problems, learning new technologies, and building practical projects.\nI work well independently and in teams, with a focus on clear communication and continuous growth.",
   skills: ["c", "C++", "python", "SQL", "GIT", "CSS", "AI Concepts" ],
   personalProjects: [ 
     {
@@ -143,7 +129,6 @@ export const translations = {
     about: {
       heading: "About Me",
       text: siteConfig.aboutMe,
-      highlights: siteConfig.aboutHighlights,
     },
     projects: {
       heading: "Projects",
