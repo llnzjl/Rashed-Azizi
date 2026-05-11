@@ -10,7 +10,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
-              Education
+              <span data-i18n="education.heading">Education</span>
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -20,16 +20,20 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
           <div class="lg:col-span-8">
             <div class="space-y-8">
-              {siteConfig.education.map((edu) => (
+              {siteConfig.education.map((edu, eduIndex) => (
                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
                   <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
                     <div>
-                      <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+                      <h3
+                        class="text-lg sm:text-xl font-semibold text-gray-900"
+                        data-i18n={`education.degree${eduIndex + 1}`}
+                      >
                         {edu.degree}
                       </h3>
                       <p
                         class="text-base sm:text-lg"
                         style={`color: ${siteConfig.accentColor}`}
+                        data-i18n={`education.school${eduIndex + 1}`}
                       >
                         {edu.school}
                       </p>
@@ -40,10 +44,13 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                   </div>
 
                   <ul class="space-y-2">
-                    {edu.achievements.map((achievement) => (
+                    {edu.achievements.map((achievement, achievementIndex) => (
                       <li class="flex items-start">
                         <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0" />
-                        <span class="text-sm sm:text-base text-gray-600">
+                        <span
+                          class="text-sm sm:text-base text-gray-600"
+                          data-i18n={`education.achievement${eduIndex * 3 + achievementIndex + 1}`}
+                        >
                           {achievement}
                         </span>
                       </li>

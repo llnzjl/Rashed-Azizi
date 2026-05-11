@@ -3,3 +3,9 @@
 body {
   font-family: 'IBM Plex Mono', monospace;
 }
+
+html[lang="ko"] body,
+html[lang="fa"] body,
+html[lang="ps"] body {
+  font-family: Arial, "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", Tahoma, sans-serif;
+}

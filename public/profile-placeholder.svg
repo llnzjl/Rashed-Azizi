@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Profile photo placeholder</title>
+  <desc id="desc">A simple placeholder for Rashed Azizi's profile photo.</desc>
+  <rect width="512" height="512" fill="#f3f4f6"/>
+  <circle cx="256" cy="188" r="88" fill="#d1d5db"/>
+  <path d="M96 448c18-92 82-144 160-144s142 52 160 144" fill="#d1d5db"/>
+  <circle cx="384" cy="112" r="42" fill="#120fcc" opacity=".16"/>
+  <circle cx="126" cy="380" r="34" fill="#120fcc" opacity=".12"/>
+</svg>

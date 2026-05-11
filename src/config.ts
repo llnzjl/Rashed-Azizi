@@ -1,91 +1,53 @@
-export const siteConfig = {
-  name: "Ryan Fitzgerald",
-  title: "Senior Software Engineer",
-  description: "Portfolio website of Ryan Fitzgerald",
-  accentColor: "#1d4ed8",
+export const   siteConfig = {
+  name: "Rashed Azizi",
+  title: "Software Engineer from South Korea",
+  description: "Portfolio website of Rashed Azizi",
+  accentColor: "#120fcc",
+  profileImage: "/rashed-profile.jpg",
   social: {
-    email: "your-email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
-    github: "https://github.com/RyanFitzgerald",
+    email: "azizi@chungbuk.ac.kr",
+    linkedin: "https://linkedin.com/in/llnzjl",
+    instagram: "https://www.instagram.com/le_.han06/",
+    github: "https://github.com/llnzjl",
   },
   aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
-  projects: [
+    "I am a motivated and detail-oriented individual with a strong interest in technology and problem-solving. I enjoy learning new skills and applying them to real-world projects, especially in areas like programming and web development. I am adaptable, quick to learn, and able to work both independently and in a team environment. Through my experiences, I have developed strong communication and critical thinking skills, and I am always looking for opportunities to grow and improve. I am committed to delivering quality work and continuously expanding my knowledge in the field.",
+  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker", "C++", "CSS", "HTML", "Git", "SQL"],
+  personalProjects: [],
+  teamProjects: [
     {
-      name: "AI Dev Roundup Newsletter",
-      description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-    {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
-      description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-    },
-    {
-      name: "ExtensionKit",
-      description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+      name: "Coming Soon",
+      description: "Team projects will be added here soon.",
+      skills: [],
     },
   ],
   experience: [
     {
-      company: "Tech Company",
-      title: "Senior Software Engineer",
-      dateRange: "Jan 2022 - Present",
-      bullets: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Reduced API response times by 40% through optimization",
-        "Mentored team of 5 junior developers",
-      ],
-    },
-    {
-      company: "Startup Inc",
-      title: "Full Stack Developer",
-      dateRange: "Jun 2020 - Dec 2021",
-      bullets: [
-        "Built and launched MVP product from scratch using React and Node.js",
-        "Implemented CI/CD pipeline reducing deployment time by 60%",
-        "Collaborated with product team to define technical requirements",
-      ],
-    },
-    {
-      company: "Digital Agency",
-      title: "Frontend Developer",
-      dateRange: "Aug 2018 - May 2020",
-      bullets: [
-        "Developed responsive web applications for 20+ clients",
-        "Improved site performance scores by 35% on average",
-        "Introduced modern JavaScript frameworks to legacy codebases",
-      ],
+      company: "Coming Soon",
+      title: "Experience",
+      dateRange: "",
+      bullets: ["Experience details will be added here soon."],
     },
   ],
   education: [
     {
-      school: "University Name",
-      degree: "Bachelor of Science in Computer Science",
-      dateRange: "2014 - 2018",
+      school: "Shuhada-e-Abparan High School",
+      degree: "Elementary and Middle School",
+      dateRange: "Afghanistan, Chak Wardak",
       achievements: [
-        "Graduated Magna Cum Laude with 3.8 GPA",
-        "Dean's List all semesters",
-        "President of Computer Science Club",
+        "Completed elementary school in Afghanistan",
+        "Completed middle school in Chak Wardak, Afghanistan",
+        "Studied at Shuhada-e-Abparan High School",
       ],
     },
     {
-      school: "Online Platform",
-      degree: "Full Stack Development Certificate",
-      dateRange: "2019",
+      school: "Osong High School",
+      degree: "High School",
+      dateRange: "Cheongju, Osong, South Korea",
       achievements: [
-        "Completed 500+ hours of coursework",
-        "Built 10+ portfolio projects",
-        "Specialized in React and Node.js",
+        "Moved to South Korea for continued education",
+        "Completed high school at Osong High School",
+        "Studied in Cheongju, Osong",
       ],
     },
   ],

@@ -1,7 +1,10 @@
 ---
 import { siteConfig } from "../config";
 
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+const hasProjects =
+  (siteConfig.personalProjects && siteConfig.personalProjects.length > 0) ||
+  (siteConfig.teamProjects && siteConfig.teamProjects.length > 0) ||
+  (siteConfig.projects && siteConfig.projects.length > 0);
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 ---
@@ -14,8 +17,18 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
     <ul class="flex items-center gap-8 justify-center">
       <li>
         <a
-          href="#about"
+          href="/"
           class="text-gray-700 hover:text-black transition-colors font-medium"
+          data-i18n="nav.main"
+        >
+          Main
+        </a>
+      </li>
+      <li>
+        <a
+          href="/#about"
+          class="text-gray-700 hover:text-black transition-colors font-medium"
+          data-i18n="nav.about"
         >
           About
         </a>
@@ -24,8 +37,9 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasProjects && (
           <li>
             <a
-              href="#projects"
+              href="/projects"
               class="text-gray-700 hover:text-black transition-colors font-medium"
+              data-i18n="nav.projects"
             >
               Projects
             </a>
@@ -36,8 +50,9 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasExperience && (
           <li>
             <a
-              href="#experience"
+              href="/experience"
               class="text-gray-700 hover:text-black transition-colors font-medium"
+              data-i18n="nav.experience"
             >
               Experience
             </a>
@@ -48,19 +63,278 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasEducation && (
           <li>
             <a
-              href="#education"
+              href="/education"
               class="text-gray-700 hover:text-black transition-colors font-medium"
+              data-i18n="nav.education"
             >
               Education
             </a>
           </li>
         )
       }
+      <li>
+        <label class="sr-only" for="language-select">Language</label>
+        <select
+          id="language-select"
+          class="language-select rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 outline-none transition-colors hover:border-gray-400 focus:border-[var(--accent-color)]"
+          style={`--accent-color: ${siteConfig.accentColor}`}
+          aria-label="Select language"
+        >
+          <option value="en">English</option>
+          <option value="ko">한국어</option>
+          <option value="fa">فارسی</option>
+          <option value="ps">پښتو</option>
+        </select>
+      </li>
     </ul>
   </nav>
 </header>
 
+<div class="fixed right-4 top-4 z-50 md:hidden">
+  <label class="sr-only" for="mobile-language-select">Language</label>
+  <select
+    id="mobile-language-select"
+    class="language-select rounded-md border border-gray-300 bg-white/90 px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm outline-none backdrop-blur-sm transition-colors hover:border-gray-400 focus:border-[var(--accent-color)]"
+    style={`--accent-color: ${siteConfig.accentColor}`}
+    aria-label="Select language"
+  >
+    <option value="en">English</option>
+    <option value="ko">한국어</option>
+    <option value="fa">فارسی</option>
+    <option value="ps">پښتو</option>
+  </select>
+</div>
+
 <script>
+  const translations = {
+    en: {
+      "nav.main": "Main",
+      "nav.about": "About",
+      "nav.projects": "Projects",
+      "nav.experience": "Experience",
+      "nav.education": "Education",
+      "hero.greeting": "Hello!",
+      "hero.namePrefix": "I'm",
+      "hero.title": "Software Engineer from South Korea",
+      "about.heading": "About Me",
+      "about.text":
+        "I am a motivated and detail-oriented individual with a strong interest in technology and problem-solving. I enjoy learning new skills and applying them to real-world projects, especially in areas like programming and web development. I am adaptable, quick to learn, and able to work both independently and in a team environment. Through my experiences, I have developed strong communication and critical thinking skills, and I am always looking for opportunities to grow and improve. I am committed to delivering quality work and continuously expanding my knowledge in the field.",
+      "projects.heading": "Projects",
+      "projects.personal": "Personal Projects",
+      "projects.team": "Team Projects",
+      "projects.personalEmpty": "Personal projects will be added here soon.",
+      "projects.comingTitle": "Coming Soon",
+      "projects.comingDescription": "Team projects will be added here soon.",
+      "experience.heading": "Experience",
+      "experience.title": "Experience",
+      "experience.company": "Coming Soon",
+      "experience.coming": "Experience details will be added here soon.",
+      "education.heading": "Education",
+      "education.degree1": "Bachelor of Software Engineering",
+      "education.school1": "Chungbuk National University",
+      "education.achievement1": "Graduated Software Engineering with 4.3 GPA",
+      "education.achievement2": "Dean's List all semesters",
+      "education.achievement3": "Member of NOVA Software Engineering Club",
+      "education.degree2": "Software Engineering Bootcamp",
+      "education.school2": "Online Platform",
+      "education.achievement4": "Completed 500+ hours of coursework",
+      "education.achievement5": "Built 10+ portfolio projects",
+      "education.achievement6": "Specialized in React and Node.js",
+      "footer.rights": "All rights reserved.",
+    },
+    ko: {
+      "nav.main": "메인",
+      "nav.about": "소개",
+      "nav.projects": "프로젝트",
+      "nav.experience": "경력",
+      "nav.education": "학력",
+      "hero.greeting": "안녕하세요!",
+      "hero.namePrefix": "저는",
+      "hero.title": "대한민국의 소프트웨어 엔지니어",
+      "about.heading": "소개",
+      "about.text":
+        "저는 기술과 문제 해결에 큰 관심을 가진 동기부여가 강하고 꼼꼼한 사람입니다. 새로운 기술을 배우고 프로그래밍과 웹 개발 같은 실제 프로젝트에 적용하는 것을 좋아합니다. 독립적으로 일할 수도 있고 팀 안에서도 잘 협업할 수 있으며, 빠르게 배우고 적응합니다. 여러 경험을 통해 의사소통 능력과 비판적 사고를 키웠고, 계속 성장하고 발전할 기회를 찾고 있습니다. 저는 좋은 결과물을 만들고 이 분야의 지식을 꾸준히 넓히는 데 최선을 다합니다.",
+      "projects.heading": "프로젝트",
+      "projects.personal": "개인 프로젝트",
+      "projects.team": "팀 프로젝트",
+      "projects.personalEmpty": "개인 프로젝트는 곧 추가될 예정입니다.",
+      "projects.comingTitle": "준비 중",
+      "projects.comingDescription": "팀 프로젝트는 곧 추가될 예정입니다.",
+      "experience.heading": "경력",
+      "experience.title": "경력",
+      "experience.company": "준비 중",
+      "experience.coming": "경력 내용은 곧 추가될 예정입니다.",
+      "education.heading": "학력",
+      "education.degree1": "소프트웨어공학 학사",
+      "education.school1": "충북대학교",
+      "education.achievement1": "소프트웨어공학 전공, GPA 4.3",
+      "education.achievement2": "전 학기 Dean's List",
+      "education.achievement3": "NOVA 소프트웨어공학 동아리 회원",
+      "education.degree2": "소프트웨어공학 부트캠프",
+      "education.school2": "온라인 플랫폼",
+      "education.achievement4": "500시간 이상의 과정 수료",
+      "education.achievement5": "10개 이상의 포트폴리오 프로젝트 제작",
+      "education.achievement6": "React와 Node.js 전문 학습",
+      "footer.rights": "모든 권리 보유.",
+    },
+    fa: {
+      "nav.main": "صفحه اصلی",
+      "nav.about": "درباره من",
+      "nav.projects": "پروژه‌ها",
+      "nav.experience": "تجربه",
+      "nav.education": "تحصیلات",
+      "hero.greeting": "سلام!",
+      "hero.namePrefix": "من",
+      "hero.title": "مهندس نرم‌افزار در کره جنوبی",
+      "about.heading": "درباره من",
+      "about.text":
+        "من فردی باانگیزه و دقیق هستم و به فناوری و حل مسئله علاقه زیادی دارم. یادگیری مهارت‌های جدید و استفاده از آن‌ها در پروژه‌های واقعی، به‌ویژه در برنامه‌نویسی و توسعه وب، برایم لذت‌بخش است. سازگار، سریع‌آموز و قادر به کار مستقل و تیمی هستم. از طریق تجربه‌هایم مهارت‌های ارتباطی و تفکر انتقادی خود را تقویت کرده‌ام و همیشه به دنبال فرصت‌هایی برای رشد و پیشرفت هستم. متعهد هستم کار باکیفیت ارائه دهم و دانش خود را در این حوزه پیوسته گسترش دهم.",
+      "projects.heading": "پروژه‌ها",
+      "projects.personal": "پروژه‌های شخصی",
+      "projects.team": "پروژه‌های تیمی",
+      "projects.personalEmpty": "پروژه‌های شخصی به‌زودی اضافه می‌شوند.",
+      "projects.comingTitle": "به‌زودی",
+      "projects.comingDescription": "پروژه‌های تیمی به‌زودی اضافه می‌شوند.",
+      "experience.heading": "تجربه",
+      "experience.title": "تجربه",
+      "experience.company": "به‌زودی",
+      "experience.coming": "جزئیات تجربه به‌زودی اضافه می‌شود.",
+      "education.heading": "تحصیلات",
+      "education.degree1": "کارشناسی مهندسی نرم‌افزار",
+      "education.school1": "دانشگاه ملی چونگبوک",
+      "education.achievement1": "فارغ‌التحصیل مهندسی نرم‌افزار با معدل 4.3",
+      "education.achievement2": "حضور در فهرست افتخار همه ترم‌ها",
+      "education.achievement3": "عضو باشگاه مهندسی نرم‌افزار NOVA",
+      "education.degree2": "بوت‌کمپ مهندسی نرم‌افزار",
+      "education.school2": "پلتفرم آنلاین",
+      "education.achievement4": "تکمیل بیش از 500 ساعت آموزش",
+      "education.achievement5": "ساخت بیش از 10 پروژه پورتفولیو",
+      "education.achievement6": "تخصص در React و Node.js",
+      "footer.rights": "تمام حقوق محفوظ است.",
+    },
+    ps: {
+      "nav.main": "اصلي پاڼه",
+      "nav.about": "زما په اړه",
+      "nav.projects": "پروژې",
+      "nav.experience": "تجربه",
+      "nav.education": "زده کړې",
+      "hero.greeting": "سلام!",
+      "hero.namePrefix": "زه",
+      "hero.title": "په سویلي کوریا کې د سافټویر انجنیر",
+      "about.heading": "زما په اړه",
+      "about.text":
+        "زه یو هڅاند او دقیق کس یم چې له ټکنالوژۍ او د ستونزو له حل سره ډېره علاقه لرم. د نوو مهارتونو زده کول او په واقعي پروژو کې یې کارول، په ځانګړي ډول په پروګرامینګ او ویب پراختیا کې، راته خوښ دي. زه ژر زده کوم، له حالاتو سره ځان عیاروم، او هم یوازې او هم په ټیم کې ښه کار کولی شم. د خپلو تجربو له لارې مې د اړیکو او انتقادي فکر مهارتونه پیاوړي کړي، او تل د ودې او پرمختګ فرصتونه لټوم. زه د باکیفیته کار وړاندې کولو او په دې برخه کې د خپلې پوهې د پراخولو ژمن یم.",
+      "projects.heading": "پروژې",
+      "projects.personal": "شخصي پروژې",
+      "projects.team": "ټیمي پروژې",
+      "projects.personalEmpty": "شخصي پروژې به ژر دلته اضافه شي.",
+      "projects.comingTitle": "ژر راځي",
+      "projects.comingDescription": "ټیمي پروژې به ژر دلته اضافه شي.",
+      "experience.heading": "تجربه",
+      "experience.title": "تجربه",
+      "experience.company": "ژر راځي",
+      "experience.coming": "د تجربې معلومات به ژر اضافه شي.",
+      "education.heading": "زده کړې",
+      "education.degree1": "د سافټویر انجینرۍ لیسانس",
+      "education.school1": "چونګبوک ملي پوهنتون",
+      "education.achievement1": "د سافټویر انجینرۍ فارغ، GPA 4.3",
+      "education.achievement2": "په ټولو سمسترونو کې Dean's List",
+      "education.achievement3": "د NOVA سافټویر انجینرۍ کلب غړی",
+      "education.degree2": "د سافټویر انجینرۍ بوټکمپ",
+      "education.school2": "آنلاین پلاتفورم",
+      "education.achievement4": "له 500 ساعتونو څخه زیات کورسونه بشپړ کړي",
+      "education.achievement5": "له 10 څخه زیات پورتفولیو پروژې جوړې کړي",
+      "education.achievement6": "په React او Node.js کې تخصص",
+      "footer.rights": "ټول حقوق خوندي دي.",
+    },
+  };
+
+  Object.assign(translations.en, {
+    "education.degree1": "Elementary and Middle School",
+    "education.school1": "Shuhada-e-Abparan High School",
+    "education.achievement1": "Completed elementary school in Afghanistan",
+    "education.achievement2": "Completed middle school in Chak Wardak, Afghanistan",
+    "education.achievement3": "Studied at Shuhada-e-Abparan High School",
+    "education.degree2": "High School",
+    "education.school2": "Osong High School",
+    "education.achievement4": "Moved to South Korea for continued education",
+    "education.achievement5": "Completed high school at Osong High School",
+    "education.achievement6": "Studied in Cheongju, Osong",
+  });
+
+  Object.assign(translations.ko, {
+    "education.degree1": "초등학교 및 중학교",
+    "education.school1": "슈하다-에-압파란 고등학교",
+    "education.achievement1": "아프가니스탄에서 초등학교를 마쳤습니다",
+    "education.achievement2": "아프가니스탄 차크 와르다크에서 중학교를 마쳤습니다",
+    "education.achievement3": "슈하다-에-압파란 고등학교에서 공부했습니다",
+    "education.degree2": "고등학교",
+    "education.school2": "오송고등학교",
+    "education.achievement4": "계속 공부하기 위해 대한민국으로 이주했습니다",
+    "education.achievement5": "오송고등학교에서 고등학교 과정을 마쳤습니다",
+    "education.achievement6": "청주 오송에서 공부했습니다",
+  });
+
+  Object.assign(translations.fa, {
+    "education.degree1": "دوره ابتدایی و متوسطه",
+    "education.school1": "لیسه شهدای آبپران",
+    "education.achievement1": "دوره ابتدایی را در افغانستان تمام کردم",
+    "education.achievement2": "دوره متوسطه را در چک وردک افغانستان تمام کردم",
+    "education.achievement3": "در لیسه شهدای آبپران درس خواندم",
+    "education.degree2": "دبیرستان",
+    "education.school2": "دبیرستان اوسونگ",
+    "education.achievement4": "برای ادامه تحصیل به کره جنوبی نقل مکان کردم",
+    "education.achievement5": "دبیرستان را در دبیرستان اوسونگ تمام کردم",
+    "education.achievement6": "در چونگجو، اوسونگ درس خواندم",
+  });
+
+  Object.assign(translations.ps, {
+    "education.degree1": "ابتدايي او منځنی ښوونځی",
+    "education.school1": "د شهدای آبپران عالي ښوونځی",
+    "education.achievement1": "ابتدايي ښوونځی مې په افغانستان کې بشپړ کړ",
+    "education.achievement2": "منځنی ښوونځی مې د افغانستان په چک وردک کې بشپړ کړ",
+    "education.achievement3": "په شهدای آبپران عالي ښوونځي کې مې زده کړې وکړې",
+    "education.degree2": "لېسه",
+    "education.school2": "اوسونګ عالي ښوونځی",
+    "education.achievement4": "د زده کړو د دوام لپاره سویلي کوریا ته ولاړم",
+    "education.achievement5": "لېسه مې په اوسونګ عالي ښوونځي کې بشپړه کړه",
+    "education.achievement6": "په چونګجو، اوسونګ کې مې زده کړې وکړې",
+  });
+
+  const rtlLanguages = new Set(["fa", "ps"]);
+
+  function applyLanguage(language) {
+    const activeLanguage = translations[language] ? language : "en";
+    document.documentElement.lang = activeLanguage;
+    document.documentElement.dir = rtlLanguages.has(activeLanguage)
+      ? "rtl"
+      : "ltr";
+
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      const value = key && translations[activeLanguage][key];
+      if (value) {
+        element.textContent = value;
+      }
+    });
+
+    localStorage.setItem("portfolio-language", activeLanguage);
+    document.querySelectorAll(".language-select").forEach((select) => {
+      select.value = activeLanguage;
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedLanguage = localStorage.getItem("portfolio-language") || "en";
+    applyLanguage(savedLanguage);
+
+    document.querySelectorAll(".language-select").forEach((select) => {
+      select.addEventListener("change", (event) => {
+        applyLanguage(event.currentTarget.value);
+      });
+    });
+  });
+
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
