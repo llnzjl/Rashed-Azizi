@@ -1,9 +1,7 @@
-export const siteConfig = {
+export const   siteConfig = {
   name: "Rashed Azizi",
-  title:
-    "Computer science student in South Korea with a passion for programming, web development, AI, and building useful projects.",
-  description:
-    "Portfolio website of Rashed Azizi, a computer science student in South Korea focused on programming, web development, and AI.",
+  title: "computer science major student in south korea />with a passion for programming,\nweb development, AI, and I have built some projects",
+  description: "Portfolio website of Rashed Azizi",
   accentColor: "#251cd7",
   profileImage: "rashed-profile.jpg",
   social: {
@@ -13,9 +11,9 @@ export const siteConfig = {
     github: "https://github.com/llnzjl",
   },
   aboutMe:
-    "I am a motivated and detail-oriented computer science student with a strong interest in technology and problem-solving. I enjoy learning new skills and applying them to real projects, especially in programming, web development, and AI. I am adaptable, quick to learn, and comfortable working independently or with a team. I keep improving through practical projects, communication, and consistent curiosity.",
-  skills: ["C", "C++", "Python", "SQL", "Git", "CSS", "AI Concepts"],
-  personalProjects: [
+    "I am a motivated and detail-oriented individual with a strong interest in technology and problem-solving. I enjoy learning new skills and applying them to real-world projects, especially in areas like programming and web development. I am adaptable, quick to learn, and able to work both independently and in a team environment. Through my experiences, I have developed strong communication and critical thinking skills, and I am always looking for opportunities to grow and improve. I am committed to delivering quality work and continuously expanding my knowledge in the field.",
+  skills: ["c", "C++", "python", "SQL", "GIT", "CSS", "AI Concepts" ],
+  personalProjects: [ 
     {
       name: "School Management System",
       description:
@@ -49,12 +47,12 @@ export const siteConfig = {
         {
           title: "Completion Certificate",
           image: "",
-          note: "",
+          note: "Upload this later as public/certificates/chungbuk-hackathon-completion.jpg",
         },
         {
           title: "2nd Place Award Certificate",
           image: "",
-          note: "",
+          note: "Upload this later as public/certificates/chungbuk-hackathon-second-place.jpg",
         },
       ],
     },
@@ -75,12 +73,12 @@ export const siteConfig = {
         {
           title: "Completion Certificate",
           image: "",
-          note: "",
+          note: "Upload this later as public/certificates/chungbuk-hackathon-completion.jpg",
         },
         {
           title: "2nd Place Award Certificate",
           image: "",
-          note: "",
+          note: "Upload this later as public/certificates/chungbuk-hackathon-second-place.jpg",
         },
       ],
     },
