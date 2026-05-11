@@ -42,12 +42,12 @@ export const   siteConfig = {
     },
     {
       school: "Osong High School",
-      degree: "Secondary Education",
+      degree: "High School Diploma",
       dateRange: "Cheongju, South Korea",
       achievements: [
-        "Continued academic development after relocating to South Korea.",
-        "Completed high school studies in a new language and cultural environment.",
-        "Strengthened resilience, cross-cultural communication, and long-term focus.",
+        "Completed high school education at Osong High School in Cheongju.",
+        "Adapted to South Korea's academic environment while continuing to grow personally and academically.",
+        "Strengthened Korean communication, cross-cultural confidence, and disciplined study habits.",
       ],
     },
   ],
