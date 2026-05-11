@@ -7,6 +7,9 @@ const hasProjects =
   (siteConfig.projects && siteConfig.projects.length > 0);
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <footer class="relative bg-gray-50 border-t border-gray-200">
@@ -128,7 +131,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
       <div class="hidden md:block flex flex-col md:items-end gap-4">
         <nav class="flex gap-x-8">
           <a
-            href="/#about"
+            href={`${baseUrl}#about`}
             class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
             data-i18n="nav.about"
             >About</a
@@ -136,7 +139,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           {
             hasProjects && (
               <a
-                href="/projects"
+                href={`${baseUrl}projects`}
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
                 data-i18n="nav.projects"
               >
@@ -147,7 +150,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           {
             hasExperience && (
               <a
-                href="/experience"
+                href={`${baseUrl}experience`}
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
                 data-i18n="nav.experience"
               >
@@ -158,7 +161,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           {
             hasEducation && (
               <a
-                href="/education"
+                href={`${baseUrl}education`}
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
                 data-i18n="nav.education"
               >

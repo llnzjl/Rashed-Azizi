@@ -7,6 +7,9 @@ const hasProjects =
   (siteConfig.projects && siteConfig.projects.length > 0);
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <header
@@ -17,7 +20,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
     <ul class="flex items-center gap-8 justify-center">
       <li>
         <a
-          href="/"
+          href={baseUrl}
           class="text-gray-700 hover:text-black transition-colors font-medium"
           data-i18n="nav.main"
         >
@@ -26,7 +29,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
       </li>
       <li>
         <a
-          href="/#about"
+          href={`${baseUrl}#about`}
           class="text-gray-700 hover:text-black transition-colors font-medium"
           data-i18n="nav.about"
         >
@@ -37,7 +40,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasProjects && (
           <li>
             <a
-              href="/projects"
+              href={`${baseUrl}projects`}
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-i18n="nav.projects"
             >
@@ -50,7 +53,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasExperience && (
           <li>
             <a
-              href="/experience"
+              href={`${baseUrl}experience`}
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-i18n="nav.experience"
             >
@@ -63,7 +66,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasEducation && (
           <li>
             <a
-              href="/education"
+              href={`${baseUrl}education`}
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-i18n="nav.education"
             >

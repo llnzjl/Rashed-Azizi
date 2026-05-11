@@ -3,7 +3,7 @@ export const   siteConfig = {
   title: "Software Engineer from South Korea",
   description: "Portfolio website of Rashed Azizi",
   accentColor: "#120fcc",
-  profileImage: "/rashed-profile.jpg",
+  profileImage: "rashed-profile.jpg",
   social: {
     email: "azizi@chungbuk.ac.kr",
     linkedin: "https://linkedin.com/in/llnzjl",
