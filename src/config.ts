@@ -13,7 +13,29 @@ export const   siteConfig = {
   aboutMe:
     "I am a motivated and detail-oriented individual with a strong interest in technology and problem-solving. I enjoy learning new skills and applying them to real-world projects, especially in areas like programming and web development. I am adaptable, quick to learn, and able to work both independently and in a team environment. Through my experiences, I have developed strong communication and critical thinking skills, and I am always looking for opportunities to grow and improve. I am committed to delivering quality work and continuously expanding my knowledge in the field.",
   skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker", "C++", "CSS", "HTML", "Git", "SQL"],
-  personalProjects: [],
+  personalProjects: [
+    {
+      name: "School Management System",
+      description:
+        "A C-based school management system designed to organize core student records and administrative information through a structured console workflow. This project demonstrates practical use of programming fundamentals, data handling, menu-driven interaction, and problem-solving for real-world academic administration.",
+      link: "https://github.com/llnzjl/SMS-Project",
+      skills: ["C", "Data Management", "Console Application"],
+    },
+    {
+      name: "Book Management Program",
+      description:
+        "A book management project focused on organizing book information in a simple and maintainable way. It highlights my ability to design clear program structure, think through user workflows, and build practical tools for managing stored records.",
+      link: "https://github.com/llnzjl/Book-Management-Program",
+      skills: ["Programming Fundamentals", "Record Management", "Project Structure"],
+    },
+    {
+      name: "Bank Management System",
+      description:
+        "A C-based banking management system that models common account-management operations through a command-line interface. The project shows my understanding of procedural programming, user input handling, account data organization, and building reliable menu-based software.",
+      link: "https://github.com/llnzjl/Bank_MS",
+      skills: ["C", "Account Management", "CLI"],
+    },
+  ],
   teamProjects: [
     {
       name: "Coming Soon",
