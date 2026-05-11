@@ -1,6 +1,6 @@
 export const   siteConfig = {
   name: "Rashed Azizi",
-  title: "computer science major student in south korea />with a passion for programming, web development and AI",
+  title: "computer science major student in south korea />with a passion for programming,\nweb development and AI",
   description: "Portfolio website of Rashed Azizi",
   accentColor: "#251cd7",
   profileImage: "rashed-profile.jpg",
