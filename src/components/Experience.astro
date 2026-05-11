@@ -33,9 +33,7 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
           </div>
 
           <div class="lg:col-span-8">
-            <details class="collapsible-panel">
-              <summary class="collapsible-button">What is this?</summary>
-              <div class="mt-8 space-y-8">
+            <div class="space-y-8">
               {siteConfig.experience.map((exp, index) => (
                 <article class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-6 md:p-8">
                   <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -126,8 +124,7 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                   )}
                 </article>
               ))}
-              </div>
-            </details>
+            </div>
           </div>
         </div>
       </div>
