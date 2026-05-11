@@ -12,6 +12,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
             <p
               class="mb-3 text-sm font-semibold uppercase tracking-wide"
               style={`color: ${siteConfig.accentColor}`}
+              data-i18n="education.eyebrow"
             >
               Academic Background
             </p>
@@ -22,7 +23,10 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               class="w-[75px] h-[5px] mt-2 rounded-full"
               style={`background-color: ${siteConfig.accentColor}`}
             />
-            <p class="mt-5 max-w-sm text-sm sm:text-base leading-7 text-gray-600">
+            <p
+              class="mt-5 max-w-sm text-sm sm:text-base leading-7 text-gray-600"
+              data-i18n="education.intro"
+            >
               My education reflects persistence, adaptability, and growth across
               different learning environments.
             </p>
