@@ -92,7 +92,23 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   }
 </nav>
 
-<script>
+<div
+  id="google_translate_element"
+  class="fixed right-3 top-14 z-50 rounded-md border border-gray-200 bg-white/95 px-2 py-1 text-xs shadow-sm backdrop-blur-sm md:top-3"
+></div>
+
+<script is:inline>
+  window.googleTranslateElementInit = function () {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        includedLanguages: "en,ko,fa,ps",
+        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+      },
+      "google_translate_element",
+    );
+  };
+
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
@@ -102,9 +118,29 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     }
   });
 </script>
+<script
+  is:inline
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
 
 <style>
   html {
     scroll-behavior: smooth;
+  }
+
+  #google_translate_element .goog-te-gadget {
+    color: transparent;
+    font-family: inherit;
+    font-size: 0;
+  }
+
+  #google_translate_element .goog-te-gadget-simple {
+    border: 0;
+    background-color: transparent;
+    font-size: 13px;
+  }
+
+  body {
+    top: 0 !important;
   }
 </style>
