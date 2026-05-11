@@ -1,5 +1,5 @@
 ---
-import { siteConfig } from "../config";
+import { siteConfig, translations } from "../config";
 
 const hasProjects =
   (siteConfig.personalProjects && siteConfig.personalProjects.length > 0) ||
@@ -10,124 +10,156 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+
 ---
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
+  class="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white/90 shadow-sm backdrop-blur-sm transition-all duration-300"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-4">
-    <ul class="flex items-center gap-8 justify-center">
-      <li>
-        <a
-          href={baseUrl}
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
-          Main
-        </a>
-      </li>
-      <li>
-        <a
-          href={`${baseUrl}#about`}
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
-          About
-        </a>
-      </li>
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+    <a href={baseUrl} class="min-w-0 truncate text-base font-bold text-gray-900">
+      {siteConfig.firstName}
+    </a>
+
+    <div class="flex items-center gap-2">
+      <div
+        class="flex rounded-md border border-gray-200 bg-gray-50 p-1"
+        aria-label="Language selector"
+        data-i18n-aria="header.language"
+      >
+        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="en">EN</button>
+        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="ko">한국어</button>
+        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="ps">PS</button>
+        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="fa">FA</button>
+      </div>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm transition-colors hover:bg-gray-50"
+        aria-controls="site-menu"
+        aria-expanded="false"
+        aria-label="Menu"
+        data-i18n-aria="header.menu"
+      >
+        <span class="sr-only" data-i18n="header.menu">Menu</span>
+        <span class="flex flex-col gap-1.5">
+          <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <nav
+    id="site-menu"
+    class="hidden border-t border-gray-200 bg-white px-4 py-3 shadow-lg sm:px-6 lg:px-8"
+  >
+    <div class="mx-auto grid max-w-7xl gap-2 sm:grid-cols-2 md:grid-cols-5">
+      <a href={baseUrl} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.main">Main</a>
+      <a href={`${baseUrl}#about`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.about">About</a>
       {
         hasProjects && (
-          <li>
-            <a
-              href={`${baseUrl}projects`}
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Projects
-            </a>
-          </li>
+          <a href={`${baseUrl}projects`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.projects">
+            Projects
+          </a>
         )
       }
       {
         hasExperience && (
-          <li>
-            <a
-              href={`${baseUrl}experience`}
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Experience
-            </a>
-          </li>
+          <a href={`${baseUrl}experience`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.experience">
+            Experience
+          </a>
         )
       }
       {
         hasEducation && (
-          <li>
-            <a
-              href={`${baseUrl}education`}
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Education
-            </a>
-          </li>
+          <a href={`${baseUrl}education`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.education">
+            Education
+          </a>
         )
       }
-    </ul>
+    </div>
   </nav>
 </header>
 
-<div
-  class="fixed left-0 right-0 top-0 z-50 flex items-center gap-2 overflow-x-auto border-b border-gray-200 bg-white/90 px-3 py-2 shadow-sm backdrop-blur-sm md:hidden"
->
-  <a
-    href={baseUrl}
-    class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
-  >
-    Main
-  </a>
-  <a
-    href={`${baseUrl}#about`}
-    class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
-  >
-    About
-  </a>
-  {
-    hasProjects && (
-      <a
-        href={`${baseUrl}projects`}
-        class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
-      >
-        Projects
-      </a>
-    )
-  }
-  {
-    hasExperience && (
-      <a
-        href={`${baseUrl}experience`}
-        class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
-      >
-        Experience
-      </a>
-    )
-  }
-  {
-    hasEducation && (
-      <a
-        href={`${baseUrl}education`}
-        class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
-      >
-        Education
-      </a>
-    )
-  }
-</div>
+<script define:vars={{ translations }}>
+  const supportedLanguages = ["en", "ko", "ps", "fa"];
+  const rtlLanguages = ["ps", "fa"];
 
-<script>
-  window.addEventListener("scroll", () => {
-    const header = document.getElementById("header");
-    if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
-    } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
+  const getTranslation = (language, path) => {
+    return path.split(".").reduce((value, key) => value?.[key], translations[language]);
+  };
+
+  const applyLanguage = (language) => {
+    const activeLanguage = supportedLanguages.includes(language) ? language : "en";
+    const isRtl = rtlLanguages.includes(activeLanguage);
+
+    document.documentElement.lang = activeLanguage;
+    document.documentElement.dir = isRtl ? "rtl" : "ltr";
+    localStorage.setItem("portfolio-language", activeLanguage);
+
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      const value = key ? getTranslation(activeLanguage, key) : "";
+      if (typeof value === "string") {
+        element.textContent = value;
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-aria");
+      const value = key ? getTranslation(activeLanguage, key) : "";
+      if (typeof value === "string") {
+        element.setAttribute("aria-label", value);
+      }
+    });
+
+    document.querySelectorAll(".language-button").forEach((button) => {
+      const isActive = button.getAttribute("data-lang") === activeLanguage;
+      button.classList.toggle("bg-gray-900", isActive);
+      button.classList.toggle("text-white", isActive);
+      button.classList.toggle("text-gray-600", !isActive);
+    });
+  };
+
+  const initLanguageControls = () => {
+    const menu = document.getElementById("site-menu");
+    const toggle = document.getElementById("menu-toggle");
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = !menu?.classList.contains("hidden");
+      menu?.classList.toggle("hidden", isOpen);
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    menu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        toggle?.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.querySelectorAll(".language-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        applyLanguage(button.getAttribute("data-lang") || "en");
+      });
+    });
+
+    applyLanguage(localStorage.getItem("portfolio-language") || "en");
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLanguageControls);
+  } else {
+    initLanguageControls();
+  }
+
+  window.addEventListener("storage", (event) => {
+    if (event.key === "portfolio-language" && event.newValue) {
+      applyLanguage(event.newValue);
     }
   });
 </script>
