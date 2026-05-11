@@ -93,11 +93,60 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   </nav>
 </header>
 
-<div class="fixed right-4 top-4 z-50 md:hidden">
+<div
+  class="fixed left-0 right-0 top-0 z-50 flex items-center gap-2 overflow-x-auto border-b border-gray-200 bg-white/90 px-3 py-2 shadow-sm backdrop-blur-sm md:hidden"
+>
+  <a
+    href={baseUrl}
+    class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
+    data-i18n="nav.main"
+  >
+    Main
+  </a>
+  <a
+    href={`${baseUrl}#about`}
+    class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
+    data-i18n="nav.about"
+  >
+    About
+  </a>
+  {
+    hasProjects && (
+      <a
+        href={`${baseUrl}projects`}
+        class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
+        data-i18n="nav.projects"
+      >
+        Projects
+      </a>
+    )
+  }
+  {
+    hasExperience && (
+      <a
+        href={`${baseUrl}experience`}
+        class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
+        data-i18n="nav.experience"
+      >
+        Experience
+      </a>
+    )
+  }
+  {
+    hasEducation && (
+      <a
+        href={`${baseUrl}education`}
+        class="shrink-0 rounded-md px-2 py-1 text-sm font-medium text-gray-700 transition-colors hover:text-black"
+        data-i18n="nav.education"
+      >
+        Education
+      </a>
+    )
+  }
   <label class="sr-only" for="mobile-language-select">Language</label>
   <select
     id="mobile-language-select"
-    class="language-select rounded-md border border-gray-300 bg-white/90 px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm outline-none backdrop-blur-sm transition-colors hover:border-gray-400 focus:border-[var(--accent-color)]"
+    class="language-select ml-auto shrink-0 rounded-md border border-gray-300 bg-white px-2 py-1 text-sm font-medium text-gray-700 outline-none transition-colors hover:border-gray-400 focus:border-[var(--accent-color)]"
     style={`--accent-color: ${siteConfig.accentColor}`}
     aria-label="Select language"
   >
