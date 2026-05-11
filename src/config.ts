@@ -57,7 +57,32 @@ export const   siteConfig = {
       ],
     },
   ],
-  experience: [],
+  experience: [
+    {
+      company: "Chungbuk Pro Maker Center",
+      title: "Hackathon Participant - 2nd Place, Together Korea",
+      dateRange: "2025",
+      link: "https://www.veritas-a.com/news/articleView.html?idxno=572820",
+      bullets: [
+        "Competed in a 1-night, 2-day hackathon with Team Together Korea and earned 2nd place.",
+        "Helped build an app concept for foreign workers in Korea, focused on practical support, accessibility, and real workplace needs.",
+        "Contributed to an AI chatbot feature designed to help workers receive guidance and information more easily inside the app.",
+        "Received a completion certificate and a 2nd place award certificate for the project outcome.",
+      ],
+      certificates: [
+        {
+          title: "Completion Certificate",
+          image: "",
+          note: "Upload this later as public/certificates/chungbuk-hackathon-completion.jpg",
+        },
+        {
+          title: "2nd Place Award Certificate",
+          image: "",
+          note: "Upload this later as public/certificates/chungbuk-hackathon-second-place.jpg",
+        },
+      ],
+    },
+  ],
   education: [
     {
       school: "Shuhada-e-Abparan High School",
