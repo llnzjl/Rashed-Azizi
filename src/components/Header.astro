@@ -59,7 +59,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   >
     <div class="mx-auto grid max-w-7xl gap-2 sm:grid-cols-2 md:grid-cols-5">
       <a href={baseUrl} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.main">Main</a>
-      <a href={`${baseUrl}#about`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.about">About</a>
+      <a href={`${baseUrl}about`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.about">About</a>
       {
         hasProjects && (
           <a href={`${baseUrl}projects`} class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-black" data-i18n="nav.projects">
