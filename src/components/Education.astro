@@ -5,50 +5,70 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
 {
   hasEducation && (
-    <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24">
-      <div>
+    <section id="education" class="bg-white p-8 sm:p-12 md:p-16 lg:p-24">
+      <div class="mx-auto max-w-7xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            <p
+              class="mb-3 text-sm font-semibold uppercase tracking-wide"
+              style={`color: ${siteConfig.accentColor}`}
+            >
+              Academic Background
+            </p>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-gray-900">
               <span data-i18n="education.heading">Education</span>
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
               style={`background-color: ${siteConfig.accentColor}`}
             />
+            <p class="mt-5 max-w-sm text-sm sm:text-base leading-7 text-gray-600">
+              My education reflects persistence, adaptability, and growth across
+              different learning environments.
+            </p>
           </div>
 
           <div class="lg:col-span-8">
-            <div class="space-y-8">
+            <div class="relative space-y-6 before:absolute before:left-4 before:top-3 before:hidden before:h-[calc(100%-1.5rem)] before:w-px before:bg-gray-200 sm:before:block">
               {siteConfig.education.map((edu, eduIndex) => (
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
-                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-                    <div>
+                <article class="relative rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-shadow duration-300 hover:shadow-md sm:ml-12 sm:p-6">
+                  <div
+                    class="absolute -left-[3.25rem] top-7 hidden h-8 w-8 items-center justify-center rounded-full border-4 border-white text-sm font-bold text-white shadow-sm sm:flex"
+                    style={`background-color: ${siteConfig.accentColor}`}
+                  >
+                    {eduIndex + 1}
+                  </div>
+
+                  <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div class="min-w-0">
                       <h3
-                        class="text-lg sm:text-xl font-semibold text-gray-900"
+                        class="text-xl sm:text-2xl font-semibold text-gray-900"
                         data-i18n={`education.degree${eduIndex + 1}`}
                       >
                         {edu.degree}
                       </h3>
                       <p
-                        class="text-base sm:text-lg"
+                        class="mt-1 text-base sm:text-lg font-medium"
                         style={`color: ${siteConfig.accentColor}`}
                         data-i18n={`education.school${eduIndex + 1}`}
                       >
                         {edu.school}
                       </p>
                     </div>
-                    <span class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0">
+                    <span class="inline-flex w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs sm:text-sm font-medium text-gray-600">
                       {edu.dateRange}
                     </span>
                   </div>
 
-                  <ul class="space-y-2">
+                  <ul class="space-y-3">
                     {edu.achievements.map((achievement, achievementIndex) => (
                       <li class="flex items-start">
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0" />
                         <span
-                          class="text-sm sm:text-base text-gray-600"
+                          class="mt-2 mr-3 h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                          style={`background-color: ${siteConfig.accentColor}`}
+                        />
+                        <span
+                          class="text-sm sm:text-base leading-7 text-gray-600"
                           data-i18n={`education.achievement${eduIndex * 3 + achievementIndex + 1}`}
                         >
                           {achievement}
@@ -56,7 +76,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                       </li>
                     ))}
                   </ul>
-                </div>
+                </article>
               ))}
             </div>
           </div>

@@ -32,22 +32,22 @@ export const   siteConfig = {
   education: [
     {
       school: "Shuhada-e-Abparan High School",
-      degree: "Elementary and Middle School",
-      dateRange: "Afghanistan, Chak Wardak",
+      degree: "Foundational Education",
+      dateRange: "Chak Wardak, Afghanistan",
       achievements: [
-        "Completed elementary school in Afghanistan",
-        "Completed middle school in Chak Wardak, Afghanistan",
-        "Studied at Shuhada-e-Abparan High School",
+        "Completed elementary and middle school studies in Afghanistan.",
+        "Built a strong academic foundation through disciplined classroom learning.",
+        "Developed early communication, adaptability, and independent study skills.",
       ],
     },
     {
       school: "Osong High School",
-      degree: "High School",
-      dateRange: "Cheongju, Osong, South Korea",
+      degree: "Secondary Education",
+      dateRange: "Cheongju, South Korea",
       achievements: [
-        "Moved to South Korea for continued education",
-        "Completed high school at Osong High School",
-        "Studied in Cheongju, Osong",
+        "Continued academic development after relocating to South Korea.",
+        "Completed high school studies in a new language and cultural environment.",
+        "Strengthened resilience, cross-cultural communication, and long-term focus.",
       ],
     },
   ],
