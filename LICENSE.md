@@ -1,20 +1,26 @@
-MIT License
+All Rights Reserved
 
-Copyright (c) 2025 Ryan Fitzgerald
+Copyright (c) 2026 Rashed Azizi
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+This portfolio website, including its source code, design, text, images,
+configuration, build output, and other project files, is the property of
+Rashed Azizi unless otherwise stated.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+No permission is granted to copy, modify, publish, distribute, sublicense,
+sell, host, reuse, or create derivative works from this project or any
+substantial portion of it without prior written permission from Rashed Azizi.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+You may view the publicly available website and repository for personal
+reference only. Viewing the project does not grant any license or ownership
+rights.
+
+Third-party dependencies, tools, frameworks, and any original third-party
+template portions remain governed by their own licenses and copyright notices.
+Nothing in this license changes the rights or obligations for those separate
+third-party works.
+
+THE PROJECT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING
+FROM THE USE OF THIS PROJECT.
