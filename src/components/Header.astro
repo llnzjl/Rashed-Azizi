@@ -303,6 +303,7 @@ const navItems = [
     const { signal } = dynamicEffectsAbortController;
     dynamicEffectsObserver?.disconnect();
     dynamicEffectsObserver = null;
+    const isProjectsPage = document.body.classList.contains("projects-page");
 
     const revealTargets = [
       ...document.querySelectorAll(".reveal-on-scroll"),
@@ -413,35 +414,55 @@ const navItems = [
     };
 
     document.querySelectorAll(".tilt-card, .page-surface, .project-accordion, .experience-accordion, .education-accordion").forEach((card) => {
-      const config = card.classList.contains("page-surface")
-        ? {
-            perspective: 1300,
-            maxRotateX: 8,
-            maxRotateY: 10,
-            lift: -14,
-            scale: 1.018,
-            smoothing: 0.12,
-            liftSmoothing: 0.16,
-          }
-        : card.classList.contains("tilt-card")
+      const config = isProjectsPage
+        ? card.classList.contains("page-surface")
           ? {
-              perspective: 1200,
-              maxRotateX: 7,
-              maxRotateY: 9,
-              lift: -10,
-              scale: 1.012,
+              perspective: 1080,
+              maxRotateX: 3.5,
+              maxRotateY: 4.5,
+              lift: -6,
+              scale: 1.006,
+              smoothing: 0.15,
+              liftSmoothing: 0.2,
+            }
+          : {
+              perspective: 1020,
+              maxRotateX: 2.8,
+              maxRotateY: 3.6,
+              lift: -4,
+              scale: 1.004,
+              smoothing: 0.16,
+              liftSmoothing: 0.2,
+            }
+        : card.classList.contains("page-surface")
+          ? {
+              perspective: 1300,
+              maxRotateX: 8,
+              maxRotateY: 10,
+              lift: -14,
+              scale: 1.018,
               smoothing: 0.12,
               liftSmoothing: 0.16,
             }
-          : {
-              perspective: 1150,
-              maxRotateX: 6,
-              maxRotateY: 8,
-              lift: -9,
-              scale: 1.01,
-              smoothing: 0.13,
-              liftSmoothing: 0.16,
-            };
+          : card.classList.contains("tilt-card")
+            ? {
+                perspective: 1200,
+                maxRotateX: 7,
+                maxRotateY: 9,
+                lift: -10,
+                scale: 1.012,
+                smoothing: 0.12,
+                liftSmoothing: 0.16,
+              }
+            : {
+                perspective: 1150,
+                maxRotateX: 6,
+                maxRotateY: 8,
+                lift: -9,
+                scale: 1.01,
+                smoothing: 0.13,
+                liftSmoothing: 0.16,
+              };
 
       bindSmoothTilt(card, config);
     });
