@@ -1,6 +1,11 @@
 ---
 import { siteConfig } from "../config";
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const resolvePublicPath = (path) =>
+  path.startsWith("http") || path.startsWith("/") ? path : `${baseUrl}${path}`;
 ---
 
 {
@@ -102,6 +107,44 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                         </li>
                       ))}
                     </ul>
+
+                    {edu.certificates && edu.certificates.length > 0 && (
+                      <div class="grid gap-5 pt-2 sm:grid-cols-2">
+                        {edu.certificates.map((certificate) => (
+                          <div class="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-3 sm:p-4">
+                            {certificate.image ? (
+                              <a
+                                href={resolvePublicPath(certificate.image)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="block rounded-md bg-white p-2 transition-colors hover:bg-gray-100"
+                              >
+                                <img
+                                  src={resolvePublicPath(certificate.image)}
+                                  alt={certificate.title}
+                                  class="aspect-[3/4] w-full rounded-md object-contain"
+                                />
+                              </a>
+                            ) : (
+                              <div
+                                class="flex aspect-[3/4] items-center justify-center rounded-md bg-white p-6 text-center text-sm font-medium text-gray-500"
+                                data-i18n="certificates.placeholder"
+                              >
+                                Certificate photo placeholder
+                              </div>
+                            )}
+                            <h4 class="mt-3 text-sm font-semibold text-gray-900">
+                              {certificate.title}
+                            </h4>
+                            {certificate.note && (
+                              <p class="mt-1 text-xs leading-5 text-gray-500">
+                                {certificate.note}
+                              </p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </details>
               ))}

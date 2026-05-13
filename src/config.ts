@@ -104,6 +104,13 @@ export const siteConfig = {
         "Adapted to South Korea's academic environment while continuing to grow personally and academically.",
         "Strengthened Korean communication, cross-cultural confidence, and disciplined study habits.",
       ],
+      certificates: [
+        {
+          title: "High School Diploma",
+          image: "",
+          note: "Upload this later as public/certificates/high-school-diploma.jpg",
+        },
+      ],
     },
   ],
 };
