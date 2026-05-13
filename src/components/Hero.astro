@@ -7,8 +7,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 ---
 
 <div
-  id="home"
-  data-orbit-section="home"
+  id="hero"
   class="dynamic-hero relative isolate min-h-screen overflow-hidden bg-[#050816] text-white"
   style={`--accent-color: ${siteConfig.accentColor}`}
 >
@@ -41,8 +40,8 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
         {siteConfig.title}
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href={`${baseUrl}#about`} class="dynamic-button bg-white text-slate-950">About</a>
-        <a href={`${baseUrl}#projects`} class="dynamic-button border border-white/20 bg-white/10 text-white backdrop-blur">Projects</a>
+        <a href={`${baseUrl}about`} class="dynamic-button bg-white text-slate-950">About</a>
+        <a href={`${baseUrl}projects`} class="dynamic-button border border-white/20 bg-white/10 text-white backdrop-blur">Projects</a>
       </div>
       </div>
 

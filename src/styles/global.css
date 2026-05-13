@@ -109,10 +109,6 @@ html[lang="ps"] body {
   padding-top: 0;
 }
 
-.orbit-shell {
-  padding-top: 9.5rem;
-}
-
 .inner-page-shell {
   display: flex;
   align-items: flex-start;
@@ -159,26 +155,6 @@ html[lang="ps"] body {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-}
-
-.orbit-section {
-  scroll-margin-top: 9rem;
-}
-
-.orbit-reveal.reveal-on-scroll {
-  opacity: 0;
-  transform: perspective(1100px) translate3d(0, 42px, -160px) rotateX(14deg) scale(0.96);
-  clip-path: circle(0% at 50% 0%);
-  transition:
-    opacity 920ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 920ms cubic-bezier(0.16, 1, 0.3, 1),
-    clip-path 920ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.orbit-reveal.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: perspective(1100px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
-  clip-path: circle(160% at 50% 0%);
 }
 
 .dynamic-main > section::before {
@@ -380,10 +356,6 @@ html[lang="ps"] body {
 }
 
 @media (max-width: 640px) {
-  .orbit-shell {
-    padding-top: 7.75rem;
-  }
-
   .inner-page-shell {
     padding: 6.5rem 0.75rem 1.75rem;
   }
@@ -401,18 +373,9 @@ html[lang="ps"] body {
     opacity: 1;
     transform: none;
   }
-
-  .orbit-reveal.reveal-on-scroll {
-    clip-path: none;
-    transform: none;
-  }
 }
 
 @media (min-width: 1024px) {
-  .orbit-shell {
-    padding-top: 10.5rem;
-  }
-
   .inner-page-shell {
     padding: 3rem 0.75rem 1.25rem;
   }
@@ -445,14 +408,6 @@ html[lang="ps"] body {
   .education-chevron svg {
     width: 0.875rem;
     height: 0.875rem;
-  }
-
-  body.orbit-page main {
-    scroll-snap-type: y proximity;
-  }
-
-  body.orbit-page .orbit-section {
-    scroll-snap-align: start;
   }
 }
 
