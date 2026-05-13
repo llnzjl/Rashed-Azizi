@@ -19,7 +19,7 @@ export function SiteFooter() {
             <div>
               <p className="font-display text-2xl font-semibold text-white">{siteData.name}</p>
               <p className="body-copy mt-3 max-w-md">
-                A design-led developer portfolio built to feel cinematic, organized, and ready
+                A design-led student portfolio built to feel cinematic, organized, and ready
                 for real opportunities.
               </p>
               <Link href="/contact" className="button-secondary mt-6 inline-flex">

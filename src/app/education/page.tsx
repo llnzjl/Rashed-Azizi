@@ -1,7 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import { HiOutlineArrowUpRight, HiOutlineAcademicCap } from "react-icons/hi2";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
 
+import { CertificateGallery } from "@/components/education/certificate-gallery";
 import { PageIntro } from "@/components/site/page-intro";
 import { Reveal } from "@/components/site/reveal";
 import {
@@ -14,7 +13,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Education",
   description:
-    "Review academic history, learning milestones, and certifications for Rashed Azizi.",
+    "Review academic history, learning milestones, and certificates for Rashed Azizi.",
   path: "/education",
 });
 
@@ -117,51 +116,14 @@ export default function EducationPage() {
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Certificates</p>
             <h2 className="mt-3 font-display text-3xl font-semibold text-white">
-              Supporting proof and milestone documents.
+              Supporting proof and milestone documents in a framed viewer.
             </h2>
           </div>
-          <span className="chip hidden sm:inline-flex">Archive</span>
+          <span className="chip hidden sm:inline-flex">Tap to preview</span>
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {certifications.map((certificate) => (
-            <div
-              key={certificate.title}
-              className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-4"
-            >
-              {certificate.image ? (
-                <Link href={certificate.image} target="_blank" className="block">
-                  <div className="relative overflow-hidden rounded-[1.35rem] border border-white/10">
-                    <Image
-                      src={certificate.image}
-                      alt={certificate.title}
-                      width={800}
-                      height={560}
-                      className="h-48 w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#07111d]/75 to-transparent" />
-                    <span className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-slate-950/70 text-white">
-                      <HiOutlineArrowUpRight />
-                    </span>
-                  </div>
-                </Link>
-              ) : (
-                <div className="flex h-48 items-center justify-center rounded-[1.35rem] border border-dashed border-white/10 bg-white/[0.03] px-6 text-center text-sm text-slate-500">
-                  Document preview will be added later.
-                </div>
-              )}
-
-              <div className="mt-5">
-                <h3 className="font-display text-xl font-semibold text-white">
-                  {certificate.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-400">
-                  {certificate.issuer} - {certificate.year}
-                </p>
-                <p className="body-copy mt-3 text-sm">{certificate.note}</p>
-              </div>
-            </div>
-          ))}
+        <div className="mt-8">
+          <CertificateGallery certificates={certifications} />
         </div>
       </Reveal>
     </div>

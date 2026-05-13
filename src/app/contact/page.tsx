@@ -15,7 +15,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Contact",
   description:
-    "Get in touch with Rashed Azizi for internships, freelance opportunities, and collaboration.",
+    "Get in touch with Rashed Azizi for internships, junior opportunities, and collaboration.",
   path: "/contact",
 });
 
@@ -31,9 +31,9 @@ export default function ContactPage() {
     <div className="container space-y-6 sm:space-y-8">
       <PageIntro
         eyebrow="Contact"
-        title="Let's build something thoughtful, modern, and memorable."
-        description="This final page keeps the same premium tone while staying practical. It is designed to help opportunities move from first interest to a real conversation."
-        chips={["Open for internships", "Freelance friendly", "Static-friendly workflow"]}
+        title="Let's connect around internships, projects, and meaningful learning opportunities."
+        description="This page keeps the same premium tone while staying practical. It is designed to help student opportunities move from first interest to a real conversation."
+        chips={["Open for internships", "Student collaboration", "Static-friendly workflow"]}
         actions={[
           { href: `mailto:${siteData.email}`, label: "Email Me", external: true },
           {
@@ -71,9 +71,9 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={0.05} className="surface-panel rounded-[2rem] p-6 sm:p-8">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Services</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Contribution areas</p>
             <h2 className="mt-3 font-display text-3xl font-semibold text-white">
-              What I can help with.
+              What I can contribute to.
             </h2>
             <div className="mt-6 grid gap-4">
               {serviceOffers.map((item) => (

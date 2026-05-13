@@ -1,6 +1,6 @@
 # Rashed Azizi Portfolio
 
-A premium multi-page developer portfolio built with Next.js, React, Tailwind CSS, TypeScript, and Framer Motion. The site now uses dedicated routes for `Home`, `About`, `Projects`, `Experience`, `Education`, and `Contact`, all tied together by one cinematic design system.
+A premium multi-page student portfolio built with Next.js, React, Tailwind CSS, TypeScript, and Framer Motion. The site now uses dedicated routes for `Home`, `About`, `Projects`, `Experience`, `Education`, and `Contact`, all tied together by one cinematic design system.
 
 ## Tech Stack
 

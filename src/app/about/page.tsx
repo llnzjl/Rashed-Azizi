@@ -27,7 +27,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "About",
   description:
-    "Learn more about Rashed Azizi, including background, skills, technical stack, and the principles behind the work.",
+    "Learn more about Rashed Azizi, including university background, skills, technical stack, and the principles behind the work.",
   path: "/about",
 });
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
             </h2>
             <p className="body-copy mt-4 text-sm">
               I am especially interested in portfolio experiences, premium landing pages, and
-              developer-facing interfaces that balance visual identity with clean implementation.
+              polished interfaces that balance visual identity with clean implementation.
             </p>
           </Reveal>
         </div>

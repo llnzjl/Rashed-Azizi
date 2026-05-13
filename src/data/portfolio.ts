@@ -40,10 +40,10 @@ const siteBasePath = `/${repoName}`;
 export const siteData = {
   name: "Rashed Azizi",
   initials: "RA",
-  title: "Full Stack Developer",
-  tagline: "Design-minded builder crafting polished digital experiences.",
+  title: "Computer Science Student",
+  tagline: "University student building polished digital experiences.",
   description:
-    "A multi-page portfolio for Rashed Azizi featuring a cinematic visual system, thoughtful motion, and content-rich developer storytelling.",
+    "A multi-page student portfolio for Rashed Azizi featuring a cinematic visual system, thoughtful motion, and content-rich project storytelling.",
   siteOrigin,
   repoName,
   siteBasePath,
@@ -51,27 +51,28 @@ export const siteData = {
   ogImage: `${siteBasePath}/rashed-profile.jpg`,
   favicon: `${siteBasePath}/favicon.svg`,
   location: "Based in South Korea",
-  availability: "Open to internships, freelance collaboration, and product-minded teams.",
+  availability: "Open to internships, student collaboration, and junior opportunities.",
   email: "azizi@chungbuk.ac.kr",
   linkedin: "https://linkedin.com/in/llnzjl",
   github: "https://github.com/llnzjl",
   instagram: "https://www.instagram.com/le_.han06/",
   heroRoles: [
-    "Full Stack Developer",
-    "Creative Developer",
-    "UI / UX Designer",
+    "Computer Science Student",
+    "Frontend-Focused Builder",
+    "UI / UX Learner",
   ],
   heroIntro:
-    "I build immersive websites and practical software with a focus on clarity, motion, and purposeful user experience. My work blends engineering discipline with a visual eye for premium digital storytelling.",
-  heroStatus: "Available for selective collaborations in 2026",
+    "I am a university student building immersive websites and practical software with a focus on clarity, motion, and purposeful user experience. My work blends steady technical growth with a strong interest in polished digital storytelling.",
+  heroStatus: "Open to internships and student opportunities in 2026",
   keywords: [
     "Rashed Azizi",
     "portfolio",
-    "full stack developer",
-    "creative developer",
+    "computer science student",
+    "university student portfolio",
+    "aspiring frontend builder",
     "Next.js portfolio",
-    "developer designer",
-    "South Korea developer",
+    "student designer portfolio",
+    "South Korea computer science student",
   ],
 };
 
@@ -110,14 +111,14 @@ export const routeItems: RouteItem[] = [
     href: "/contact",
     label: "Contact",
     eyebrow: "Connect",
-    blurb: "How to reach me for internships, freelance work, or collaboration.",
+    blurb: "How to reach me for internships, student opportunities, or collaboration.",
   },
 ];
 
 export const heroMetrics = [
   {
     value: "01+",
-    label: "Years focused on shipping projects",
+    label: "Years learning and shipping projects",
     helper: "Growing through academic, personal, and collaborative work.",
   },
   {
@@ -185,7 +186,7 @@ export const aboutContent = {
   eyebrow: "About Me",
   heading: "A resilient builder with a product mindset and a love for thoughtful interfaces.",
   story: [
-    "I am a software-focused developer based in South Korea, driven by curiosity around web platforms, AI, and systems that solve real-world problems.",
+    "I am a computer science university student based in South Korea, driven by curiosity around web platforms, AI, and systems that solve real-world problems.",
     "My journey has been shaped by adaptation, continuous learning, and the ability to move between logic and aesthetics. I enjoy building tools that are useful, approachable, and visually memorable.",
     "Whether I am working independently or with a team, I care about clean implementation, intentional motion, and experiences that feel refined from the first interaction.",
   ],
@@ -291,13 +292,13 @@ export const teamProjects = [
 
 export const experienceItems = [
   {
-    company: "Independent Builder",
-    role: "Developer & Portfolio Designer",
+    company: "Independent Student Builder",
+    role: "Student Builder & Portfolio Designer",
     period: "2024 - Present",
     summary:
       "Developing portfolio work, UI experiments, and foundational software projects while improving design sensitivity alongside engineering skills.",
     achievements: [
-      "Built increasingly polished developer-facing interfaces with modern frontend tooling.",
+      "Built increasingly polished portfolio and student-facing interfaces with modern frontend tooling.",
       "Practiced responsive design, component thinking, and motion-led storytelling.",
       "Translated self-learning into public projects and a stronger personal brand.",
     ],
@@ -331,7 +332,7 @@ export const experienceItems = [
 export const experienceFocus = [
   "Shipping work that looks refined and still feels practical.",
   "Learning in real public contexts instead of only private practice.",
-  "Turning small wins into a stronger long-term developer profile.",
+  "Turning small wins into a stronger long-term student portfolio.",
 ];
 
 export const educationItems = [
@@ -396,8 +397,8 @@ export const learningNotes = [
 ];
 
 export const contactHighlights = [
-  "Open to internships, junior developer roles, and collaborative builds.",
-  "Happy to discuss product ideas, portfolio work, and web experiences.",
+  "Open to internships, junior opportunities, and collaborative student builds.",
+  "Happy to discuss product ideas, portfolio work, and polished web experiences.",
   "Response workflows are intentionally simple so this site can stay static-friendly.",
 ];
 
@@ -430,18 +431,18 @@ export const contactLinks: ContactLink[] = [
 
 export const serviceOffers = [
   {
-    title: "Portfolio and landing page builds",
+    title: "Portfolio and landing page support",
     description:
       "Thoughtful frontend work with stronger visual direction, motion, and responsive polish.",
   },
   {
-    title: "Junior-friendly product collaboration",
+    title: "Student team collaboration",
     description:
       "Support on early ideas, UI shaping, and implementation for projects still finding their form.",
   },
   {
-    title: "Developer storytelling",
+    title: "Project presentation polish",
     description:
-      "Personal sites and presentation layers that help technical work feel credible and memorable.",
+      "Presentation layers that help student work, hackathon ideas, and personal projects feel credible and memorable.",
   },
 ];

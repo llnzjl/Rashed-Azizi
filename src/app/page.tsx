@@ -16,7 +16,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Home",
   description:
-    "Explore a multi-page portfolio for Rashed Azizi, featuring polished developer branding, project previews, and a premium visual system.",
+    "Explore a multi-page student portfolio for Rashed Azizi, featuring polished personal branding, project previews, and a premium visual system.",
   path: "/",
 });
 
@@ -37,18 +37,18 @@ export default function HomePage() {
           <p className="mt-6 font-mono text-sm uppercase tracking-[0.35em] text-slate-400">
             {siteData.location}
           </p>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl">
-            Building digital products with
+          <h1 className="mt-5 max-w-4xl font-display text-[2.8rem] font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl">
+            Learning by building digital products with
             <span className="title-gradient block">cinematic clarity.</span>
           </h1>
           <p className="body-copy mt-7 max-w-2xl text-base sm:text-lg">{siteData.heroIntro}</p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <Link href="/projects" className="button-primary">
+            <Link href="/projects" className="button-primary justify-center sm:justify-start">
               View Projects
               <HiOutlineArrowRight className="text-lg" />
             </Link>
-            <Link href="/contact" className="button-secondary">
+            <Link href="/contact" className="button-secondary justify-center sm:justify-start">
               Contact Me
             </Link>
           </div>
@@ -101,12 +101,12 @@ export default function HomePage() {
             />
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#07111d] via-[#07111d]/65 to-transparent" />
 
-            <div className="absolute left-4 top-4 rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 backdrop-blur-xl">
+            <div className="absolute left-3 top-3 rounded-2xl border border-white/10 bg-slate-950/70 px-3 py-2.5 backdrop-blur-xl sm:left-4 sm:top-4 sm:px-4 sm:py-3">
               <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-200">
-                Developer Note
+                Student Note
               </p>
               <p className="mt-2 max-w-[12rem] text-sm text-white">
-                Interfaces should feel precise, alive, and effortless to explore.
+                Every project is a chance to learn, refine, and present the work better.
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function HomePage() {
             </div>
             <p className="body-copy mt-4 text-sm">{featuredProject.result}</p>
             <p className="mt-4 text-sm text-slate-300">{featuredProject.description}</p>
-            <Link href="/projects" className="button-secondary mt-5">
+            <Link href="/projects" className="button-secondary mt-5 justify-center sm:justify-start">
               See the case studies
               <HiOutlineArrowUpRight className="text-base" />
             </Link>
@@ -186,7 +186,7 @@ export default function HomePage() {
               If you are hiring, collaborating, or just want to talk through an idea, the
               contact page is built to make that first step easy.
             </p>
-            <Link href="/contact" className="button-primary mt-5">
+            <Link href="/contact" className="button-primary mt-5 justify-center sm:justify-start">
               Open Contact Page
             </Link>
           </div>

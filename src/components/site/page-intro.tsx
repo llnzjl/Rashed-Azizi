@@ -46,7 +46,9 @@ export function PageIntro({
         <div className="mt-9 flex flex-col gap-4 sm:flex-row">
           {actions.map((action) => {
             const className =
-              action.variant === "secondary" ? "button-secondary" : "button-primary";
+              action.variant === "secondary"
+                ? "button-secondary w-full justify-center sm:w-auto"
+                : "button-primary w-full justify-center sm:w-auto";
 
             if (action.external) {
               return (

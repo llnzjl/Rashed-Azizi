@@ -249,3 +249,25 @@ footer {
     scroll-behavior: auto !important;
   }
 }
+
+@media (max-width: 640px) {
+  body::before {
+    background-size: 3.2rem 3.2rem;
+  }
+
+  .eyebrow {
+    padding: 0.5rem 0.85rem;
+    letter-spacing: 0.22em;
+  }
+
+  .chip {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
