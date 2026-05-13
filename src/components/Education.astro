@@ -35,7 +35,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <div class="lg:col-span-8">
             <div class="relative space-y-6 before:absolute before:left-4 before:top-3 before:hidden before:h-[calc(100%-1.5rem)] before:w-px before:bg-gray-200 sm:before:block">
               {siteConfig.education.map((edu, eduIndex) => (
-                <article class="relative rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-shadow duration-300 hover:shadow-md sm:ml-12 sm:p-6">
+                <details class="education-accordion relative rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow duration-300 open:shadow-md sm:ml-12">
                   <div
                     class="absolute -left-[3.25rem] top-7 hidden h-8 w-8 items-center justify-center rounded-full border-4 border-white text-sm font-bold text-white shadow-sm sm:flex"
                     style={`background-color: ${siteConfig.accentColor}`}
@@ -43,44 +43,67 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                     {eduIndex + 1}
                   </div>
 
-                  <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div class="min-w-0">
-                      <h3
-                        class="text-xl sm:text-2xl font-semibold text-gray-900"
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 transition-colors hover:bg-gray-50 sm:p-6">
+                    <span class="min-w-0">
+                      <span
+                        class="block text-xl font-semibold text-gray-900 sm:text-2xl"
                         data-i18n={`education.degree${eduIndex + 1}`}
                       >
                         {edu.degree}
-                      </h3>
-                      <p
-                        class="mt-1 text-base sm:text-lg font-medium"
+                      </span>
+                      <span
+                        class="mt-1 block text-base font-medium sm:text-lg"
                         style={`color: ${siteConfig.accentColor}`}
                         data-i18n={`education.school${eduIndex + 1}`}
                       >
                         {edu.school}
-                      </p>
-                    </div>
-                    <span class="inline-flex w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs sm:text-sm font-medium text-gray-600">
+                      </span>
+                    </span>
+                    <span class="flex shrink-0 items-center gap-3">
+                      <span class="hidden w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600 sm:inline-flex">
+                        {edu.dateRange}
+                      </span>
+                      <span class="education-chevron flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gray-900 text-white transition-transform duration-300">
+                        <svg
+                          class="h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </summary>
+
+                  <div class="space-y-5 border-t border-gray-200 p-5 sm:p-6">
+                    <span class="inline-flex w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs sm:text-sm font-medium text-gray-600 sm:hidden">
                       {edu.dateRange}
                     </span>
-                  </div>
 
-                  <ul class="space-y-3">
-                    {edu.achievements.map((achievement, achievementIndex) => (
-                      <li class="flex items-start">
-                        <span
-                          class="mt-2 mr-3 h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                          style={`background-color: ${siteConfig.accentColor}`}
-                        />
-                        <span
-                          class="text-sm sm:text-base leading-7 text-gray-600"
-                          data-i18n={`education.achievement${eduIndex * 3 + achievementIndex + 1}`}
-                        >
-                          {achievement}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+                    <ul class="space-y-3">
+                      {edu.achievements.map((achievement, achievementIndex) => (
+                        <li class="flex items-start">
+                          <span
+                            class="mt-2 mr-3 h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                            style={`background-color: ${siteConfig.accentColor}`}
+                          />
+                          <span
+                            class="text-sm sm:text-base leading-7 text-gray-600"
+                            data-i18n={`education.achievement${eduIndex * 3 + achievementIndex + 1}`}
+                          >
+                            {achievement}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
               ))}
             </div>
           </div>
@@ -89,3 +112,13 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
     </section>
   )
 }
+
+<style>
+  .education-accordion > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .education-accordion[open] .education-chevron {
+    transform: rotate(180deg);
+  }
+</style>

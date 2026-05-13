@@ -38,41 +38,63 @@ const resolvePublicPath = (path) =>
           </div>
 
           <div class="lg:col-span-8">
-            <div class="space-y-8">
+            <div class="space-y-4">
               {siteConfig.experience.map((exp, index) => (
-                <article class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-6 md:p-8">
-                  <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div class="min-w-0">
-                      <h3
-                        class="text-xl sm:text-2xl font-semibold text-gray-900"
+                <details class="experience-accordion rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow duration-300 open:shadow-md">
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 transition-colors hover:bg-gray-50 sm:p-6 md:p-8">
+                    <span class="min-w-0">
+                      <span
+                        class="block text-xl font-semibold text-gray-900 sm:text-2xl"
                         data-i18n={`experience.items.${index}.title`}
                       >
                         {exp.title}
-                      </h3>
-                      <div class="mt-1 flex flex-wrap items-center gap-3">
-                        <p
-                          class="text-base sm:text-lg font-medium"
-                          style={`color: ${siteConfig.accentColor}`}
-                        >
-                          {exp.company}
-                        </p>
-                        {exp.link && (
-                          <a
-                            href={exp.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-sm font-medium text-gray-500 underline decoration-gray-300 underline-offset-4 transition-colors hover:text-gray-900"
-                            data-i18n="experience.newsSource"
-                          >
-                            News source
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                    <span class="inline-flex w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs sm:text-sm font-medium text-gray-600">
-                      {exp.dateRange}
+                      </span>
+                      <span
+                        class="mt-1 block text-base font-medium sm:text-lg"
+                        style={`color: ${siteConfig.accentColor}`}
+                      >
+                        {exp.company}
+                      </span>
                     </span>
-                  </div>
+                    <span class="flex shrink-0 items-center gap-3">
+                      <span class="hidden w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600 sm:inline-flex">
+                        {exp.dateRange}
+                      </span>
+                      <span class="experience-chevron flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gray-900 text-white transition-transform duration-300">
+                        <svg
+                          class="h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </summary>
+
+                  <div class="space-y-5 border-t border-gray-200 p-5 sm:p-6 md:p-8">
+                    <div class="flex flex-wrap items-center gap-3">
+                      <span class="inline-flex w-fit shrink-0 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs sm:text-sm font-medium text-gray-600 sm:hidden">
+                        {exp.dateRange}
+                      </span>
+                      {exp.link && (
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex w-fit items-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-700"
+                          data-i18n="experience.newsSource"
+                        >
+                          News source
+                        </a>
+                      )}
+                    </div>
 
                   <ul class="space-y-3">
                     {exp.bullets.map((bullet, bulletIndex) => (
@@ -134,7 +156,8 @@ const resolvePublicPath = (path) =>
                       ))}
                     </div>
                   )}
-                </article>
+                  </div>
+                </details>
               ))}
             </div>
           </div>
@@ -143,3 +166,13 @@ const resolvePublicPath = (path) =>
     </section>
   )
 }
+
+<style>
+  .experience-accordion > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .experience-accordion[open] .experience-chevron {
+    transform: rotate(180deg);
+  }
+</style>
