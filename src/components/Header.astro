@@ -145,8 +145,8 @@ const navItems = [
 
     document.querySelectorAll(".language-button").forEach((button) => {
       const isActive = button.getAttribute("data-lang") === activeLanguage;
-      button.classList.toggle("bg-cyan-300", isActive);
-      button.classList.toggle("shadow-[0_10px_24px_rgba(103,232,249,0.28)]", isActive);
+      button.classList.toggle("bg-sky-200", isActive);
+      button.classList.toggle("shadow-[0_10px_24px_rgba(186,230,253,0.32)]", isActive);
       button.classList.toggle("text-slate-950", isActive);
       button.classList.toggle("bg-transparent", !isActive);
       button.classList.toggle("text-slate-300", !isActive);
