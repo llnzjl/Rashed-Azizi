@@ -193,8 +193,18 @@ const navItems = [
       ...document.querySelectorAll("main section > div"),
       ...document.querySelectorAll(".project-accordion, .experience-accordion, .education-accordion"),
     ];
+    const useStaticReveal =
+      window.matchMedia("(max-width: 767px)").matches ||
+      window.matchMedia("(hover: none)").matches ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     revealTargets.forEach((element) => element.classList.add("reveal-on-scroll"));
+
+    if (useStaticReveal) {
+      revealTargets.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {

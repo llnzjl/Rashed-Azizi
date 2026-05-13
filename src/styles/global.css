@@ -76,6 +76,11 @@ html[lang="ps"] body {
     inset: 0.5rem;
     border-radius: 0.85rem;
   }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
