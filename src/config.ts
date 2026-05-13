@@ -173,6 +173,8 @@ export const translations = {
       placeholder: "Certificate photo placeholder",
     },
     footer: {
+      license:
+        "All rights reserved. This portfolio, including its code, design, text, and images, may not be copied, reused, or distributed without permission from Rashed Azizi.",
       rights: "All rights reserved.",
     },
   },
@@ -283,6 +285,8 @@ export const translations = {
       placeholder: "증명서 사진 자리",
     },
     footer: {
+      license:
+        "이 포트폴리오의 코드, 디자인, 텍스트, 이미지는 Rashed Azizi의 허가 없이 복사, 재사용 또는 배포할 수 없습니다.",
       rights: "모든 권리 보유.",
     },
   },
@@ -393,6 +397,8 @@ export const translations = {
       placeholder: "د سند عکس ځای",
     },
     footer: {
+      license:
+        "د دې پورټفولیو کوډ، ډیزاین، متن او انځورونه د Rashed Azizi له اجازې پرته کاپي، بیا کارول يا خپرېدلای نه شي.",
       rights: "ټول حقونه خوندي دي.",
     },
   },
@@ -503,6 +509,8 @@ export const translations = {
       placeholder: "جای عکس گواهی",
     },
     footer: {
+      license:
+        "کد، طراحی، متن و تصاویر این پورتفولیو بدون اجازه Rashed Azizi نباید کپی، استفاده مجدد یا منتشر شود.",
       rights: "تمام حقوق محفوظ است.",
     },
   },
