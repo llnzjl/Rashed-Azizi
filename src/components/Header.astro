@@ -13,33 +13,38 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 
 const navItems = [
   {
-    href: baseUrl,
+    href: `${baseUrl}#home`,
     key: "nav.main",
-    label: "Main",
+    label: "Home",
+    angle: -90,
     visible: true,
   },
   {
-    href: `${baseUrl}about`,
+    href: `${baseUrl}#about`,
     key: "nav.about",
     label: "About",
+    angle: -18,
     visible: true,
   },
   {
-    href: `${baseUrl}projects`,
+    href: `${baseUrl}#projects`,
     key: "nav.projects",
     label: "Projects",
+    angle: 54,
     visible: hasProjects,
   },
   {
-    href: `${baseUrl}experience`,
+    href: `${baseUrl}#experience`,
     key: "nav.experience",
     label: "Experience",
+    angle: 126,
     visible: hasExperience,
   },
   {
-    href: `${baseUrl}education`,
+    href: `${baseUrl}#education`,
     key: "nav.education",
     label: "Education",
+    angle: 198,
     visible: hasEducation,
   },
 ];
@@ -47,79 +52,59 @@ const navItems = [
 
 <header
   id="header"
-  class="fixed left-0 right-0 top-0 z-50 border-b border-white/20 bg-slate-950/35 shadow-[0_20px_60px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-all duration-300"
+  class="fixed inset-x-0 top-0 z-50 pointer-events-none"
 >
-  <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-    <a href={baseUrl} class="min-w-0 truncate text-base font-bold text-white drop-shadow-[0_8px_28px_rgba(103,232,249,0.18)]">
-      {siteConfig.firstName}
-    </a>
-
-    <div class="flex items-center gap-2">
+  <div class="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-start gap-4 px-4 pt-4 sm:px-6 lg:px-8">
+    <div class="pointer-events-auto flex items-start justify-start">
       <div
-        class="flex rounded-xl border border-white/15 bg-slate-950/45 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur"
+        class="language-orbit rounded-full border border-white/14 bg-slate-950/45 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_18px_48px_rgba(2,6,23,0.28)] backdrop-blur"
         aria-label="Language selector"
         data-i18n-aria="header.language"
       >
-        <button type="button" class="language-button rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-300 transition-all" data-lang="en">EN</button>
-        <button type="button" class="language-button rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-300 transition-all" data-lang="ko">KO</button>
-        <button type="button" class="language-button rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-300 transition-all" data-lang="ps">PS</button>
-        <button type="button" class="language-button rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-300 transition-all" data-lang="fa">FA</button>
+        <button type="button" class="language-button rounded-full px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition-all sm:text-xs" data-lang="en">EN</button>
+        <button type="button" class="language-button rounded-full px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition-all sm:text-xs" data-lang="ko">KO</button>
+        <button type="button" class="language-button rounded-full px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition-all sm:text-xs" data-lang="ps">PS</button>
+        <button type="button" class="language-button rounded-full px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition-all sm:text-xs" data-lang="fa">FA</button>
       </div>
-
-      <button
-        id="menu-toggle"
-        type="button"
-        class="menu-toggle inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white shadow-[0_18px_35px_rgba(15,23,42,0.24)] backdrop-blur transition-all duration-300 hover:border-cyan-300/45 hover:bg-white/14"
-        aria-controls="site-menu"
-        aria-expanded="false"
-        aria-label="Menu"
-        data-i18n-aria="header.menu"
-      >
-        <span class="sr-only" data-i18n="header.menu">Menu</span>
-        <span class="menu-glyph flex flex-col gap-1.5">
-          <span class="menu-bar block h-0.5 w-5 rounded-full bg-current"></span>
-          <span class="menu-bar block h-0.5 w-5 rounded-full bg-current"></span>
-          <span class="menu-bar block h-0.5 w-5 rounded-full bg-current"></span>
-        </span>
-      </button>
     </div>
-  </div>
 
-  <nav
-    id="site-menu"
-    class="menu-panel absolute right-4 top-full mt-3 hidden w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[1.25rem] border border-white/15 bg-[linear-gradient(160deg,rgba(15,23,42,0.92),rgba(30,41,59,0.8))] p-3 text-white shadow-[0_30px_80px_rgba(2,6,23,0.45)] backdrop-blur-2xl sm:right-6 lg:right-8"
-  >
-    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(103,232,249,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(167,139,250,0.18),transparent_30%)]"></div>
-    <div class="grid gap-2">
+    <nav
+      id="orbit-nav"
+      class="orbit-nav pointer-events-auto relative mt-1 h-[16.5rem] w-[16.5rem] sm:h-[18.75rem] sm:w-[18.75rem] lg:h-[20.5rem] lg:w-[20.5rem]"
+      aria-label="Primary"
+    >
+      <div class="orbit-nav-ring"></div>
+      <div class="orbit-nav-core">
+        <span class="orbit-nav-name">{siteConfig.firstName}</span>
+        <span class="orbit-nav-tagline">Orbit menu</span>
+      </div>
       {
         navItems
           .filter((item) => item.visible)
-          .map((item, index) => (
+          .map((item) => (
             <a
               href={item.href}
-              class="menu-link group relative flex items-center justify-between gap-4 overflow-hidden rounded-xl border border-white/8 bg-white/6 px-3 py-3 text-sm font-medium text-slate-100 transition-all duration-300 hover:border-cyan-300/35 hover:bg-white/12 hover:text-white"
+              class="orbit-link group"
+              style={`--orbit-angle: ${item.angle}deg; --orbit-radius: clamp(4.8rem, 14vw, 7rem);`}
               data-i18n={item.key}
             >
-              <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-black/20 text-[11px] font-bold text-cyan-200">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span class="flex-1 text-right">{item.label}</span>
+              <span class="orbit-link-label">{item.label}</span>
             </a>
           ))
       }
-    </div>
-  </nav>
+    </nav>
+
+    <div class="pointer-events-none hidden lg:block"></div>
+  </div>
 </header>
 
 <script define:vars={{ translations }}>
   const supportedLanguages = ["en", "ko", "ps", "fa"];
   const rtlLanguages = ["ps", "fa"];
-  let languageControlsAbortController = null;
-  let hasSeenInitialPageLoad = false;
+  let headerAbortController = null;
 
-  const getTranslation = (language, path) => {
-    return path.split(".").reduce((value, key) => value?.[key], translations[language]);
-  };
+  const getTranslation = (language, path) =>
+    path.split(".").reduce((value, key) => value?.[key], translations[language]);
 
   const applyLanguage = (language) => {
     const activeLanguage = supportedLanguages.includes(language) ? language : "en";
@@ -147,117 +132,52 @@ const navItems = [
 
     document.querySelectorAll(".language-button").forEach((button) => {
       const isActive = button.getAttribute("data-lang") === activeLanguage;
-      button.classList.toggle("bg-sky-200", isActive);
-      button.classList.toggle("shadow-[0_10px_24px_rgba(186,230,253,0.32)]", isActive);
+      button.classList.toggle("language-button-active", isActive);
       button.classList.toggle("text-slate-950", isActive);
-      button.classList.toggle("bg-transparent", !isActive);
       button.classList.toggle("text-slate-300", !isActive);
     });
   };
 
-  const highlightActiveNav = () => {
-    const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
-    document.querySelectorAll("#site-menu a").forEach((link) => {
+  const syncOrbitLinks = (activeKey) => {
+    document.querySelectorAll(".orbit-link").forEach((link) => {
       if (!(link instanceof HTMLAnchorElement)) {
         return;
       }
 
-      const linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, "") || "/";
-      const isActive = linkPath === currentPath;
-      link.classList.toggle("menu-link-active", isActive);
+      const linkHash = new URL(link.href, window.location.origin).hash.replace("#", "");
+      const isHomeLink = linkHash === "home";
+      const isActive = linkHash ? linkHash === activeKey : activeKey === "home";
+
+      link.classList.toggle("orbit-link-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+
+      link.dataset.linkState = isHomeLink ? "home" : "section";
     });
   };
 
-  const initLanguageControls = () => {
-    languageControlsAbortController?.abort();
-    languageControlsAbortController = new AbortController();
-    const { signal } = languageControlsAbortController;
-    const menu = document.getElementById("site-menu");
-    const toggle = document.getElementById("menu-toggle");
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const isStaticPointer =
-      window.matchMedia("(hover: none)").matches || window.matchMedia("(pointer: coarse)").matches;
-
-    const setMenuOpen = (isOpen) => {
-      menu?.classList.toggle("hidden", !isOpen);
-      menu?.classList.toggle("menu-open", isOpen);
-      toggle?.classList.toggle("menu-open", isOpen);
-      toggle?.setAttribute("aria-expanded", String(isOpen));
-    };
-
-    toggle?.addEventListener(
-      "click",
-      () => {
-        const isOpen = menu?.classList.contains("hidden") ?? true;
-        setMenuOpen(isOpen);
-      },
-      { signal },
-    );
-
-    menu?.querySelectorAll("a").forEach((link) => {
-      link.addEventListener(
-        "click",
-        () => {
-          setMenuOpen(false);
-        },
-        { signal },
-      );
-    });
-
-    document.addEventListener(
-      "click",
-      (event) => {
-        if (!(event.target instanceof Node)) {
-          return;
-        }
-
-        if (!menu?.contains(event.target) && !toggle?.contains(event.target)) {
-          setMenuOpen(false);
-        }
-      },
-      { signal },
-    );
-
-    document.addEventListener(
-      "keydown",
-      (event) => {
-        if (event.key === "Escape") {
-          setMenuOpen(false);
-        }
-      },
-      { signal },
-    );
-
-    if (!prefersReducedMotion.matches && !isStaticPointer) {
-      [toggle, menu].forEach((element) => {
-        element?.addEventListener(
-          "pointermove",
-          (event) => {
-            if (!(event instanceof PointerEvent) || !element) {
-              return;
-            }
-
-            const rect = element.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - 0.5;
-            const y = (event.clientY - rect.top) / rect.height - 0.5;
-            const rotateX = y * -10;
-            const rotateY = x * 12;
-            element.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
-          },
-          { signal },
-        );
-
-        element?.addEventListener(
-          "pointerleave",
-          () => {
-            if (element) {
-              element.style.transform = "";
-            }
-          },
-          { signal },
-        );
-      });
+  const getInitialSectionKey = () => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      return hash;
     }
+
+    const path = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (path === "/") {
+      return "home";
+    }
+
+    const slug = path.split("/").filter(Boolean).at(-1) || "home";
+    return slug;
+  };
+
+  const initHeaderControls = () => {
+    headerAbortController?.abort();
+    headerAbortController = new AbortController();
+    const { signal } = headerAbortController;
 
     document.querySelectorAll(".language-button").forEach((button) => {
       button.addEventListener(
@@ -269,21 +189,54 @@ const navItems = [
       );
     });
 
+    const orbitSections = Array.from(document.querySelectorAll("[data-orbit-section]"));
+    const orbitObserver = orbitSections.length
+      ? new IntersectionObserver(
+          (entries) => {
+            const visibleSections = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+            if (!visibleSections.length) {
+              return;
+            }
+
+            const activeKey =
+              visibleSections[0].target.getAttribute("data-orbit-section") ||
+              visibleSections[0].target.id ||
+              "home";
+            syncOrbitLinks(activeKey);
+          },
+          {
+            rootMargin: "-40% 0px -44% 0px",
+            threshold: [0.12, 0.24, 0.36],
+          },
+        )
+      : null;
+
+    orbitSections.forEach((section) => {
+      orbitObserver?.observe(section);
+    });
+
+    signal.addEventListener(
+      "abort",
+      () => {
+        orbitObserver?.disconnect();
+      },
+      { once: true },
+    );
+
+    const refreshOrbitState = () => {
+      syncOrbitLinks(getInitialSectionKey());
+    };
+
+    window.addEventListener("hashchange", refreshOrbitState, { signal });
+
     applyLanguage(localStorage.getItem("portfolio-language") || "en");
-    highlightActiveNav();
+    refreshOrbitState();
   };
 
-  const handlePageLoad = () => {
-    if (!hasSeenInitialPageLoad) {
-      hasSeenInitialPageLoad = true;
-      return;
-    }
-
-    initLanguageControls();
-  };
-
-  initLanguageControls();
-  document.addEventListener("astro:page-load", handlePageLoad);
+  initHeaderControls();
+  document.addEventListener("astro:page-load", initHeaderControls);
 
   window.addEventListener("storage", (event) => {
     if (event.key === "portfolio-language" && event.newValue) {
@@ -307,6 +260,7 @@ const navItems = [
 
     const revealTargets = [
       ...document.querySelectorAll(".reveal-on-scroll"),
+      ...document.querySelectorAll(".orbit-reveal"),
       ...document.querySelectorAll("main section > div"),
       ...document.querySelectorAll(".page-surface"),
       ...document.querySelectorAll(".project-accordion, .experience-accordion, .education-accordion"),
@@ -641,96 +595,173 @@ const navItems = [
 
   #header {
     background:
-      linear-gradient(180deg, rgba(2, 6, 23, 0.7), rgba(15, 23, 42, 0.35)),
-      rgba(15, 23, 42, 0.38);
+      linear-gradient(180deg, rgba(2, 6, 23, 0.72), rgba(15, 23, 42, 0.2)),
+      rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(18px);
   }
 
-  .menu-toggle,
-  .menu-panel {
+  .language-orbit,
+  .orbit-nav,
+  .orbit-nav-core,
+  .orbit-link {
     transform-style: preserve-3d;
     will-change: transform;
   }
 
-  .menu-panel {
-    transform-origin: top right;
-  }
-
-  .menu-panel.menu-open {
-    animation: menuReveal 240ms ease-out forwards;
-  }
-
-  .menu-toggle.menu-open {
-    box-shadow: 0 22px 44px rgba(8, 47, 73, 0.34);
-  }
-
-  .menu-toggle.menu-open .menu-bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .menu-toggle.menu-open .menu-bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.menu-open .menu-bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  .menu-bar {
-    transition:
-      transform 220ms ease,
-      opacity 220ms ease;
-  }
-
   .language-button {
+    min-width: 2.15rem;
     font-family: var(--font-mono);
-    letter-spacing: 0;
+    letter-spacing: 0.04em;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
   }
 
-  .menu-link::before {
+  .language-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .language-button-active {
+    background: linear-gradient(135deg, rgba(186, 230, 253, 0.98), rgba(103, 232, 249, 0.9));
+    color: rgb(15, 23, 42);
+    box-shadow: 0 10px 24px rgba(186, 230, 253, 0.26);
+  }
+
+  .orbit-nav {
+    isolation: isolate;
+  }
+
+  .orbit-nav-ring {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(103, 232, 249, 0.14), transparent 60%);
-    opacity: 0;
-    transition: opacity 220ms ease;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+      radial-gradient(circle at center, rgba(103, 232, 249, 0.14), transparent 56%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 26px 80px rgba(2, 6, 23, 0.28);
+    pointer-events: none;
   }
 
-  .menu-link:hover::before {
-    opacity: 1;
+  .orbit-nav-core {
+    position: absolute;
+    inset: 28%;
+    display: grid;
+    place-items: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background:
+      radial-gradient(circle at 30% 28%, rgba(103, 232, 249, 0.22), transparent 34%),
+      linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.85));
+    box-shadow:
+      0 28px 70px rgba(2, 6, 23, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    text-align: center;
+    pointer-events: none;
   }
 
-  .menu-link-active {
-    border-color: rgba(103, 232, 249, 0.38);
+  .orbit-nav-name {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 0.04em;
+  }
+
+  .orbit-nav-tagline {
+    margin-top: 0.2rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(203, 213, 225, 0.8);
+  }
+
+  .orbit-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4.45rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(15, 23, 42, 0.6);
+    color: rgba(226, 232, 240, 0.96);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    backdrop-filter: blur(14px);
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--orbit-angle))
+      translateY(calc(var(--orbit-radius) * -1))
+      rotate(calc(var(--orbit-angle) * -1));
+    transition:
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 220ms ease,
+      background-color 220ms ease,
+      color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .orbit-link:hover {
+    border-color: rgba(103, 232, 249, 0.48);
     background: rgba(255, 255, 255, 0.14);
     color: white;
+    box-shadow: 0 16px 34px rgba(8, 47, 73, 0.24);
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--orbit-angle))
+      translateY(calc(var(--orbit-radius) * -1))
+      rotate(calc(var(--orbit-angle) * -1))
+      scale(1.04);
+  }
+
+  .orbit-link-active {
+    border-color: rgba(103, 232, 249, 0.5);
+    background: linear-gradient(135deg, rgba(103, 232, 249, 0.22), rgba(45, 212, 191, 0.16));
+    color: white;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      0 18px 30px rgba(8, 47, 73, 0.2);
-  }
-
-  .menu-link-active::before {
-    opacity: 1;
-  }
-
-  @keyframes menuReveal {
-    from {
-      opacity: 0;
-      transform: perspective(900px) rotateX(-12deg) translateY(-10px) scale(0.98);
-    }
-    to {
-      opacity: 1;
-      transform: perspective(900px) rotateX(0deg) translateY(0) scale(1);
-    }
+      0 16px 34px rgba(8, 47, 73, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .menu-panel.menu-open {
-      animation: none;
+    .orbit-link,
+    .language-button {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .orbit-nav {
+      width: 15rem;
+      height: 15rem;
     }
 
-    .menu-bar,
-    .menu-link::before {
-      transition: none;
+    .orbit-nav-core {
+      inset: 30%;
+    }
+
+    .orbit-nav-name {
+      font-size: 0.95rem;
+    }
+
+    .orbit-link {
+      min-width: 3.75rem;
+      padding: 0.42rem 0.6rem;
+      font-size: 0.58rem;
     }
   }
 </style>

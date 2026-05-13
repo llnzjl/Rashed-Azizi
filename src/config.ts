@@ -118,7 +118,7 @@ export const siteConfig = {
 export const translations = {
   en: {
     nav: {
-      main: "Main",
+      main: "Home",
       about: "About",
       projects: "Projects",
       experience: "Experience",
