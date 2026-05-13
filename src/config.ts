@@ -3,7 +3,7 @@ export const siteConfig = {
   firstName: "Rashed",
   title: "computer science major student in south korea with a passion for programming, web development and AI",
   description: "Portfolio website of Rashed Azizi",
-  accentColor: "#251cd7",
+  accentColor: "#5ab8ff",
   profileImage: "rashed-profile.jpg",
   social: {
     email: "azizi@chungbuk.ac.kr",
