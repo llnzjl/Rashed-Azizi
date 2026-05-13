@@ -349,6 +349,12 @@ const navItems = [
       let frameId = 0;
       let pointerActive = false;
 
+      element.__codexTilt = {
+        x: 0,
+        y: 0,
+        lift: 0,
+      };
+
       const queueFrame = () => {
         if (!frameId) {
           frameId = window.requestAnimationFrame(render);
@@ -362,6 +368,11 @@ const navItems = [
         currentLift += (targetLift - currentLift) * config.liftSmoothing;
 
         element.style.transform = `perspective(${config.perspective}px) translate3d(0, 0, ${currentLift}px) rotateX(${currentY}deg) rotateY(${currentX}deg) scale(${config.scale})`;
+        element.__codexTilt = {
+          x: currentX,
+          y: currentY,
+          lift: currentLift,
+        };
 
         const settled =
           Math.abs(targetX - currentX) < 0.01 &&
@@ -408,6 +419,142 @@ const navItems = [
             window.cancelAnimationFrame(frameId);
           }
           element.style.transform = "";
+          element.__codexTilt = {
+            x: 0,
+            y: 0,
+            lift: 0,
+          };
+        },
+        { once: true },
+      );
+    };
+
+    const bindAccordionBurst = (details) => {
+      const summary = details.querySelector("summary");
+      const panel = details.querySelector(".accordion-panel");
+      const panelInner = details.querySelector(".accordion-panel-inner");
+
+      if (
+        !(summary instanceof HTMLElement) ||
+        !(panel instanceof HTMLElement) ||
+        !(panelInner instanceof HTMLElement)
+      ) {
+        return;
+      }
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) {
+        return;
+      }
+
+      const isCompactViewport = window.matchMedia("(max-width: 767px)").matches;
+      const openDuration = isCompactViewport ? 640 : 860;
+      const childDuration = isCompactViewport ? 560 : 760;
+      const depthZ = isCompactViewport ? 140 : 220;
+      const summaryDepth = isCompactViewport ? 18 : 34;
+
+      const cancelAnimations = () => {
+        panel.getAnimations().forEach((animation) => animation.cancel());
+        summary.getAnimations().forEach((animation) => animation.cancel());
+        Array.from(panelInner.children).forEach((child) => {
+          if (child instanceof HTMLElement) {
+            child.getAnimations().forEach((animation) => animation.cancel());
+          }
+        });
+      };
+
+      const animateOpen = () => {
+        const tilt = details.__codexTilt ?? { x: 0, y: 0, lift: 0 };
+        const startRotateY = Math.max(-14, Math.min(14, tilt.x * 2.8));
+        const startRotateX = Math.max(-12, Math.min(12, tilt.y * -2.4));
+        const startLift = Math.max(0, Math.min(14, -tilt.lift * 0.2));
+        const panelStartDepth = Math.max(0, startLift * 0.25);
+        const childElements = Array.from(panelInner.children).filter((child) => child instanceof HTMLElement);
+
+        panel.animate(
+          [
+            {
+              opacity: 0,
+              transform: `perspective(1600px) translate3d(0, -42px, -${depthZ}px) rotateX(${startRotateX - 10}deg) rotateY(${startRotateY}deg) scale(0.9)`,
+            },
+            {
+              opacity: 1,
+              offset: 0.68,
+              transform: `perspective(1600px) translate3d(0, 8px, ${panelStartDepth + 36}px) rotateX(5deg) rotateY(${-startRotateY / 4}deg) scale(1.02)`,
+            },
+            {
+              opacity: 1,
+              transform: "perspective(1600px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1)",
+            },
+          ],
+          {
+            duration: openDuration,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          },
+        );
+
+        summary.animate(
+          [
+            {
+              transform: `perspective(1600px) translate3d(0, 0, ${startLift}px) rotateX(${startRotateX * 0.15}deg) rotateY(${startRotateY * 0.15}deg) scale(1)`,
+            },
+            {
+              offset: 0.62,
+              transform: `perspective(1600px) translate3d(0, -2px, ${summaryDepth}px) rotateX(${startRotateX * 0.08}deg) rotateY(${startRotateY * 0.08}deg) scale(1.01)`,
+            },
+            {
+              transform: "perspective(1600px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1)",
+            },
+          ],
+          {
+            duration: openDuration - 80,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          },
+        );
+
+        childElements.forEach((child, index) => {
+          child.animate(
+            [
+              {
+                opacity: 0,
+                transform: `translate3d(0, 20px, -${Math.round(depthZ * 0.6)}px) rotateX(-18deg) rotateY(${startRotateY / 3}deg) scale(0.94)`,
+              },
+              {
+                opacity: 1,
+                offset: 0.7,
+                transform: "translate3d(0, -2px, 24px) rotateX(4deg) rotateY(-1deg) scale(1.01)",
+              },
+              {
+                opacity: 1,
+                transform: "translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1)",
+              },
+            ],
+            {
+              duration: childDuration,
+              delay: 40 + index * (isCompactViewport ? 42 : 64),
+              easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+            },
+          );
+        });
+      };
+
+      details.addEventListener(
+        "toggle",
+        () => {
+          cancelAnimations();
+          if (!details.open) {
+            return;
+          }
+
+          animateOpen();
+        },
+        { signal },
+      );
+
+      signal.addEventListener(
+        "abort",
+        () => {
+          cancelAnimations();
         },
         { once: true },
       );
@@ -465,6 +612,12 @@ const navItems = [
               };
 
       bindSmoothTilt(card, config);
+    });
+
+    document.querySelectorAll(".motion-accordion").forEach((details) => {
+      if (details instanceof HTMLElement) {
+        bindAccordionBurst(details);
+      }
     });
   };
 

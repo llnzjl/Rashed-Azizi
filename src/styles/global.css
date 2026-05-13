@@ -211,29 +211,60 @@ html[lang="ps"] body {
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.16);
 }
 
+.motion-accordion {
+  position: relative;
+  perspective: 1600px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.motion-accordion > summary {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+  transition:
+    transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.motion-accordion[open] > summary {
+  transform: translate3d(0, -2px, 34px) scale(1.008);
+}
+
 .motion-accordion .accordion-panel {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
   overflow: hidden;
-  transform: perspective(1400px) translate3d(0, -18px, -48px) rotateX(-10deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: perspective(1600px) translate3d(0, -36px, -220px) rotateX(-28deg) rotateY(10deg) scale(0.9);
   transform-origin: top center;
   transition:
-    grid-template-rows 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 220ms ease,
-    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    grid-template-rows 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 240ms ease,
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: grid-template-rows, opacity, transform;
 }
 
 .motion-accordion .accordion-panel-inner {
   min-height: 0;
   overflow: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .motion-accordion[open] .accordion-panel {
   grid-template-rows: 1fr;
   opacity: 1;
-  transform: perspective(1400px) translate3d(0, 0, 0) rotateX(0deg);
+  transform: perspective(1600px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1);
+}
+
+.motion-accordion[open] .accordion-panel-inner > * {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .project-accordion summary,
@@ -332,5 +363,9 @@ html[lang="ps"] body {
 
   .motion-accordion[open] .accordion-panel {
     transform: none;
+  }
+
+  .motion-accordion > summary {
+    transition: none;
   }
 }
