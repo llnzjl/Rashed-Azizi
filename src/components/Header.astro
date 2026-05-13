@@ -338,32 +338,112 @@ const navItems = [
 
     revealTargets.forEach((element) => observer.observe(element));
 
-    document.querySelectorAll(".tilt-card, .page-surface, .project-accordion, .experience-accordion, .education-accordion").forEach((card) => {
-      card.addEventListener(
-        "pointermove",
-        (event) => {
-          if (!(event instanceof PointerEvent) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            return;
-          }
+    const bindSmoothTilt = (element, config) => {
+      let currentX = 0;
+      let currentY = 0;
+      let currentLift = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let targetLift = 0;
+      let frameId = 0;
+      let pointerActive = false;
 
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - 0.5;
-          const y = (event.clientY - rect.top) / rect.height - 0.5;
-          const depth = card.classList.contains("page-surface") ? -10 : -6;
-          const rotateX = card.classList.contains("page-surface") ? y * -4.5 : y * -5;
-          const rotateY = card.classList.contains("page-surface") ? x * 5.5 : x * 6;
-          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${depth}px)`;
-        },
-        { signal },
-      );
+      const queueFrame = () => {
+        if (!frameId) {
+          frameId = window.requestAnimationFrame(render);
+        }
+      };
 
-      card.addEventListener(
-        "pointerleave",
+      const render = () => {
+        frameId = 0;
+        currentX += (targetX - currentX) * config.smoothing;
+        currentY += (targetY - currentY) * config.smoothing;
+        currentLift += (targetLift - currentLift) * config.liftSmoothing;
+
+        element.style.transform = `perspective(${config.perspective}px) translate3d(0, 0, ${currentLift}px) rotateX(${currentY}deg) rotateY(${currentX}deg) scale(${config.scale})`;
+
+        const settled =
+          Math.abs(targetX - currentX) < 0.01 &&
+          Math.abs(targetY - currentY) < 0.01 &&
+          Math.abs(targetLift - currentLift) < 0.01;
+
+        if (!settled || pointerActive) {
+          queueFrame();
+        }
+      };
+
+      const updateTargets = (event) => {
+        if (!(event instanceof PointerEvent)) {
+          return;
+        }
+
+        const rect = element.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        targetX = x * config.maxRotateY;
+        targetY = -y * config.maxRotateX;
+        targetLift = config.lift;
+        pointerActive = true;
+        queueFrame();
+      };
+
+      const releaseTargets = () => {
+        pointerActive = false;
+        targetX = 0;
+        targetY = 0;
+        targetLift = 0;
+        queueFrame();
+      };
+
+      element.addEventListener("pointerenter", updateTargets, { signal });
+      element.addEventListener("pointermove", updateTargets, { signal });
+      element.addEventListener("pointerleave", releaseTargets, { signal });
+      element.addEventListener("pointercancel", releaseTargets, { signal });
+      signal.addEventListener(
+        "abort",
         () => {
-          card.style.transform = "";
+          if (frameId) {
+            window.cancelAnimationFrame(frameId);
+          }
+          element.style.transform = "";
         },
-        { signal },
+        { once: true },
       );
+    };
+
+    document.querySelectorAll(".tilt-card, .page-surface, .project-accordion, .experience-accordion, .education-accordion").forEach((card) => {
+      const config = card.classList.contains("page-surface")
+        ? {
+            perspective: 1300,
+            maxRotateX: 8,
+            maxRotateY: 10,
+            lift: -14,
+            scale: 1.018,
+            smoothing: 0.12,
+            liftSmoothing: 0.16,
+          }
+        : card.classList.contains("tilt-card")
+          ? {
+              perspective: 1200,
+              maxRotateX: 7,
+              maxRotateY: 9,
+              lift: -10,
+              scale: 1.012,
+              smoothing: 0.12,
+              liftSmoothing: 0.16,
+            }
+          : {
+              perspective: 1150,
+              maxRotateX: 6,
+              maxRotateY: 8,
+              lift: -9,
+              scale: 1.01,
+              smoothing: 0.13,
+              liftSmoothing: 0.16,
+            };
+
+      bindSmoothTilt(card, config);
     });
   };
 
