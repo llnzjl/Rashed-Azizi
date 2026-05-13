@@ -5,7 +5,7 @@ Expected filenames:
 - chungbuk-hackathon-completion.jpg
 - chungbuk-hackathon-second-place.jpg
 
-After adding the images, update `src/config.ts` certificate image paths to:
+The certificate image paths in `src/config.ts` should stay base-relative:
 
-- /devportfolio/certificates/chungbuk-hackathon-completion.jpg
-- /devportfolio/certificates/chungbuk-hackathon-second-place.jpg
+- certificates/chungbuk-hackathon-completion.jpg
+- certificates/chungbuk-hackathon-second-place.jpg

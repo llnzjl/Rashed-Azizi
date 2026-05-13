@@ -1,6 +1,11 @@
 ---
 import { siteConfig } from "../config";
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const resolvePublicPath = (path) =>
+  path.startsWith("http") || path.startsWith("/") ? path : `${baseUrl}${path}`;
 ---
 
 {
@@ -92,7 +97,7 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                         <div class="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4">
                           {certificate.image ? (
                             <img
-                              src={certificate.image}
+                              src={resolvePublicPath(certificate.image)}
                               alt={certificate.title}
                               class="aspect-[4/3] w-full rounded-md object-cover"
                             />

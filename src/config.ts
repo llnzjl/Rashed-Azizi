@@ -47,12 +47,12 @@ export const siteConfig = {
       certificates: [
         {
           title: "Completion Certificate",
-          image: "/certificates/chungbuk-hackathon-completion.png",
+          image: "certificates/chungbuk-hackathon-completion.jpg",
           note: "",
         },
         {
           title: "2nd Place Award Certificate",
-          image: "/certificates/chungbuk-hackathon-second-place.png",
+          image: "certificates/chungbuk-hackathon-second-place.jpg",
           note: "",
         },
       ],
@@ -73,12 +73,12 @@ export const siteConfig = {
       certificates: [
         {
           title: "Completion Certificate",
-          image: "/certificates/chungbuk-hackathon-completion.png",
+          image: "certificates/chungbuk-hackathon-completion.jpg",
           note: "",
         },
         {
           title: "2nd Place Award Certificate",
-          image: "/certificates/chungbuk-hackathon-second-place.png",
+          image: "certificates/chungbuk-hackathon-second-place.jpg",
           note: "",
         },
       ],
