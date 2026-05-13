@@ -43,8 +43,19 @@ export function ContactForm() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
       onSubmit={handleSubmit}
-      className="section-shell p-6 sm:p-8"
+      className="surface-panel p-6 sm:p-8"
     >
+      <div className="mb-6">
+        <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Direct message</p>
+        <h2 className="mt-3 font-display text-3xl font-semibold text-white">
+          Start with a short brief.
+        </h2>
+        <p className="body-copy mt-3 max-w-xl">
+          This form opens your email app with a pre-filled draft, which keeps the site
+          deployment simple and static-friendly on GitHub Pages.
+        </p>
+      </div>
+
       <div className="grid gap-5">
         <label className="grid gap-2 text-sm text-slate-300">
           Name
@@ -56,7 +67,7 @@ export function ContactForm() {
               setForm((current) => ({ ...current, name: event.target.value }))
             }
             placeholder="Your name"
-            className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-cyan-300/40 focus:bg-white/[0.06]"
+            className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-cyan-300/40 focus:bg-white/[0.07]"
           />
         </label>
 
@@ -70,7 +81,7 @@ export function ContactForm() {
               setForm((current) => ({ ...current, email: event.target.value }))
             }
             placeholder="you@example.com"
-            className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-cyan-300/40 focus:bg-white/[0.06]"
+            className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-cyan-300/40 focus:bg-white/[0.07]"
           />
         </label>
 
@@ -84,7 +95,7 @@ export function ContactForm() {
             }
             placeholder="Tell me about your project, role, or collaboration idea."
             rows={6}
-            className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-cyan-300/40 focus:bg-white/[0.06]"
+            className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-slate-500 focus:border-cyan-300/40 focus:bg-white/[0.07]"
           />
         </label>
       </div>
@@ -93,12 +104,12 @@ export function ContactForm() {
         <button
           type="submit"
           data-cursor-label="Send"
-          className="interactive-ring inline-flex items-center justify-center gap-2 rounded-full border border-cyan-300/25 bg-gradient-to-r from-cyan-300 to-blue-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_24px_60px_rgba(56,189,248,0.22)]"
+          className="button-primary"
         >
           Send Message
           <HiOutlineArrowRight className="text-lg" />
         </button>
-        <p className="text-sm text-slate-400">{status}</p>
+        <p className="max-w-sm text-sm text-slate-400">{status}</p>
       </div>
     </motion.form>
   );

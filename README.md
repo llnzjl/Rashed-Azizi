@@ -1,6 +1,6 @@
 # Rashed Azizi Portfolio
 
-A premium one-page developer portfolio built with Next.js, React, Tailwind CSS, TypeScript, and Framer Motion. The experience is designed to feel cinematic and polished, with layered gradients, glassmorphism panels, floating particles, animated section reveals, an active-section navbar, and reusable content-driven components.
+A premium multi-page developer portfolio built with Next.js, React, Tailwind CSS, TypeScript, and Framer Motion. The site now uses dedicated routes for `Home`, `About`, `Projects`, `Experience`, `Education`, and `Contact`, all tied together by one cinematic design system.
 
 ## Tech Stack
 
@@ -12,13 +12,11 @@ A premium one-page developer portfolio built with Next.js, React, Tailwind CSS, 
 
 ## Highlights
 
-- Fullscreen hero with animated role cycling
-- Sticky glass navigation with active section highlighting
-- Smooth section reveal animations and hover interactions
-- Custom cursor, loading intro, and scroll progress indicator
-- Premium project cards for personal and team work
-- Experience and education timelines
-- Responsive contact section with client-side mailto flow
+- Routed multi-page portfolio architecture
+- Shared glassmorphism design system with layered gradients
+- Responsive header, footer, and animated page transitions
+- Home page with editorial hero, profile feature card, and route previews
+- Dedicated pages for background, work, timeline, education, and contact
 - Static export configuration for GitHub Pages
 
 ## Project Structure
@@ -26,6 +24,11 @@ A premium one-page developer portfolio built with Next.js, React, Tailwind CSS, 
 ```text
 src/
   app/
+    about/
+    contact/
+    education/
+    experience/
+    projects/
     globals.css
     layout.tsx
     page.tsx
@@ -33,11 +36,12 @@ src/
     sitemap.ts
   components/
     portfolio/
+    site/
     ui/
   data/
     portfolio.ts
-  hooks/
-    use-active-section.ts
+  lib/
+    metadata.ts
 public/
   rashed-profile.jpg
   certificates/
@@ -45,7 +49,7 @@ public/
 
 ## Customize Content
 
-Most editable portfolio content lives in [`src/data/portfolio.ts`](src/data/portfolio.ts). Update that file to swap copy, links, project details, stats, and timeline entries without touching the presentation components.
+Most editable portfolio content lives in [`src/data/portfolio.ts`](src/data/portfolio.ts). Update that file to swap copy, links, project details, metrics, and timeline entries without touching the presentation layer.
 
 ## Local Development
 

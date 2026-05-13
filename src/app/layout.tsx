@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 
+import { CustomCursor } from "@/components/portfolio/custom-cursor";
+import { BackgroundEffects } from "@/components/portfolio/background-effects";
+import { PageTransition } from "@/components/site/page-transition";
+import { SiteFooter } from "@/components/site/site-footer";
+import { SiteHeader } from "@/components/site/site-header";
 import { siteData } from "@/data/portfolio";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteData.siteUrl),
+  metadataBase: new URL(siteData.siteOrigin),
   title: {
     default: `${siteData.name} | ${siteData.title}`,
     template: `%s | ${siteData.name}`,
@@ -15,6 +20,9 @@ export const metadata: Metadata = {
   applicationName: `${siteData.name} Portfolio`,
   authors: [{ name: siteData.name }],
   creator: siteData.name,
+  alternates: {
+    canonical: siteData.siteUrl,
+  },
   openGraph: {
     title: `${siteData.name} | ${siteData.title}`,
     description: siteData.description,
@@ -22,7 +30,7 @@ export const metadata: Metadata = {
     siteName: `${siteData.name} Portfolio`,
     images: [
       {
-        url: "/rashed-profile.jpg",
+        url: siteData.ogImage,
         width: 1200,
         height: 630,
         alt: `${siteData.name} profile`,
@@ -35,10 +43,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteData.name} | ${siteData.title}`,
     description: siteData.description,
-    images: ["/rashed-profile.jpg"],
+    images: [siteData.ogImage],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: siteData.favicon,
   },
 };
 
@@ -49,7 +57,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <BackgroundEffects />
+        <CustomCursor />
+        <SiteHeader />
+        <PageTransition>
+          <main className="relative z-10 pb-8 pt-28 sm:pt-32 lg:pt-36">{children}</main>
+        </PageTransition>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

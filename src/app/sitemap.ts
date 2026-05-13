@@ -1,14 +1,13 @@
 import type { MetadataRoute } from "next";
 
-import { siteData } from "@/data/portfolio";
+import { routeItems } from "@/data/portfolio";
+import { getPageUrl } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: siteData.siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  return routeItems.map((item) => ({
+    url: getPageUrl(item.href),
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: item.href === "/" ? 1 : 0.8,
+  }));
 }

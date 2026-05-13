@@ -9,7 +9,7 @@ const orbs = [
     left: "8%",
     duration: 18,
     background:
-      "radial-gradient(circle, rgba(56,189,248,0.26) 0%, rgba(56,189,248,0.08) 45%, transparent 72%)",
+      "radial-gradient(circle, rgba(34,211,238,0.24) 0%, rgba(34,211,238,0.07) 45%, transparent 72%)",
   },
   {
     size: 420,
@@ -17,7 +17,7 @@ const orbs = [
     right: "3%",
     duration: 24,
     background:
-      "radial-gradient(circle, rgba(139,92,246,0.24) 0%, rgba(139,92,246,0.08) 40%, transparent 70%)",
+      "radial-gradient(circle, rgba(245,158,11,0.2) 0%, rgba(245,158,11,0.07) 40%, transparent 70%)",
   },
   {
     size: 300,
@@ -33,7 +33,7 @@ const orbs = [
     right: "14%",
     duration: 16,
     background:
-      "radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 36%, transparent 68%)",
+      "radial-gradient(circle, rgba(251,191,36,0.12) 0%, rgba(251,191,36,0.03) 36%, transparent 68%)",
   },
 ];
 

@@ -18,6 +18,24 @@ export const navItems: Array<{ id: SectionId; label: string }> = [
   { id: "contact", label: "Contact" },
 ];
 
+export type RouteItem = {
+  href: string;
+  label: string;
+  blurb: string;
+  eyebrow: string;
+};
+
+export type ContactLink = {
+  label: string;
+  value: string;
+  href: string;
+  icon: "email" | "linkedin" | "github" | "instagram";
+};
+
+const repoName = "Rashed-Azizi";
+const siteOrigin = "https://llnzjl.github.io";
+const siteBasePath = `/${repoName}`;
+
 // Update this file to personalize the portfolio without touching the UI layer.
 export const siteData = {
   name: "Rashed Azizi",
@@ -25,8 +43,13 @@ export const siteData = {
   title: "Full Stack Developer",
   tagline: "Design-minded builder crafting polished digital experiences.",
   description:
-    "A premium, cinematic portfolio for Rashed Azizi featuring interactive motion, glassmorphism, smooth scroll storytelling, and a modern developer brand.",
-  siteUrl: "https://llnzjl.github.io/Rashed-Azizi",
+    "A multi-page portfolio for Rashed Azizi featuring a cinematic visual system, thoughtful motion, and content-rich developer storytelling.",
+  siteOrigin,
+  repoName,
+  siteBasePath,
+  siteUrl: `${siteOrigin}${siteBasePath}`,
+  ogImage: `${siteBasePath}/rashed-profile.jpg`,
+  favicon: `${siteBasePath}/favicon.svg`,
   location: "Based in South Korea",
   availability: "Open to internships, freelance collaboration, and product-minded teams.",
   email: "azizi@chungbuk.ac.kr",
@@ -52,21 +75,109 @@ export const siteData = {
   ],
 };
 
+export const routeItems: RouteItem[] = [
+  {
+    href: "/",
+    label: "Home",
+    eyebrow: "Entry Point",
+    blurb: "Brand, featured work, and the fastest overview of what I do.",
+  },
+  {
+    href: "/about",
+    label: "About",
+    eyebrow: "Profile",
+    blurb: "Story, strengths, working style, and the stack behind the work.",
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+    eyebrow: "Selected Work",
+    blurb: "Personal builds, team projects, and the ideas I like to ship.",
+  },
+  {
+    href: "/experience",
+    label: "Experience",
+    eyebrow: "Timeline",
+    blurb: "Growth milestones, collaboration highlights, and project momentum.",
+  },
+  {
+    href: "/education",
+    label: "Education",
+    eyebrow: "Credentials",
+    blurb: "Academic history, certifications, and proof of learning in motion.",
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+    eyebrow: "Connect",
+    blurb: "How to reach me for internships, freelance work, or collaboration.",
+  },
+];
+
 export const heroMetrics = [
   {
     value: "01+",
     label: "Years focused on shipping projects",
-    helper: "Replace with your exact experience later.",
+    helper: "Growing through academic, personal, and collaborative work.",
   },
   {
     value: "08+",
     label: "Projects explored and built",
-    helper: "Personal, academic, and team-based work.",
+    helper: "A mix of web builds, systems exercises, and concept work.",
   },
   {
     value: "03",
-    label: "Collaborative teams and hackathons",
-    helper: "A simple placeholder metric you can refine.",
+    label: "Teams and hackathon environments",
+    helper: "Proof that I can collaborate under real constraints.",
+  },
+];
+
+export const capabilityPillars = [
+  {
+    title: "Product-minded execution",
+    description:
+      "I like interfaces that feel sharp, useful, and easy to understand from the first click.",
+  },
+  {
+    title: "Motion with purpose",
+    description:
+      "Animation should guide attention and add polish, not distract from the content.",
+  },
+  {
+    title: "Calm technical growth",
+    description:
+      "I keep improving by shipping small systems, refining details, and learning from each build.",
+  },
+];
+
+export const pageHighlights = [
+  {
+    href: "/about",
+    label: "About",
+    title: "Story, strengths, and how I think while building.",
+    summary:
+      "A closer look at my background, technical focus, and the kind of product experience I aim to create.",
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+    title: "Hands-on builds across systems, interfaces, and collaboration.",
+    summary:
+      "From foundational C projects to hackathon concepts and polished portfolio work, this is where execution shows up.",
+  },
+  {
+    href: "/experience",
+    label: "Experience",
+    title: "Momentum built through self-driven work and team settings.",
+    summary:
+      "A timeline of growth, collaboration, and the habits that shape how I approach real-world development.",
+  },
+  {
+    href: "/education",
+    label: "Education",
+    title: "Foundations, certificates, and long-term learning trajectory.",
+    summary:
+      "Academic milestones, supporting credentials, and the learning environments that shaped my path.",
   },
 ];
 
@@ -82,6 +193,24 @@ export const aboutContent = {
     "From foundational C projects to modern web interfaces and AI-assisted product ideas, I am steadily turning technical growth into work that feels both practical and premium.",
 };
 
+export const workPrinciples = [
+  {
+    title: "Build for clarity",
+    description:
+      "I prefer interfaces and systems that explain themselves quickly and reduce friction for the user.",
+  },
+  {
+    title: "Design the feeling",
+    description:
+      "Good software should not only function well, it should also feel deliberate, composed, and memorable.",
+  },
+  {
+    title: "Keep learning in public",
+    description:
+      "Each new project helps me sharpen both my engineering habits and the way I present my work.",
+  },
+];
+
 export const skillBars = [
   { name: "Frontend Engineering", level: 90 },
   { name: "UI Motion & Interaction", level: 84 },
@@ -90,12 +219,12 @@ export const skillBars = [
 ];
 
 export const techStack = [
-  { key: "html", name: "HTML", color: "#f97316" },
+  { key: "html", name: "HTML", color: "#fb923c" },
   { key: "css", name: "CSS", color: "#38bdf8" },
   { key: "javascript", name: "JavaScript", color: "#facc15" },
-  { key: "react", name: "React", color: "#61dafb" },
+  { key: "react", name: "React", color: "#67e8f9" },
   { key: "nextjs", name: "Next.js", color: "#f8fafc" },
-  { key: "nodejs", name: "Node.js", color: "#22c55e" },
+  { key: "nodejs", name: "Node.js", color: "#4ade80" },
   { key: "python", name: "Python", color: "#60a5fa" },
   { key: "tailwind", name: "Tailwind", color: "#22d3ee" },
   { key: "mongodb", name: "MongoDB", color: "#34d399" },
@@ -112,7 +241,7 @@ export const personalProjects = [
     liveUrl: "",
     githubUrl: "https://github.com/llnzjl/SMS-Project",
     previewLabel: "Structured Admin Workflow",
-    accent: "from-cyan-500/40 via-blue-500/25 to-transparent",
+    accent: "from-cyan-500/40 via-sky-500/25 to-transparent",
   },
   {
     title: "Book Management Program",
@@ -123,7 +252,7 @@ export const personalProjects = [
     liveUrl: "",
     githubUrl: "",
     previewLabel: "Organized Knowledge Library",
-    accent: "from-violet-500/40 via-fuchsia-500/25 to-transparent",
+    accent: "from-amber-500/35 via-orange-500/20 to-transparent",
   },
   {
     title: "Bank Management System",
@@ -134,7 +263,7 @@ export const personalProjects = [
     liveUrl: "",
     githubUrl: "https://github.com/llnzjl/Bank_MS",
     previewLabel: "Operations & Account Logic",
-    accent: "from-sky-500/35 via-indigo-500/25 to-transparent",
+    accent: "from-sky-500/35 via-cyan-500/20 to-transparent",
   },
 ];
 
@@ -199,6 +328,12 @@ export const experienceItems = [
   },
 ];
 
+export const experienceFocus = [
+  "Shipping work that looks refined and still feels practical.",
+  "Learning in real public contexts instead of only private practice.",
+  "Turning small wins into a stronger long-term developer profile.",
+];
+
 export const educationItems = [
   {
     school: "Osong High School",
@@ -248,14 +383,65 @@ export const certifications = [
   {
     title: "High School Diploma",
     issuer: "Osong High School",
-    year: "Add Year",
+    year: "Pending update",
     note: "Replace this entry with the actual scanned diploma once ready.",
     image: "",
   },
+];
+
+export const learningNotes = [
+  "I like balancing formal study with hands-on building and iteration.",
+  "Certificates matter most when they support real projects and stronger execution.",
+  "My education story is also a story of adaptation, persistence, and rebuilding momentum.",
 ];
 
 export const contactHighlights = [
   "Open to internships, junior developer roles, and collaborative builds.",
   "Happy to discuss product ideas, portfolio work, and web experiences.",
   "Response workflows are intentionally simple so this site can stay static-friendly.",
+];
+
+export const contactLinks: ContactLink[] = [
+  {
+    label: "Email",
+    value: siteData.email,
+    href: `mailto:${siteData.email}`,
+    icon: "email",
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/llnzjl",
+    href: siteData.linkedin,
+    icon: "linkedin",
+  },
+  {
+    label: "GitHub",
+    value: "github.com/llnzjl",
+    href: siteData.github,
+    icon: "github",
+  },
+  {
+    label: "Instagram",
+    value: "@le_.han06",
+    href: siteData.instagram,
+    icon: "instagram",
+  },
+];
+
+export const serviceOffers = [
+  {
+    title: "Portfolio and landing page builds",
+    description:
+      "Thoughtful frontend work with stronger visual direction, motion, and responsive polish.",
+  },
+  {
+    title: "Junior-friendly product collaboration",
+    description:
+      "Support on early ideas, UI shaping, and implementation for projects still finding their form.",
+  },
+  {
+    title: "Developer storytelling",
+    description:
+      "Personal sites and presentation layers that help technical work feel credible and memorable.",
+  },
 ];
