@@ -89,5 +89,5 @@ Then open the local development URL shown in the terminal.
 GitHub repository:
 
 ```text
-https://github.com/llnzjl/devportfolio
+https://github.com/llnzjl/Rashed-Azizi
 ```
