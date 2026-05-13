@@ -369,19 +369,25 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   }
 
   .hero-intro-copy {
-    --intro-x: -88px;
-    --intro-y: 18deg;
+    --intro-offset-x: -88px;
+    --intro-offset-y: 0px;
     --intro-z: -180px;
+    --intro-rotate-x: 10deg;
+    --intro-rotate-y: 18deg;
     --intro-overshoot-x: 18px;
+    --intro-overshoot-y: 0px;
     transform-origin: left center;
     animation: heroIntro3d 960ms cubic-bezier(0.16, 1, 0.3, 1) 0ms both;
   }
 
   .hero-intro-panel {
-    --intro-x: 88px;
-    --intro-y: -18deg;
+    --intro-offset-x: 88px;
+    --intro-offset-y: 0px;
     --intro-z: -180px;
+    --intro-rotate-x: 10deg;
+    --intro-rotate-y: -18deg;
     --intro-overshoot-x: -18px;
+    --intro-overshoot-y: 0px;
     transform-origin: right center;
     animation: heroIntro3d 960ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
   }
@@ -390,12 +396,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     0% {
       opacity: 0;
       filter: blur(14px);
-      transform: perspective(1500px) translate3d(var(--intro-x), 0, var(--intro-z)) rotateY(var(--intro-y)) rotateX(10deg) scale(0.92);
+      transform: perspective(1500px) translate3d(var(--intro-offset-x), var(--intro-offset-y), var(--intro-z)) rotateY(var(--intro-rotate-y)) rotateX(var(--intro-rotate-x)) scale(0.92);
     }
     68% {
       opacity: 1;
       filter: blur(0);
-      transform: perspective(1500px) translate3d(var(--intro-overshoot-x), 0, 28px) rotateY(0deg) rotateX(0deg) scale(1.02);
+      transform: perspective(1500px) translate3d(var(--intro-overshoot-x), var(--intro-overshoot-y), 28px) rotateY(0deg) rotateX(0deg) scale(1.02);
     }
     100% {
       opacity: 1;
@@ -551,15 +557,25 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 
   @media (max-width: 640px) {
     .hero-intro-copy {
-      --intro-x: -44px;
-      --intro-y: 12deg;
+      --intro-offset-x: 0px;
+      --intro-offset-y: -52px;
       --intro-z: -120px;
+      --intro-rotate-x: 20deg;
+      --intro-rotate-y: 0deg;
+      --intro-overshoot-x: 0px;
+      --intro-overshoot-y: 12px;
+      transform-origin: top center;
     }
 
     .hero-intro-panel {
-      --intro-x: 44px;
-      --intro-y: -12deg;
+      --intro-offset-x: 0px;
+      --intro-offset-y: 52px;
       --intro-z: -120px;
+      --intro-rotate-x: -20deg;
+      --intro-rotate-y: 0deg;
+      --intro-overshoot-x: 0px;
+      --intro-overshoot-y: -12px;
+      transform-origin: bottom center;
     }
   }
 </style>
