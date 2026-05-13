@@ -60,10 +60,10 @@ const navItems = [
         aria-label="Language selector"
         data-i18n-aria="header.language"
       >
-        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="en">EN</button>
-        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="ko">한국어</button>
-        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="ps">PS</button>
-        <button type="button" class="language-button rounded px-2 py-1 text-xs font-semibold text-gray-600 transition-colors" data-lang="fa">FA</button>
+        <button type="button" class="language-button rounded px-1.5 py-1 text-[11px] font-semibold text-gray-600 transition-colors sm:px-2 sm:text-xs" data-lang="en">EN</button>
+        <button type="button" class="language-button rounded px-1.5 py-1 text-[11px] font-semibold text-gray-600 transition-colors sm:px-2 sm:text-xs" data-lang="ko">KO</button>
+        <button type="button" class="language-button rounded px-1.5 py-1 text-[11px] font-semibold text-gray-600 transition-colors sm:px-2 sm:text-xs" data-lang="ps">PS</button>
+        <button type="button" class="language-button rounded px-1.5 py-1 text-[11px] font-semibold text-gray-600 transition-colors sm:px-2 sm:text-xs" data-lang="fa">FA</button>
       </div>
 
       <button
@@ -186,8 +186,61 @@ const navItems = [
   });
 </script>
 
+<script>
+  const setupDynamicEffects = () => {
+    const revealTargets = [
+      ...document.querySelectorAll(".reveal-on-scroll"),
+      ...document.querySelectorAll("main section > div"),
+      ...document.querySelectorAll(".project-accordion, .experience-accordion, .education-accordion"),
+    ];
+
+    revealTargets.forEach((element) => element.classList.add("reveal-on-scroll"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    revealTargets.forEach((element) => observer.observe(element));
+
+    document.querySelectorAll(".tilt-card, .project-accordion, .experience-accordion, .education-accordion").forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        if (!(event instanceof PointerEvent) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${y * -5}deg) rotateY(${x * 6}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupDynamicEffects);
+  } else {
+    setupDynamicEffects();
+  }
+</script>
+
 <style>
   html {
     scroll-behavior: smooth;
+  }
+
+  #header {
+    background: rgba(255, 255, 255, 0.82);
   }
 </style>

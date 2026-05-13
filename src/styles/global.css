@@ -2,10 +2,88 @@
 
 body {
   font-family: 'IBM Plex Mono', monospace;
+  background: #f8fafc;
+  color: #111827;
 }
 
 html[lang="ko"] body,
 html[lang="fa"] body,
 html[lang="ps"] body {
   font-family: Arial, "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", Tahoma, sans-serif;
+}
+
+.dynamic-main {
+  background:
+    radial-gradient(circle at 10% 12%, rgba(45, 212, 191, 0.12), transparent 28rem),
+    radial-gradient(circle at 86% 38%, rgba(37, 28, 215, 0.12), transparent 30rem),
+    linear-gradient(180deg, #f8fafc 0%, #ffffff 42%, #f1f5f9 100%);
+}
+
+.dynamic-main > section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.dynamic-main > section::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  z-index: -1;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.36)),
+    radial-gradient(circle at 80% 10%, rgba(45, 212, 191, 0.1), transparent 22rem);
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.06);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.project-accordion,
+.experience-accordion,
+.education-accordion {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-accordion:hover,
+.experience-accordion:hover,
+.education-accordion:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.project-accordion summary,
+.experience-accordion summary,
+.education-accordion summary {
+  min-height: 5.5rem;
+}
+
+@media (max-width: 640px) {
+  .dynamic-main > section::before {
+    inset: 0.5rem;
+    border-radius: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .project-accordion,
+  .experience-accordion,
+  .education-accordion {
+    transition: none;
+    transform: none;
+  }
 }
