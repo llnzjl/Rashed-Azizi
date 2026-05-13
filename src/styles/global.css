@@ -113,7 +113,7 @@ html[lang="ps"] body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 3rem 0.75rem 1.25rem;
+  padding: 6.5rem 0.9rem 1.75rem;
 }
 
 .page-surface {
@@ -160,7 +160,7 @@ html[lang="ps"] body {
 .dynamic-main > section::before {
   content: "";
   position: absolute;
-  inset: 0.75rem;
+  inset: 1rem;
   z-index: -1;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.25rem;
@@ -233,7 +233,7 @@ html[lang="ps"] body {
 .motion-accordion > summary {
   position: relative;
   z-index: 1;
-  min-height: 4.5rem;
+  min-height: 5.5rem;
   transform-style: preserve-3d;
   transition:
     transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -283,21 +283,21 @@ html[lang="ps"] body {
 .project-accordion summary,
 .experience-accordion summary,
 .education-accordion summary {
-  min-height: 4.5rem;
+  min-height: 5.5rem;
 }
 
 .project-chevron,
 .experience-chevron,
 .education-chevron {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .project-chevron svg,
 .experience-chevron svg,
 .education-chevron svg {
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 ::view-transition-old(root),
@@ -357,16 +357,16 @@ html[lang="ps"] body {
 
 @media (max-width: 640px) {
   .inner-page-shell {
-    padding: 2.5rem 0.5rem 1rem;
+    padding: 6.5rem 0.75rem 1.75rem;
   }
 
   .page-surface {
-    border-radius: 1rem;
+    border-radius: 1.6rem;
   }
 
   .dynamic-main > section::before {
-    inset: 0.4rem;
-    border-radius: 0.85rem;
+    inset: 1rem;
+    border-radius: 1.25rem;
   }
 
   .reveal-on-scroll {
@@ -376,8 +376,38 @@ html[lang="ps"] body {
 }
 
 @media (min-width: 1024px) {
+  .inner-page-shell {
+    padding: 3rem 0.75rem 1.25rem;
+  }
+
   .page-surface {
+    width: min(100%, 84rem);
     min-height: calc(100dvh - 8rem);
+  }
+
+  .dynamic-main > section::before {
+    inset: 0.75rem;
+  }
+
+  .motion-accordion > summary,
+  .project-accordion summary,
+  .experience-accordion summary,
+  .education-accordion summary {
+    min-height: 4.5rem;
+  }
+
+  .project-chevron,
+  .experience-chevron,
+  .education-chevron {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .project-chevron svg,
+  .experience-chevron svg,
+  .education-chevron svg {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }
 
