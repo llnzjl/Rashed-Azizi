@@ -56,14 +56,14 @@ const navItems = [
 
     <div class="flex items-center gap-2">
       <div
-        class="flex rounded-xl border border-white/15 bg-white/10 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur"
+        class="flex rounded-xl border border-white/15 bg-slate-950/45 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur"
         aria-label="Language selector"
         data-i18n-aria="header.language"
       >
-        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-200 transition-colors sm:px-2 sm:text-xs" data-lang="en">EN</button>
-        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-200 transition-colors sm:px-2 sm:text-xs" data-lang="ko">KO</button>
-        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-200 transition-colors sm:px-2 sm:text-xs" data-lang="ps">PS</button>
-        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-200 transition-colors sm:px-2 sm:text-xs" data-lang="fa">FA</button>
+        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-300 transition-all sm:px-2 sm:text-xs" data-lang="en">EN</button>
+        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-300 transition-all sm:px-2 sm:text-xs" data-lang="ko">KO</button>
+        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-300 transition-all sm:px-2 sm:text-xs" data-lang="ps">PS</button>
+        <button type="button" class="language-button rounded-lg px-1.5 py-1 text-[11px] font-semibold text-slate-300 transition-all sm:px-2 sm:text-xs" data-lang="fa">FA</button>
       </div>
 
       <button
@@ -145,10 +145,11 @@ const navItems = [
 
     document.querySelectorAll(".language-button").forEach((button) => {
       const isActive = button.getAttribute("data-lang") === activeLanguage;
-      button.classList.toggle("bg-white", isActive);
+      button.classList.toggle("bg-cyan-300", isActive);
+      button.classList.toggle("shadow-[0_10px_24px_rgba(103,232,249,0.28)]", isActive);
       button.classList.toggle("text-slate-950", isActive);
-      button.classList.toggle("text-white", isActive);
-      button.classList.toggle("text-slate-200", !isActive);
+      button.classList.toggle("bg-transparent", !isActive);
+      button.classList.toggle("text-slate-300", !isActive);
     });
   };
 
