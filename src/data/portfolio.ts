@@ -40,7 +40,7 @@ const siteBasePath = `/${repoName}`;
 export const siteData = {
   name: "Rashed Azizi",
   initials: "RA",
-  title: "Computer Science Student",
+  title: "CS Student in CBNU",
   tagline: "University student building polished digital experiences.",
   description:
     "A multi-page student portfolio for Rashed Azizi featuring a cinematic visual system, thoughtful motion, and content-rich project storytelling.",
