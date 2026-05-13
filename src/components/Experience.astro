@@ -92,18 +92,25 @@ const resolvePublicPath = (path) =>
                   </ul>
 
                   {exp.certificates && exp.certificates.length > 0 && (
-                    <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                    <div class="mt-6 grid gap-5 sm:grid-cols-2">
                       {exp.certificates.map((certificate) => (
-                        <div class="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-4">
+                        <div class="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-3 sm:p-4">
                           {certificate.image ? (
-                            <img
-                              src={resolvePublicPath(certificate.image)}
-                              alt={certificate.title}
-                              class="aspect-[4/3] w-full rounded-md object-cover"
-                            />
+                            <a
+                              href={resolvePublicPath(certificate.image)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="block rounded-md bg-white p-2 transition-colors hover:bg-gray-100"
+                            >
+                              <img
+                                src={resolvePublicPath(certificate.image)}
+                                alt={certificate.title}
+                                class="aspect-[3/4] w-full rounded-md object-contain"
+                              />
+                            </a>
                           ) : (
                             <div
-                              class="flex aspect-[4/3] items-center justify-center rounded-md bg-white text-center text-sm font-medium text-gray-500"
+                              class="flex aspect-[3/4] items-center justify-center rounded-md bg-white text-center text-sm font-medium text-gray-500"
                               data-i18n="certificates.placeholder"
                             >
                               Certificate photo placeholder

@@ -39,43 +39,9 @@ const resolvePublicPath = (path) =>
                 <div class="space-y-8">
                   {
                     personalProjects.map((project, index) => {
-                      const Component = project.link ? "a" : "div";
-                      const linkProps = project.link
-                        ? {
-                            href: project.link,
-                            target: "_blank",
-                            rel: "noopener noreferrer",
-                          }
-                        : {};
-
                       return (
                         <div class="group relative">
-                          <Component
-                            {...linkProps}
-                            class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
-                              project.link
-                                ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
-                                : ""
-                            }`}
-                          >
-                            {project.link && (
-                              <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
-                                <svg
-                                  class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M7 17L17 7M17 7H7M17 7V17"
-                                  />
-                                </svg>
-                              </div>
-                            )}
-
+                          <article class="block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1">
                             <div class="space-y-4">
                               <div>
                                 <span
@@ -115,8 +81,32 @@ const resolvePublicPath = (path) =>
                                     ))}
                                   </div>
                                 )}
+
+                              {project.link && (
+                                <a
+                                  href={project.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  class="inline-flex w-fit items-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-700"
+                                >
+                                  View project
+                                  <svg
+                                    class="h-4 w-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M7 17L17 7M17 7H7M17 7V17"
+                                    />
+                                  </svg>
+                                </a>
+                              )}
                             </div>
-                          </Component>
+                          </article>
                         </div>
                       );
                     })
@@ -143,43 +133,9 @@ const resolvePublicPath = (path) =>
               <div class="space-y-8">
                 {
                   teamProjects.map((project, index) => {
-                    const Component = project.link ? "a" : "div";
-                    const linkProps = project.link
-                      ? {
-                          href: project.link,
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                        }
-                      : {};
-
                     return (
                       <div class="group relative">
-                        <Component
-                          {...linkProps}
-                          class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
-                            project.link
-                              ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
-                              : ""
-                          }`}
-                        >
-                          {project.link && (
-                            <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
-                              <svg
-                                class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M7 17L17 7M17 7H7M17 7V17"
-                                />
-                              </svg>
-                            </div>
-                          )}
-
+                        <article class="block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1">
                           <div class="space-y-4">
                             <div>
                               <span
@@ -219,20 +175,51 @@ const resolvePublicPath = (path) =>
                               </div>
                             )}
 
+                            {project.link && (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex w-fit items-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-700"
+                              >
+                                View project
+                                <svg
+                                  class="h-4 w-4"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 17L17 7M17 7H7M17 7V17"
+                                  />
+                                </svg>
+                              </a>
+                            )}
+
                             {project.certificates &&
                               project.certificates.length > 0 && (
-                                <div class="grid gap-3 pt-3 sm:grid-cols-2">
+                                <div class="grid gap-5 pt-4 sm:grid-cols-2">
                                   {project.certificates.map((certificate) => (
-                                    <div class="rounded-lg border border-dashed border-gray-300 bg-white p-4">
+                                    <div class="rounded-lg border border-dashed border-gray-300 bg-white p-3 sm:p-4">
                                       {certificate.image ? (
-                                        <img
-                                          src={resolvePublicPath(certificate.image)}
-                                          alt={certificate.title}
-                                          class="aspect-[4/3] w-full rounded-md object-cover"
-                                        />
+                                        <a
+                                          href={resolvePublicPath(certificate.image)}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          class="block rounded-md bg-gray-50 p-2 transition-colors hover:bg-gray-100"
+                                        >
+                                          <img
+                                            src={resolvePublicPath(certificate.image)}
+                                            alt={certificate.title}
+                                            class="aspect-[3/4] w-full rounded-md object-contain"
+                                          />
+                                        </a>
                                       ) : (
                                         <div
-                                          class="flex aspect-[4/3] items-center justify-center rounded-md bg-gray-50 text-center text-sm font-medium text-gray-500"
+                                          class="flex aspect-[3/4] items-center justify-center rounded-md bg-gray-50 text-center text-sm font-medium text-gray-500"
                                           data-i18n="certificates.placeholder"
                                         >
                                           Certificate photo placeholder
@@ -257,7 +244,7 @@ const resolvePublicPath = (path) =>
                                 </div>
                               )}
                           </div>
-                        </Component>
+                        </article>
                       </div>
                     );
                   })
