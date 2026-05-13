@@ -194,9 +194,18 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 <script>
   import * as THREE from "three";
 
-  const canvas = document.getElementById("hero-3d-scene");
+  let heroSceneCleanup = () => {};
+  let hasSeenInitialPageLoad = false;
 
-  if (canvas instanceof HTMLCanvasElement) {
+  const setupHeroScene = () => {
+    heroSceneCleanup();
+
+    const canvas = document.getElementById("hero-3d-scene");
+
+    if (!(canvas instanceof HTMLCanvasElement)) {
+      return;
+    }
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
     camera.position.set(0, 0, 9);
@@ -264,16 +273,14 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     particlesGeometry.setAttribute("color", new THREE.BufferAttribute(particleColors, 3));
 
-    const particles = new THREE.Points(
-      particlesGeometry,
-      new THREE.PointsMaterial({
-        size: 0.035,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.72,
-        depthWrite: false,
-      }),
-    );
+    const particleMaterial = new THREE.PointsMaterial({
+      size: 0.035,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.72,
+      depthWrite: false,
+    });
+    const particles = new THREE.Points(particlesGeometry, particleMaterial);
     scene.add(particles);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.7));
@@ -293,11 +300,15 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
       pointer.y = (event.clientY / window.innerHeight - 0.5) * 2;
     };
 
-    window.addEventListener("resize", resize);
-    window.addEventListener("pointermove", onPointerMove);
+    const heroSceneAbortController = new AbortController();
+    const { signal } = heroSceneAbortController;
+
+    window.addEventListener("resize", resize, { signal });
+    window.addEventListener("pointermove", onPointerMove, { signal });
     resize();
 
     const clock = new THREE.Clock();
+    let animationFrameId = 0;
     const animate = () => {
       const elapsed = clock.getElapsedTime();
       group.rotation.y += 0.004;
@@ -314,11 +325,40 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
       particles.rotation.x = pointer.y * 0.06;
 
       renderer.render(scene, camera);
-      requestAnimationFrame(animate);
+      animationFrameId = window.requestAnimationFrame(animate);
     };
 
-    animate();
-  }
+    animationFrameId = window.requestAnimationFrame(animate);
+
+    heroSceneCleanup = () => {
+      heroSceneAbortController.abort();
+      window.cancelAnimationFrame(animationFrameId);
+      renderer.dispose();
+      geometry.dispose();
+      material.dispose();
+      ringMaterial.dispose();
+      rings.forEach((ring) => {
+        ring.geometry.dispose();
+        ring.material.dispose();
+      });
+      particlesGeometry.dispose();
+      particleMaterial.dispose();
+      scene.clear();
+      heroSceneCleanup = () => {};
+    };
+  };
+
+  const handlePageLoad = () => {
+    if (!hasSeenInitialPageLoad) {
+      hasSeenInitialPageLoad = true;
+      return;
+    }
+
+    setupHeroScene();
+  };
+
+  setupHeroScene();
+  document.addEventListener("astro:page-load", handlePageLoad);
 </script>
 
 <style>
