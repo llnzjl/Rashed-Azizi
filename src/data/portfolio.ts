@@ -36,6 +36,11 @@ const repoName = "Rashed-Azizi";
 const siteOrigin = "https://llnzjl.github.io";
 const siteBasePath = `/${repoName}`;
 
+export function publicAsset(path: string) {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${siteBasePath}${normalizedPath}`;
+}
+
 // Update this file to personalize the portfolio without touching the UI layer.
 export const siteData = {
   name: "Rashed Azizi",
@@ -48,8 +53,8 @@ export const siteData = {
   repoName,
   siteBasePath,
   siteUrl: `${siteOrigin}${siteBasePath}`,
-  ogImage: `${siteBasePath}/rashed-profile.jpg`,
-  favicon: `${siteBasePath}/favicon.svg`,
+  ogImage: publicAsset("/rashed-profile.jpg"),
+  favicon: publicAsset("/favicon.svg"),
   location: "Based in South Korea",
   availability: "Open to internships, student collaboration, and junior opportunities.",
   email: "azizi@chungbuk.ac.kr",
@@ -372,14 +377,14 @@ export const certifications = [
     issuer: "Chungbuk Pro Maker Center",
     year: "2025",
     note: "Issued for participating in the Together Korea hackathon project.",
-    image: "/certificates/chungbuk-hackathon-completion.jpg",
+    image: publicAsset("/certificates/chungbuk-hackathon-completion.jpg"),
   },
   {
     title: "2nd Place Award Certificate",
     issuer: "Chungbuk Pro Maker Center",
     year: "2025",
     note: "Awarded to Team Together Korea for placing second in the competition.",
-    image: "/certificates/chungbuk-hackathon-second-place.jpg",
+    image: publicAsset("/certificates/chungbuk-hackathon-second-place.jpg"),
   },
   {
     title: "High School Diploma",

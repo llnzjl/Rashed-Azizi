@@ -8,6 +8,7 @@ import {
   capabilityPillars,
   heroMetrics,
   pageHighlights,
+  publicAsset,
   siteData,
   teamProjects,
 } from "@/data/portfolio";
@@ -92,7 +93,7 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.03]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,158,11,0.14),transparent_30%)]" />
             <Image
-              src="/rashed-profile.jpg"
+              src={publicAsset("/rashed-profile.jpg")}
               alt={`${siteData.name} portrait`}
               width={900}
               height={1120}

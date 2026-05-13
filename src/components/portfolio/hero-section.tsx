@@ -11,7 +11,7 @@ import {
 } from "react-icons/hi2";
 import { RiGithubLine, RiInstagramLine, RiLinkedinLine } from "react-icons/ri";
 
-import { heroMetrics, siteData, type SectionId } from "@/data/portfolio";
+import { heroMetrics, publicAsset, siteData, type SectionId } from "@/data/portfolio";
 
 type HeroSectionProps = {
   onNavigate: (id: SectionId) => void;
@@ -163,7 +163,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
 
               <div className="relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.04]">
                 <Image
-                  src="/rashed-profile.jpg"
+                  src={publicAsset("/rashed-profile.jpg")}
                   alt={`${siteData.name} portrait`}
                   width={900}
                   height={1120}
