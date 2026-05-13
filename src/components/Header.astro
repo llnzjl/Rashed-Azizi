@@ -448,10 +448,10 @@ const navItems = [
       }
 
       const isCompactViewport = window.matchMedia("(max-width: 767px)").matches;
-      const openDuration = isCompactViewport ? 640 : 860;
-      const childDuration = isCompactViewport ? 560 : 760;
-      const depthZ = isCompactViewport ? 140 : 220;
-      const summaryDepth = isCompactViewport ? 18 : 34;
+      const openDuration = isCompactViewport ? 760 : 980;
+      const childDuration = isCompactViewport ? 660 : 860;
+      const depthZ = isCompactViewport ? 160 : 260;
+      const summaryDepth = isCompactViewport ? 20 : 36;
 
       const cancelAnimations = () => {
         panel.getAnimations().forEach((animation) => animation.cancel());
@@ -531,7 +531,7 @@ const navItems = [
             ],
             {
               duration: childDuration,
-              delay: 40 + index * (isCompactViewport ? 42 : 64),
+              delay: 48 + index * (isCompactViewport ? 56 : 84),
               easing: "cubic-bezier(0.16, 1, 0.3, 1)",
             },
           );
@@ -567,48 +567,48 @@ const navItems = [
               perspective: 1080,
               maxRotateX: 3.5,
               maxRotateY: 4.5,
-              lift: -6,
-              scale: 1.006,
-              smoothing: 0.15,
-              liftSmoothing: 0.2,
+              lift: -5,
+              scale: 1.005,
+              smoothing: 0.11,
+              liftSmoothing: 0.14,
             }
           : {
               perspective: 1020,
               maxRotateX: 2.8,
               maxRotateY: 3.6,
-              lift: -4,
-              scale: 1.004,
-              smoothing: 0.16,
-              liftSmoothing: 0.2,
+              lift: -3.5,
+              scale: 1.003,
+              smoothing: 0.1,
+              liftSmoothing: 0.13,
             }
         : card.classList.contains("page-surface")
           ? {
               perspective: 1300,
               maxRotateX: 8,
               maxRotateY: 10,
-              lift: -14,
-              scale: 1.018,
-              smoothing: 0.12,
-              liftSmoothing: 0.16,
+              lift: -12,
+              scale: 1.014,
+              smoothing: 0.09,
+              liftSmoothing: 0.12,
             }
           : card.classList.contains("tilt-card")
             ? {
                 perspective: 1200,
                 maxRotateX: 7,
                 maxRotateY: 9,
-                lift: -10,
-                scale: 1.012,
-                smoothing: 0.12,
-                liftSmoothing: 0.16,
+                lift: -9,
+                scale: 1.01,
+                smoothing: 0.095,
+                liftSmoothing: 0.12,
               }
             : {
                 perspective: 1150,
                 maxRotateX: 6,
                 maxRotateY: 8,
-                lift: -9,
-                scale: 1.01,
-                smoothing: 0.13,
-                liftSmoothing: 0.16,
+                lift: -8,
+                scale: 1.008,
+                smoothing: 0.09,
+                liftSmoothing: 0.12,
               };
 
       bindSmoothTilt(card, config);

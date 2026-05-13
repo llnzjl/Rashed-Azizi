@@ -113,15 +113,15 @@ html[lang="ps"] body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 7rem 1rem 2rem;
+  padding: 6.5rem 0.9rem 1.75rem;
 }
 
 .page-surface {
   position: relative;
-  width: min(100%, 88rem);
+  width: min(100%, 84rem);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.75rem;
+  border-radius: 1.6rem;
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
     linear-gradient(180deg, rgba(15, 23, 42, 0.42), rgba(15, 23, 42, 0.26));
@@ -131,7 +131,7 @@ html[lang="ps"] body {
   backdrop-filter: blur(24px);
   transform-style: preserve-3d;
   will-change: transform;
-  animation: pageLiftIn 420ms ease-out;
+  animation: pageLiftIn 620ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .page-surface::before {
@@ -175,8 +175,8 @@ html[lang="ps"] body {
   opacity: 0;
   transform: perspective(1200px) translate3d(0, 32px, -120px) rotateX(12deg) scale(0.975);
   transition:
-    opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 920ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 920ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-on-scroll.is-visible {
@@ -198,15 +198,15 @@ html[lang="ps"] body {
 .experience-accordion:hover,
 .education-accordion:hover,
 .page-surface:hover {
-  transform: translate3d(0, -8px, 0) scale(1.01);
+  transform: translate3d(0, -6px, 0) scale(1.008);
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
 }
 
 .projects-page .reveal-on-scroll {
   transform: perspective(900px) translate3d(0, 20px, -48px) rotateX(6deg) scale(0.99);
   transition:
-    opacity 560ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .projects-page .reveal-on-scroll.is-visible {
@@ -214,12 +214,12 @@ html[lang="ps"] body {
 }
 
 .projects-page .page-surface {
-  animation: pageLiftInCalm 300ms ease-out;
+  animation: pageLiftInCalm 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .projects-page .project-accordion:hover,
 .projects-page .page-surface:hover {
-  transform: translate3d(0, -4px, 0) scale(1.004);
+  transform: translate3d(0, -3px, 0) scale(1.003);
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.16);
 }
 
@@ -235,14 +235,14 @@ html[lang="ps"] body {
   z-index: 1;
   transform-style: preserve-3d;
   transition:
-    transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 320ms ease,
+    box-shadow 320ms ease,
+    border-color 320ms ease;
 }
 
 .motion-accordion[open] > summary {
-  transform: translate3d(0, -2px, 34px) scale(1.008);
+  transform: translate3d(0, -1px, 28px) scale(1.006);
 }
 
 .motion-accordion .accordion-panel {
@@ -252,12 +252,12 @@ html[lang="ps"] body {
   overflow: hidden;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  transform: perspective(1600px) translate3d(0, -36px, -220px) rotateX(-28deg) rotateY(10deg) scale(0.9);
+  transform: perspective(1800px) translate3d(0, -48px, -260px) rotateX(-34deg) rotateY(12deg) scale(0.88);
   transform-origin: top center;
   transition:
-    grid-template-rows 620ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 240ms ease,
-    transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    grid-template-rows 860ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 320ms ease,
+    transform 860ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: grid-template-rows, opacity, transform;
 }
 
@@ -271,7 +271,7 @@ html[lang="ps"] body {
 .motion-accordion[open] .accordion-panel {
   grid-template-rows: 1fr;
   opacity: 1;
-  transform: perspective(1600px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1);
+  transform: perspective(1800px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1);
 }
 
 .motion-accordion[open] .accordion-panel-inner > * {
@@ -321,22 +321,22 @@ html[lang="ps"] body {
 @keyframes pageLiftIn {
   from {
     opacity: 0;
-    transform: perspective(1300px) rotateX(14deg) translate3d(0, 34px, -120px) scale(0.975);
+    transform: perspective(1400px) rotateX(16deg) translate3d(0, 40px, -140px) scale(0.965);
   }
   to {
     opacity: 1;
-    transform: perspective(1300px) rotateX(0deg) translate3d(0, 0, 0) scale(1);
+    transform: perspective(1400px) rotateX(0deg) translate3d(0, 0, 0) scale(1);
   }
 }
 
 @keyframes pageLiftInCalm {
   from {
     opacity: 0;
-    transform: perspective(900px) translate3d(0, 18px, -48px) rotateX(6deg) scale(0.99);
+    transform: perspective(1000px) translate3d(0, 24px, -64px) rotateX(8deg) scale(0.985);
   }
   to {
     opacity: 1;
-    transform: perspective(900px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
+    transform: perspective(1000px) translate3d(0, 0, 0) rotateX(0deg) scale(1);
   }
 }
 
@@ -346,7 +346,7 @@ html[lang="ps"] body {
   }
 
   .page-surface {
-    border-radius: 1.1rem;
+    border-radius: 1rem;
   }
 
   .dynamic-main > section::before {
