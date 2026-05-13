@@ -202,6 +202,31 @@ html[lang="ps"] body {
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.16);
 }
 
+.motion-accordion .accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  overflow: hidden;
+  transform: perspective(1400px) translate3d(0, -18px, -48px) rotateX(-10deg);
+  transform-origin: top center;
+  transition:
+    grid-template-rows 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: grid-template-rows, opacity, transform;
+}
+
+.motion-accordion .accordion-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.motion-accordion[open] .accordion-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: perspective(1400px) translate3d(0, 0, 0) rotateX(0deg);
+}
+
 .project-accordion summary,
 .experience-accordion summary,
 .education-accordion summary {
@@ -289,9 +314,14 @@ html[lang="ps"] body {
   .reveal-on-scroll,
   .project-accordion,
   .experience-accordion,
-  .education-accordion {
+  .education-accordion,
+  .motion-accordion .accordion-panel {
     animation: none;
     transition: none;
+    transform: none;
+  }
+
+  .motion-accordion[open] .accordion-panel {
     transform: none;
   }
 }
