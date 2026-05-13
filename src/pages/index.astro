@@ -1,10 +1,6 @@
 ---
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
@@ -34,12 +30,6 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     <section>
       <Hero />
     </section>
-    <main class="dynamic-main">
-      <About />
-      <Projects />
-      <Experience />
-      <Education />
-    </main>
     <Footer />
   </body>
 </html>
