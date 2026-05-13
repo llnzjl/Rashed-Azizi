@@ -113,12 +113,12 @@ html[lang="ps"] body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 6.5rem 0.9rem 1.75rem;
+  padding: 3rem 0.75rem 1.25rem;
 }
 
 .page-surface {
   position: relative;
-  width: min(100%, 84rem);
+  width: min(100%, 90rem);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 1.6rem;
@@ -160,7 +160,7 @@ html[lang="ps"] body {
 .dynamic-main > section::before {
   content: "";
   position: absolute;
-  inset: 1rem;
+  inset: 0.75rem;
   z-index: -1;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.25rem;
@@ -233,6 +233,7 @@ html[lang="ps"] body {
 .motion-accordion > summary {
   position: relative;
   z-index: 1;
+  min-height: 4.5rem;
   transform-style: preserve-3d;
   transition:
     transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -282,7 +283,21 @@ html[lang="ps"] body {
 .project-accordion summary,
 .experience-accordion summary,
 .education-accordion summary {
-  min-height: 5.5rem;
+  min-height: 4.5rem;
+}
+
+.project-chevron,
+.experience-chevron,
+.education-chevron {
+  width: 2rem;
+  height: 2rem;
+}
+
+.project-chevron svg,
+.experience-chevron svg,
+.education-chevron svg {
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 ::view-transition-old(root),
@@ -342,7 +357,7 @@ html[lang="ps"] body {
 
 @media (max-width: 640px) {
   .inner-page-shell {
-    padding: 6.25rem 0.75rem 1.25rem;
+    padding: 2.5rem 0.5rem 1rem;
   }
 
   .page-surface {
@@ -350,13 +365,19 @@ html[lang="ps"] body {
   }
 
   .dynamic-main > section::before {
-    inset: 0.5rem;
+    inset: 0.4rem;
     border-radius: 0.85rem;
   }
 
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-surface {
+    min-height: calc(100dvh - 8rem);
   }
 }
 
