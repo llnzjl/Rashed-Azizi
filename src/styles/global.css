@@ -5,30 +5,42 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  min-height: 100vh;
-   margin: 0;
+:root {
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-korean: "Noto Sans KR", "IBM Plex Mono", "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", Tahoma, sans-serif;
+  --font-arabic: "Noto Sans Arabic", "IBM Plex Mono", "Segoe UI", Tahoma, sans-serif;
 }
 
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-mono);
   background: #020617;
   color: #111827;
+  font-synthesis: none;
+  font-optical-sizing: auto;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
 html[lang="ko"] body,
 html[lang="fa"] body,
 html[lang="ps"] body {
-  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
 }
 
 html[lang="ko"] body {
-  font-family: "Noto Sans KR", "IBM Plex Mono", "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", Tahoma, sans-serif;
+  font-family: var(--font-korean);
 }
 
 html[lang="fa"] body,
 html[lang="ps"] body {
-  font-family: "Noto Sans Arabic", "IBM Plex Mono", "Segoe UI", Tahoma, sans-serif;
+  font-family: var(--font-arabic);
 }
 
 .site-liquid {
