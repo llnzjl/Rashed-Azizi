@@ -55,19 +55,19 @@ export default function HomePage() {
     <>
       <section id="home" className="page-container flex min-h-[calc(100vh-5rem)] items-center py-20">
         <Reveal y={18} className="w-full">
-          <div className="max-w-3xl rounded-lg border border-white/35 bg-white/72 p-6 shadow-[0_24px_80px_rgba(3,7,18,0.22)] backdrop-blur-md sm:p-8">
+          <div className="max-w-3xl rounded-lg border border-white/20 bg-slate-950/42 p-6 shadow-[0_24px_80px_rgba(3,7,18,0.28)] sm:p-8">
             <img
               src={publicAsset("/rashed-profile.jpg")}
               alt={`${siteData.name} profile image`}
               width={116}
               height={116}
-              className="h-32 w-32 rounded-full border-4 border-white object-cover object-[58%_38%] shadow-[0_22px_70px_rgba(7,55,198,0.22)] ring-1 ring-[#1252aa]/30"
+              className="h-32 w-32 rounded-full border-4 border-white object-cover object-[58%_38%] shadow-[0_22px_70px_rgba(3,7,18,0.35)] ring-1 ring-white/60"
             />
 
-            <h1 className="mt-8 max-w-3xl text-5xl font-extrabold leading-[1.04] text-slate-950 drop-shadow-[0_2px_10px_rgba(255,255,255,0.85)] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 max-w-3xl text-5xl font-extrabold leading-[1.04] text-white drop-shadow-[0_3px_16px_rgba(3,7,18,0.65)] sm:text-6xl lg:text-7xl">
               {siteData.name}
             </h1>
-            <p className="mt-4 text-xl font-semibold leading-snug text-slate-800 sm:text-2xl">
+            <p className="mt-4 text-xl font-semibold leading-snug text-white/90 sm:text-2xl">
               {siteData.title}
             </p>
 
@@ -87,12 +87,12 @@ export default function HomePage() {
                   >
                     <Icon
                       aria-hidden="true"
-                      className="text-[18px] text-[#1252aa] transition-colors group-hover:text-[#0737c6]"
+                      className="text-[18px] text-white/90 transition-colors group-hover:text-white"
                     />
-                    <span className="font-semibold text-slate-800 transition-colors group-hover:text-[#0737c6]">
+                    <span className="font-semibold text-white/95 transition-colors group-hover:text-white">
                       {item.label}
                     </span>
-                    <span className="truncate text-slate-700">{item.value}</span>
+                    <span className="truncate text-white/75">{item.value}</span>
                   </a>
                 );
               })}
