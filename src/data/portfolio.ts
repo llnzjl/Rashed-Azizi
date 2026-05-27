@@ -96,18 +96,6 @@ export const heroSocialLinks = [
     icon: "github",
   },
   {
-    label: "Mastodon",
-    value: "Not published",
-    href: "#contact",
-    icon: "mastodon",
-  },
-  {
-    label: "Matrix",
-    value: "Available on request",
-    href: "#contact",
-    icon: "matrix",
-  },
-  {
     label: "LinkedIn",
     value: "linkedin.com/in/llnzjl",
     href: siteData.linkedin,
@@ -118,12 +106,6 @@ export const heroSocialLinks = [
     value: siteData.email,
     href: `mailto:${siteData.email}`,
     icon: "email",
-  },
-  {
-    label: "GPG Key",
-    value: "Available on request",
-    href: "#contact",
-    icon: "key",
   },
 ] as const;
 
@@ -219,21 +201,6 @@ export const contactMethods = [
     label: "Email",
     value: siteData.email,
     href: `mailto:${siteData.email}`,
-  },
-  {
-    label: "Matrix",
-    value: "Available on request",
-    href: "#contact",
-  },
-  {
-    label: "Mastodon",
-    value: "Not published",
-    href: "#contact",
-  },
-  {
-    label: "GPG key",
-    value: "Available on request",
-    href: "#contact",
   },
 ] as const;
 

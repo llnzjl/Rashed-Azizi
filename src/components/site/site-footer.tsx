@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { HiOutlineEnvelope, HiOutlineKey } from "react-icons/hi2";
+import { HiOutlineEnvelope } from "react-icons/hi2";
 import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
 import { contactMethods, minimalNavItems, siteData } from "@/data/portfolio";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-cyan-200/70 bg-gradient-to-r from-cyan-50 via-white to-rose-50">
+    <footer className="border-t border-cyan-100/60 bg-white/72 backdrop-blur-xl">
       <div className="page-container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-slate-950">{siteData.name}</p>
@@ -52,13 +52,6 @@ export function SiteFooter() {
             className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-rose-200 bg-white text-rose-700 transition-colors hover:border-rose-300 hover:bg-rose-50 hover:text-rose-900"
           >
             <HiOutlineEnvelope aria-hidden="true" />
-          </a>
-          <a
-            href="#contact"
-            aria-label="GPG key"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-emerald-200 bg-white text-emerald-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-900"
-          >
-            <HiOutlineKey aria-hidden="true" />
           </a>
         </div>
       </div>

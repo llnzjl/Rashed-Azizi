@@ -1,12 +1,6 @@
 import type { IconType } from "react-icons";
 import { HiOutlineEnvelope } from "react-icons/hi2";
-import {
-  RiGithubLine,
-  RiKeyLine,
-  RiLinkedinLine,
-  RiMastodonLine,
-} from "react-icons/ri";
-import { SiMatrix } from "react-icons/si";
+import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
 import { MinimalProjectCard } from "@/components/site/minimal-project-card";
 import { Reveal } from "@/components/site/reveal";
@@ -29,11 +23,8 @@ export const metadata = createPageMetadata({
 
 const socialIcons: Record<(typeof heroSocialLinks)[number]["icon"], IconType> = {
   github: RiGithubLine,
-  mastodon: RiMastodonLine,
-  matrix: SiMatrix,
   linkedin: RiLinkedinLine,
   email: HiOutlineEnvelope,
-  key: RiKeyLine,
 };
 
 export default function HomePage() {

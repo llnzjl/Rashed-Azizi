@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { OceanBackground } from "@/components/site/ocean-background";
 import { PageTransition } from "@/components/site/page-transition";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <OceanBackground />
         <SiteHeader />
         <PageTransition>
           <main className="relative z-10 pt-20">{children}</main>

@@ -54,7 +54,7 @@ export function SiteHeader() {
         transition={{ duration: 0.45, ease: "easeInOut" }}
         className={`transition-all duration-300 ${
           isScrolled
-            ? "border-b border-cyan-200/80 bg-white/[0.88] shadow-[0_14px_42px_rgba(14,116,144,0.10)] backdrop-blur-xl"
+            ? "border-b border-cyan-100/50 bg-white/[0.76] shadow-[0_14px_42px_rgba(6,41,66,0.20)] backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
         aria-label="Primary navigation"
@@ -97,7 +97,7 @@ export function SiteHeader() {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             onClick={() => setOpen((current) => !current)}
-            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md border border-cyan-200 bg-white text-xl text-cyan-900 transition-colors hover:bg-cyan-50 sm:hidden"
+            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md border border-cyan-100/70 bg-white/80 text-xl text-cyan-900 shadow-sm backdrop-blur transition-colors hover:bg-cyan-50 sm:hidden"
           >
             {open ? <HiXMark aria-hidden="true" /> : <HiBars3 aria-hidden="true" />}
           </button>
@@ -111,7 +111,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="border-b border-cyan-200 bg-white/95 backdrop-blur-xl sm:hidden"
+            className="border-b border-cyan-100/70 bg-white/86 backdrop-blur-xl sm:hidden"
           >
             <div className="page-container grid gap-1 py-3">
               {minimalNavItems.map((item) => {
