@@ -55,7 +55,7 @@ export default function HomePage() {
     <>
       <section id="home" className="page-container flex min-h-[calc(100vh-5rem)] items-center py-20">
         <Reveal y={18} className="w-full">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl rounded-lg border border-white/35 bg-white/72 p-6 shadow-[0_24px_80px_rgba(3,7,18,0.22)] backdrop-blur-md sm:p-8">
             <img
               src={publicAsset("/rashed-profile.jpg")}
               alt={`${siteData.name} profile image`}
@@ -64,10 +64,10 @@ export default function HomePage() {
               className="h-32 w-32 rounded-full border-4 border-white object-cover object-[58%_38%] shadow-[0_22px_70px_rgba(14,116,144,0.24)] ring-1 ring-cyan-200/80"
             />
 
-            <h1 className="mt-8 max-w-3xl text-5xl font-bold leading-[1.04] text-slate-950 sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 max-w-3xl text-5xl font-extrabold leading-[1.04] text-slate-950 drop-shadow-[0_2px_10px_rgba(255,255,255,0.85)] sm:text-6xl lg:text-7xl">
               {siteData.name}
             </h1>
-            <p className="mt-4 text-xl font-medium leading-snug text-slate-700 sm:text-2xl">
+            <p className="mt-4 text-xl font-semibold leading-snug text-slate-800 sm:text-2xl">
               {siteData.title}
             </p>
 
@@ -82,17 +82,17 @@ export default function HomePage() {
                     href={item.href}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noreferrer" : undefined}
-                    className="quiet-link focus-ring group inline-flex min-w-0 items-center gap-2 rounded-md text-sm"
+                    className="focus-ring group inline-flex min-w-0 items-center gap-2 rounded-md text-sm"
                     aria-label={`${item.label}: ${item.value}`}
                   >
                     <Icon
                       aria-hidden="true"
-                      className="text-[18px] text-cyan-600 transition-colors group-hover:text-fuchsia-700"
+                      className="text-[18px] text-cyan-700 transition-colors group-hover:text-fuchsia-700"
                     />
-                    <span className="font-medium text-slate-700 transition-colors group-hover:text-slate-950">
+                    <span className="font-semibold text-slate-800 transition-colors group-hover:text-slate-950">
                       {item.label}
                     </span>
-                    <span className="truncate text-slate-500">{item.value}</span>
+                    <span className="truncate text-slate-700">{item.value}</span>
                   </a>
                 );
               })}
