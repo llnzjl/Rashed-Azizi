@@ -6,11 +6,11 @@ import { contactMethods, minimalNavItems, siteData } from "@/data/portfolio";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-neutral-200 bg-white">
+    <footer className="border-t border-cyan-200/70 bg-gradient-to-r from-cyan-50 via-white to-rose-50">
       <div className="page-container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-semibold text-neutral-950">{siteData.name}</p>
-          <p className="mt-2 text-sm text-neutral-500">
+          <p className="text-sm font-semibold text-slate-950">{siteData.name}</p>
+          <p className="mt-2 text-sm text-slate-500">
             Copyright 2026 {siteData.name}. Built with Next.js and Tailwind CSS.
           </p>
         </div>
@@ -33,7 +33,7 @@ export function SiteFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-950"
+            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200 bg-white text-cyan-700 transition-colors hover:border-cyan-300 hover:bg-cyan-50 hover:text-cyan-900"
           >
             <RiGithubLine aria-hidden="true" />
           </a>
@@ -42,21 +42,21 @@ export function SiteFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-950"
+            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-200 bg-white text-sky-700 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
           >
             <RiLinkedinLine aria-hidden="true" />
           </a>
           <a
             href={contactMethods[0].href}
             aria-label="Email"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-950"
+            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-rose-200 bg-white text-rose-700 transition-colors hover:border-rose-300 hover:bg-rose-50 hover:text-rose-900"
           >
             <HiOutlineEnvelope aria-hidden="true" />
           </a>
           <a
             href="#contact"
             aria-label="GPG key"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-950"
+            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-emerald-200 bg-white text-emerald-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-900"
           >
             <HiOutlineKey aria-hidden="true" />
           </a>

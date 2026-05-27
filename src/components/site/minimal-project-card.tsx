@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 
@@ -35,12 +34,10 @@ export function MinimalProjectCard({
           className="relative aspect-[16/10] overflow-hidden border-b border-neutral-200"
           style={{ backgroundColor: color }}
         >
-          <Image
+          <img
             src={image}
             alt={`${title} thumbnail`}
-            fill
-            sizes="(min-width: 1024px) 480px, 100vw"
-            className="object-cover transition duration-500 ease-in-out group-hover:scale-[1.035]"
+            className="h-full w-full object-cover transition duration-500 ease-in-out group-hover:scale-[1.035]"
           />
         </div>
 

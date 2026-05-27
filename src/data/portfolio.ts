@@ -34,7 +34,7 @@ export type ContactLink = {
 
 const repoName = "Rashed-Azizi";
 const siteOrigin = "https://llnzjl.github.io";
-const siteBasePath = "";
+const siteBasePath = process.env.NODE_ENV === "production" ? `/${repoName}` : "";
 
 export function publicAsset(path: string) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
@@ -134,7 +134,7 @@ export const minimalProjects = [
       "A hackathon product concept for foreign workers in Korea, focused on guidance, accessibility, and practical support through an AI-assisted experience.",
     href: "https://www.veritas-a.com/news/articleView.html?idxno=572820",
     image: publicAsset("/certificates/chungbuk-hackathon-second-place.jpg"),
-    color: "#eef8f2",
+    color: "#d1fae5",
   },
   {
     title: "School Management System",
@@ -142,7 +142,7 @@ export const minimalProjects = [
       "A C-based administration project for organizing student records and academic workflows through a clear command-line experience.",
     href: "https://github.com/llnzjl/SMS-Project",
     image: publicAsset("/projects/sms.svg"),
-    color: "#f4f7fb",
+    color: "#cffafe",
   },
   {
     title: "Bank Management System",
@@ -150,7 +150,7 @@ export const minimalProjects = [
       "A command-line banking system modeling account operations, transaction flow, and reliable input handling in C.",
     href: "https://github.com/llnzjl/Bank_MS",
     image: publicAsset("/projects/bank.svg"),
-    color: "#f8f6f1",
+    color: "#fef3c7",
   },
   {
     title: "Book Management Program",
@@ -158,7 +158,7 @@ export const minimalProjects = [
       "A practical book management project centered on storing, searching, and organizing records with straightforward program structure.",
     href: "https://github.com/llnzjl/Book-Management-Program",
     image: publicAsset("/projects/books.svg"),
-    color: "#f5f5f5",
+    color: "#fce7f3",
   },
 ] as const;
 

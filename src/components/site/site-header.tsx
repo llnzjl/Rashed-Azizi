@@ -54,7 +54,7 @@ export function SiteHeader() {
         transition={{ duration: 0.45, ease: "easeInOut" }}
         className={`transition-all duration-300 ${
           isScrolled
-            ? "border-b border-neutral-200/80 bg-white/[0.88] shadow-[0_14px_42px_rgba(17,17,17,0.06)] backdrop-blur-xl"
+            ? "border-b border-cyan-200/80 bg-white/[0.88] shadow-[0_14px_42px_rgba(14,116,144,0.10)] backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
         aria-label="Primary navigation"
@@ -62,7 +62,7 @@ export function SiteHeader() {
         <div className="page-container flex h-20 items-center justify-between">
           <Link
             href="/"
-            className="focus-ring rounded-md text-[15px] font-semibold text-neutral-950 transition-opacity hover:opacity-70"
+            className="focus-ring rounded-md text-[15px] font-semibold text-slate-950 transition-colors hover:text-cyan-700"
           >
             {siteData.name}
           </Link>
@@ -82,8 +82,8 @@ export function SiteHeader() {
                   aria-current={isActive ? "page" : undefined}
                   className={`focus-ring rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-neutral-950"
-                      : "text-neutral-500 hover:text-neutral-950"
+                      ? "bg-cyan-50 text-cyan-800"
+                      : "text-slate-500 hover:text-cyan-700"
                   }`}
                 >
                   {item.label}
@@ -97,7 +97,7 @@ export function SiteHeader() {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             onClick={() => setOpen((current) => !current)}
-            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-200 bg-white text-xl text-neutral-900 transition-colors hover:bg-neutral-50 sm:hidden"
+            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md border border-cyan-200 bg-white text-xl text-cyan-900 transition-colors hover:bg-cyan-50 sm:hidden"
           >
             {open ? <HiXMark aria-hidden="true" /> : <HiBars3 aria-hidden="true" />}
           </button>
@@ -111,7 +111,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="border-b border-neutral-200 bg-white/95 backdrop-blur-xl sm:hidden"
+            className="border-b border-cyan-200 bg-white/95 backdrop-blur-xl sm:hidden"
           >
             <div className="page-container grid gap-1 py-3">
               {minimalNavItems.map((item) => {
@@ -123,7 +123,7 @@ export function SiteHeader() {
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     className={`focus-ring rounded-md px-3 py-3 text-sm font-medium ${
-                      isActive ? "bg-neutral-100 text-neutral-950" : "text-neutral-600"
+                      isActive ? "bg-cyan-50 text-cyan-800" : "text-slate-600"
                     }`}
                   >
                     {item.label}
