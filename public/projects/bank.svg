@@ -1,0 +1,13 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#F8F6F1"/>
+  <rect x="190" y="168" width="820" height="440" rx="28" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="3"/>
+  <path d="M294 274h612L600 126 294 274Z" fill="#111111"/>
+  <rect x="330" y="302" width="80" height="188" rx="10" fill="#E6E0D3"/>
+  <rect x="492" y="302" width="80" height="188" rx="10" fill="#E6E0D3"/>
+  <rect x="654" y="302" width="80" height="188" rx="10" fill="#E6E0D3"/>
+  <rect x="816" y="302" width="80" height="188" rx="10" fill="#E6E0D3"/>
+  <rect x="282" y="522" width="636" height="46" rx="12" fill="#111111"/>
+  <circle cx="600" cy="229" r="42" fill="#FFFFFF" opacity=".92"/>
+  <text x="548" y="245" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800">$</text>
+  <text x="294" y="664" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Bank Management System</text>
+</svg>

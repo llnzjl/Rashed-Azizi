@@ -14,20 +14,20 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "#050816",
-        surface: "#0b1023",
-        line: "rgba(255,255,255,0.12)",
+        background: "#ffffff",
+        surface: "#fafafa",
+        line: "#e8e8e8",
         accent: {
-          blue: "#4ea2ff",
-          cyan: "#38bdf8",
-          violet: "#8b5cf6",
-          soft: "#9bd8ff",
+          blue: "#2563eb",
+          cyan: "#0891b2",
+          violet: "#6d28d9",
+          soft: "#f5f5f5",
         },
       },
       fontFamily: {
-        sans: ['"Space Grotesk"', "system-ui", "sans-serif"],
-        display: ['"Sora"', '"Space Grotesk"', "system-ui", "sans-serif"],
-        mono: ['"JetBrains Mono"', "monospace"],
+        sans: ['"Inter"', "system-ui", "sans-serif"],
+        display: ['"Inter"', "system-ui", "sans-serif"],
+        mono: ['"Inter"', "system-ui", "sans-serif"],
       },
       boxShadow: {
         glass:

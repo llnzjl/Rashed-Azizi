@@ -1,198 +1,210 @@
 import Image from "next/image";
-import Link from "next/link";
-import { HiOutlineArrowRight, HiOutlineArrowUpRight } from "react-icons/hi2";
-import { RiGithubLine, RiInstagramLine, RiLinkedinLine } from "react-icons/ri";
+import type { IconType } from "react-icons";
+import { HiOutlineEnvelope } from "react-icons/hi2";
+import {
+  RiGithubLine,
+  RiKeyLine,
+  RiLinkedinLine,
+  RiMastodonLine,
+} from "react-icons/ri";
+import { SiMatrix } from "react-icons/si";
 
+import { MinimalProjectCard } from "@/components/site/minimal-project-card";
 import { Reveal } from "@/components/site/reveal";
 import {
-  capabilityPillars,
-  heroMetrics,
-  pageHighlights,
+  contactMethods,
+  heroSocialLinks,
+  minimalProjects,
+  minimalTimelineItems,
   publicAsset,
   siteData,
-  teamProjects,
 } from "@/data/portfolio";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "Home",
   description:
-    "Explore a multi-page student portfolio for Rashed Azizi, featuring polished personal branding, project previews, and a premium visual system.",
+    "A clean developer portfolio for Rashed Azizi, a Chungbuk National University student focused on frontend development, AI, and practical software projects.",
   path: "/",
 });
 
-const socialLinks = [
-  { label: "GitHub", href: siteData.github, icon: RiGithubLine },
-  { label: "LinkedIn", href: siteData.linkedin, icon: RiLinkedinLine },
-  { label: "Instagram", href: siteData.instagram, icon: RiInstagramLine },
-];
+const socialIcons: Record<(typeof heroSocialLinks)[number]["icon"], IconType> = {
+  github: RiGithubLine,
+  mastodon: RiMastodonLine,
+  matrix: SiMatrix,
+  linkedin: RiLinkedinLine,
+  email: HiOutlineEnvelope,
+  key: RiKeyLine,
+};
 
 export default function HomePage() {
-  const featuredProject = teamProjects[0];
-
   return (
-    <div className="container space-y-6 sm:space-y-8">
-      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <Reveal className="surface-panel-strong rounded-[2rem] p-6 sm:p-8 lg:p-10">
-          <span className="eyebrow">{siteData.heroStatus}</span>
-          <p className="mt-6 font-mono text-sm uppercase tracking-[0.35em] text-slate-400">
-            {siteData.location}
-          </p>
-          <h1 className="mt-5 max-w-4xl font-display text-[2.8rem] font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl">
-            Learning by building digital products with
-            <span className="title-gradient block">cinematic clarity.</span>
-          </h1>
-          <p className="body-copy mt-7 max-w-2xl text-base sm:text-lg">{siteData.heroIntro}</p>
+    <>
+      <section id="home" className="page-container flex min-h-[calc(100vh-5rem)] items-center py-20">
+        <Reveal y={18} className="w-full">
+          <div className="max-w-3xl">
+            <Image
+              src={publicAsset("/rashed-profile.jpg")}
+              alt={`${siteData.name} profile image`}
+              width={116}
+              height={116}
+              priority
+              className="h-28 w-28 rounded-full border border-neutral-200 object-cover object-[58%_38%] shadow-sm"
+            />
 
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <Link href="/projects" className="button-primary justify-center sm:justify-start">
-              View Projects
-              <HiOutlineArrowRight className="text-lg" />
-            </Link>
-            <Link href="/contact" className="button-secondary justify-center sm:justify-start">
-              Contact Me
-            </Link>
+            <h1 className="mt-8 text-5xl font-bold leading-[1.04] text-neutral-950 sm:text-6xl lg:text-7xl">
+              {siteData.name}
+            </h1>
+            <p className="mt-4 text-xl font-medium leading-snug text-neutral-700 sm:text-2xl">
+              {siteData.title}
+            </p>
+
+            <div className="mt-9 grid gap-x-5 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+              {heroSocialLinks.map((item) => {
+                const Icon = socialIcons[item.icon];
+                const isExternal = item.href.startsWith("http");
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    className="quiet-link focus-ring group inline-flex items-center gap-2 rounded-md text-sm"
+                    aria-label={`${item.label}: ${item.value}`}
+                  >
+                    <Icon
+                      aria-hidden="true"
+                      className="text-[18px] text-neutral-400 transition-colors group-hover:text-neutral-900"
+                    />
+                    <span className="font-medium text-neutral-700 transition-colors group-hover:text-neutral-950">
+                      {item.label}
+                    </span>
+                    <span className="truncate text-neutral-400">{item.value}</span>
+                  </a>
+                );
+              })}
+            </div>
           </div>
+        </Reveal>
+      </section>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            {socialLinks.map((item) => {
-              const Icon = item.icon;
+      <section className="section-band" aria-labelledby="intro-heading">
+        <div className="page-container py-14 sm:py-16">
+          <Reveal className="max-w-4xl">
+            <p id="intro-heading" className="text-2xl font-semibold text-neutral-950">
+              Hey!
+            </p>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-neutral-600">
+              I am Rashed, a computer science student at Chungbuk National University.
+              I am currently learning software web development and AI, and I enjoy
+              turning small practical projects into cleaner, more polished digital work.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor-label={item.label}
-                  className="interactive-ring inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-lg text-slate-200"
-                  aria-label={item.label}
-                >
-                  <Icon />
-                </a>
-              );
-            })}
-          </div>
+      <section id="portfolio" className="section-muted" aria-labelledby="portfolio-heading">
+        <div className="page-container py-20 sm:py-24">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-neutral-400">
+              Portfolio
+            </p>
+            <h2
+              id="portfolio-heading"
+              className="mt-4 text-3xl font-semibold text-neutral-950 sm:text-4xl"
+            >
+              My top projects
+            </h2>
+          </Reveal>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            {heroMetrics.map((metric, index) => (
-              <Reveal
-                key={metric.label}
-                delay={0.08 + index * 0.06}
-                className="surface-panel rounded-[1.5rem] p-5"
-              >
-                <p className="font-display text-3xl font-semibold text-white">{metric.value}</p>
-                <p className="mt-2 text-sm text-slate-200">{metric.label}</p>
-                <p className="mt-2 text-xs leading-6 text-slate-500">{metric.helper}</p>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {minimalProjects.map((project, index) => (
+              <Reveal key={project.title} delay={index * 0.05} y={18}>
+                <MinimalProjectCard {...project} />
               </Reveal>
             ))}
           </div>
-        </Reveal>
-
-        <Reveal delay={0.08} className="surface-panel rounded-[2rem] p-4 sm:p-6">
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.03]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,158,11,0.14),transparent_30%)]" />
-            <Image
-              src={publicAsset("/rashed-profile.jpg")}
-              alt={`${siteData.name} portrait`}
-              width={900}
-              height={1120}
-              priority
-              className="relative h-auto w-full object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#07111d] via-[#07111d]/65 to-transparent" />
-
-            <div className="absolute left-3 top-3 rounded-2xl border border-white/10 bg-slate-950/70 px-3 py-2.5 backdrop-blur-xl sm:left-4 sm:top-4 sm:px-4 sm:py-3">
-              <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-200">
-                Student Note
-              </p>
-              <p className="mt-2 max-w-[12rem] text-sm text-white">
-                Every project is a chance to learn, refine, and present the work better.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                  Featured momentum
-                </p>
-                <h2 className="mt-3 font-display text-2xl font-semibold text-white">
-                  {featuredProject.title}
-                </h2>
-              </div>
-              <span className="chip">2nd place</span>
-            </div>
-            <p className="body-copy mt-4 text-sm">{featuredProject.result}</p>
-            <p className="mt-4 text-sm text-slate-300">{featuredProject.description}</p>
-            <Link href="/projects" className="button-secondary mt-5 justify-center sm:justify-start">
-              See the case studies
-              <HiOutlineArrowUpRight className="text-base" />
-            </Link>
-          </div>
-        </Reveal>
+        </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <Reveal className="surface-panel rounded-[2rem] p-6 sm:p-8">
-          <span className="eyebrow">How I Build</span>
-          <h2 className="mt-6 max-w-2xl font-display text-3xl font-semibold text-white sm:text-4xl">
-            Design sensitivity, engineering clarity, and steady growth in one system.
-          </h2>
-
-          <div className="mt-8 grid gap-4">
-            {capabilityPillars.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5"
-              >
-                <p className="font-display text-xl font-semibold text-white">{pillar.title}</p>
-                <p className="body-copy mt-3 text-sm">{pillar.description}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.08} className="surface-panel rounded-[2rem] p-6 sm:p-8">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <span className="eyebrow">Explore</span>
-              <h2 className="mt-5 font-display text-3xl font-semibold text-white sm:text-4xl">
-                A routed portfolio with space for every part of the story.
-              </h2>
-            </div>
-            <span className="chip hidden sm:inline-flex">Multi-page flow</span>
-          </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {pageHighlights.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="interactive-ring rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5"
-              >
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{item.label}</p>
-                <h3 className="mt-3 font-display text-xl font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="body-copy mt-3 text-sm">{item.summary}</p>
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-6 rounded-[1.75rem] border border-cyan-300/18 bg-gradient-to-br from-cyan-300/10 via-transparent to-amber-300/10 p-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-cyan-200/85">Next move</p>
-            <p className="mt-3 max-w-2xl text-sm text-slate-200">
-              If you are hiring, collaborating, or just want to talk through an idea, the
-              contact page is built to make that first step easy.
+      <section className="section-band" aria-labelledby="timeline-heading">
+        <div className="page-container py-20 sm:py-24">
+          <Reveal className="max-w-2xl">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-neutral-400">
+              Timeline
             </p>
-            <Link href="/contact" className="button-primary mt-5 justify-center sm:justify-start">
-              Open Contact Page
-            </Link>
+            <h2
+              id="timeline-heading"
+              className="mt-4 text-3xl font-semibold text-neutral-950 sm:text-4xl"
+            >
+              The path so far
+            </h2>
+          </Reveal>
+
+          <div className="relative mt-12 max-w-4xl">
+            <div className="absolute bottom-0 left-[9px] top-0 w-px bg-neutral-200" />
+
+            <div className="space-y-10">
+              {minimalTimelineItems.map((item, index) => (
+                <Reveal key={`${item.title}-${item.date}`} delay={index * 0.035} y={18}>
+                  <article className="relative pl-10">
+                    <span className="absolute left-0 top-1.5 z-10 h-[19px] w-[19px] rounded-full border border-neutral-300 bg-white shadow-[0_0_0_6px_#fff]" />
+                    <div className="grid gap-3 sm:grid-cols-[9rem_1fr]">
+                      <p className="text-sm font-medium text-neutral-400">{item.date}</p>
+                      <div>
+                        <h3 className="text-xl font-semibold leading-tight text-neutral-950">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1 text-sm font-medium text-neutral-500">{item.subtitle}</p>
+                        <p className="mt-3 max-w-2xl text-sm leading-7 text-neutral-600">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </Reveal>
+        </div>
       </section>
-    </div>
+
+      <section id="contact" className="section-muted" aria-labelledby="contact-heading">
+        <div className="page-container py-20 sm:py-24">
+          <Reveal className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-neutral-400">
+                Contact
+              </p>
+              <h2
+                id="contact-heading"
+                className="mt-4 text-3xl font-semibold text-neutral-950 sm:text-4xl"
+              >
+                Let&apos;s get in touch
+              </h2>
+              <p className="mt-4 max-w-md text-sm leading-7 text-neutral-600">
+                I am open to internships, student collaboration, and junior opportunities.
+              </p>
+            </div>
+
+            <div className="grid gap-3">
+              {contactMethods.map((method) => (
+                <a
+                  key={method.label}
+                  href={method.href}
+                  className="focus-ring subtle-card flex items-center justify-between gap-4 rounded-lg px-5 py-4 transition duration-200 hover:-translate-y-0.5 hover:border-neutral-300"
+                >
+                  <span className="text-sm font-medium text-neutral-500">{method.label}</span>
+                  <span className="text-right text-sm font-semibold text-neutral-950">
+                    {method.value}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 
-import { routeItems } from "@/data/portfolio";
+import { minimalNavItems } from "@/data/portfolio";
 import { getPageUrl } from "@/lib/metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routeItems.map((item) => ({
+  return minimalNavItems.map((item) => ({
     url: getPageUrl(item.href),
     lastModified: new Date(),
     changeFrequency: "monthly",

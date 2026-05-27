@@ -1,0 +1,15 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#F4F7FB"/>
+  <rect x="180" y="130" width="840" height="490" rx="28" fill="#FFFFFF" stroke="#DCE4EE" stroke-width="3"/>
+  <rect x="228" y="188" width="744" height="58" rx="14" fill="#111111"/>
+  <rect x="258" y="207" width="156" height="20" rx="10" fill="#FFFFFF" opacity=".86"/>
+  <circle cx="920" cy="217" r="12" fill="#FFFFFF" opacity=".5"/>
+  <circle cx="882" cy="217" r="12" fill="#FFFFFF" opacity=".5"/>
+  <rect x="260" y="304" width="210" height="28" rx="14" fill="#1F2937" opacity=".88"/>
+  <rect x="260" y="362" width="680" height="22" rx="11" fill="#D8E2EF"/>
+  <rect x="260" y="414" width="610" height="22" rx="11" fill="#D8E2EF"/>
+  <rect x="260" y="466" width="460" height="22" rx="11" fill="#D8E2EF"/>
+  <rect x="742" y="294" width="198" height="154" rx="22" fill="#EDF4FF" stroke="#DCE4EE" stroke-width="3"/>
+  <path d="M800 382h82M841 341v82" stroke="#111111" stroke-width="18" stroke-linecap="round"/>
+  <text x="260" y="565" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">School Management System</text>
+</svg>

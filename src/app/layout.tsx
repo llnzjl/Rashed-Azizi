@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { CustomCursor } from "@/components/portfolio/custom-cursor";
-import { BackgroundEffects } from "@/components/portfolio/background-effects";
 import { PageTransition } from "@/components/site/page-transition";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -58,11 +56,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <BackgroundEffects />
-        <CustomCursor />
         <SiteHeader />
         <PageTransition>
-          <main className="relative z-10 pb-8 pt-28 sm:pt-32 lg:pt-36">{children}</main>
+          <main className="relative z-10 pt-20">{children}</main>
         </PageTransition>
         <SiteFooter />
       </body>
