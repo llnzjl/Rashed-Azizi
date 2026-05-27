@@ -1,11 +1,17 @@
 import type { IconType } from "react-icons";
-import { HiOutlineEnvelope } from "react-icons/hi2";
+import {
+  HiOutlineBookOpen,
+  HiOutlineEnvelope,
+  HiOutlineFlag,
+  HiOutlineTrophy,
+} from "react-icons/hi2";
 import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
 import { MinimalProjectCard } from "@/components/site/minimal-project-card";
 import { Reveal } from "@/components/site/reveal";
 import {
   contactMethods,
+  certifications,
   heroSocialLinks,
   minimalProjects,
   minimalTimelineItems,
@@ -26,6 +32,23 @@ const socialIcons: Record<(typeof heroSocialLinks)[number]["icon"], IconType> = 
   linkedin: RiLinkedinLine,
   email: HiOutlineEnvelope,
 };
+
+const homeFeatureLinks = [
+  {
+    title: "Blog",
+    href: "/blog",
+    description:
+      "Short notes about what I am learning in web development, AI, and project building.",
+    Icon: HiOutlineBookOpen,
+  },
+  {
+    title: "Impossible List",
+    href: "/impossiblelist",
+    description:
+      "A public list of ambitious goals that keeps my learning path clear and honest.",
+    Icon: HiOutlineFlag,
+  },
+] as const;
 
 export default function HomePage() {
   return (
@@ -117,7 +140,96 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-band" aria-labelledby="timeline-heading">
+      <section className="section-band" aria-labelledby="home-more-heading">
+        <div className="page-container py-20 sm:py-24">
+          <Reveal className="max-w-2xl">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-700">
+              More
+            </p>
+            <h2
+              id="home-more-heading"
+              className="mt-4 text-3xl font-semibold text-slate-950 sm:text-4xl"
+            >
+              Blog, goals, and awards
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+              A quick place to see my learning notes, future goals, and certificates from
+              important student project milestones.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="grid gap-4">
+              {homeFeatureLinks.map(({ title, href, description, Icon }, index) => (
+                <Reveal key={title} delay={index * 0.05} y={18}>
+                  <a
+                    href={href}
+                    className="focus-ring subtle-card group flex items-start gap-4 rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-cyan-200 bg-white/75 text-cyan-700 transition-colors group-hover:text-fuchsia-700">
+                      <Icon aria-hidden="true" className="text-xl" />
+                    </span>
+                    <span>
+                      <span className="block text-lg font-semibold text-slate-950">{title}</span>
+                      <span className="mt-2 block text-sm leading-7 text-slate-600">
+                        {description}
+                      </span>
+                    </span>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.1} y={18}>
+              <div className="subtle-card rounded-lg p-5 sm:p-6">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-md border border-amber-200 bg-white/75 text-amber-700">
+                    <HiOutlineTrophy aria-hidden="true" className="text-xl" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-amber-700">
+                      Award List
+                    </p>
+                    <h3 className="text-2xl font-semibold text-slate-950">Certificates</h3>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid gap-5 md:grid-cols-2">
+                  {certifications
+                    .filter((certificate) => certificate.image)
+                    .map((certificate) => (
+                      <article
+                        key={certificate.title}
+                        className="overflow-hidden rounded-lg border border-cyan-100 bg-white/70"
+                      >
+                        <img
+                          src={certificate.image}
+                          alt={certificate.title}
+                          width={520}
+                          height={380}
+                          className="aspect-[4/3] w-full border-b border-cyan-100 object-cover"
+                        />
+                        <div className="p-4">
+                          <p className="text-xs font-medium uppercase tracking-[0.16em] text-cyan-700">
+                            {certificate.issuer} - {certificate.year}
+                          </p>
+                          <h4 className="mt-2 text-lg font-semibold leading-tight text-slate-950">
+                            {certificate.title}
+                          </h4>
+                          <p className="mt-2 text-sm leading-6 text-slate-600">
+                            {certificate.note}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-muted" aria-labelledby="timeline-heading">
         <div className="page-container py-20 sm:py-24">
           <Reveal className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-rose-600">
