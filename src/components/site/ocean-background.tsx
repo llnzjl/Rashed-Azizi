@@ -5,7 +5,7 @@ export function OceanBackground() {
     <div
       aria-hidden="true"
       className="ocean-background"
-      style={{ backgroundImage: `url("${publicAsset("/ocean-wallpaper.jpg")}")` }}
+      style={{ backgroundImage: `url("${publicAsset("/ocean-wallpaper-20260527.jpg")}")` }}
     />
   );
 }
