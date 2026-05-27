@@ -55,7 +55,7 @@ export default function HomePage() {
     <>
       <section id="home" className="page-container flex min-h-[calc(100vh-5rem)] items-center py-20">
         <Reveal y={18} className="w-full">
-          <div className="max-w-3xl rounded-lg border border-white/20 bg-slate-950/42 p-6 shadow-[0_24px_80px_rgba(3,7,18,0.28)] sm:p-8">
+          <div className="max-w-3xl">
             <img
               src={publicAsset("/rashed-profile.jpg")}
               alt={`${siteData.name} profile image`}
@@ -64,10 +64,10 @@ export default function HomePage() {
               className="h-32 w-32 rounded-full border-4 border-white object-cover object-[58%_38%] shadow-[0_22px_70px_rgba(3,7,18,0.35)] ring-1 ring-white/60"
             />
 
-            <h1 className="mt-8 max-w-3xl text-5xl font-extrabold leading-[1.04] text-white drop-shadow-[0_3px_16px_rgba(3,7,18,0.65)] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-8 max-w-3xl text-5xl font-extrabold leading-[1.04] text-white drop-shadow-[0_4px_18px_rgba(3,7,18,0.88)] sm:text-6xl lg:text-7xl">
               {siteData.name}
             </h1>
-            <p className="mt-4 text-xl font-semibold leading-snug text-white/90 sm:text-2xl">
+            <p className="mt-4 text-xl font-semibold leading-snug text-white drop-shadow-[0_3px_12px_rgba(3,7,18,0.82)] sm:text-2xl">
               {siteData.title}
             </p>
 
@@ -87,12 +87,14 @@ export default function HomePage() {
                   >
                     <Icon
                       aria-hidden="true"
-                      className="text-[18px] text-white/90 transition-colors group-hover:text-white"
+                      className="text-[18px] text-white transition-colors drop-shadow-[0_2px_8px_rgba(3,7,18,0.75)] group-hover:text-white"
                     />
-                    <span className="font-semibold text-white/95 transition-colors group-hover:text-white">
+                    <span className="font-semibold text-white transition-colors drop-shadow-[0_2px_8px_rgba(3,7,18,0.75)] group-hover:text-white">
                       {item.label}
                     </span>
-                    <span className="truncate text-white/75">{item.value}</span>
+                    <span className="truncate text-white/85 drop-shadow-[0_2px_8px_rgba(3,7,18,0.75)]">
+                      {item.value}
+                    </span>
                   </a>
                 );
               })}
