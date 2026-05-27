@@ -6,7 +6,7 @@ import { contactMethods, minimalNavItems, siteData } from "@/data/portfolio";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-cyan-100/60 bg-white/72 backdrop-blur-xl">
+    <footer className="border-t border-[#1252aa]/15 bg-white/72 backdrop-blur-xl">
       <div className="page-container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-slate-950">{siteData.name}</p>
@@ -33,7 +33,7 @@ export function SiteFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-cyan-200 bg-white text-cyan-700 transition-colors hover:border-cyan-300 hover:bg-cyan-50 hover:text-cyan-900"
+            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1252aa]/25 bg-white text-[#1252aa] transition-colors hover:border-[#0737c6]/35 hover:bg-[#1252aa]/10 hover:text-[#0737c6]"
           >
             <RiGithubLine aria-hidden="true" />
           </a>
@@ -42,7 +42,7 @@ export function SiteFooter() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-200 bg-white text-sky-700 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900"
+            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1252aa]/25 bg-white text-[#1252aa] transition-colors hover:border-[#0737c6]/35 hover:bg-[#1252aa]/10 hover:text-[#0737c6]"
           >
             <RiLinkedinLine aria-hidden="true" />
           </a>

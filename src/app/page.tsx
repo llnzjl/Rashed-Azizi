@@ -61,7 +61,7 @@ export default function HomePage() {
               alt={`${siteData.name} profile image`}
               width={116}
               height={116}
-              className="h-32 w-32 rounded-full border-4 border-white object-cover object-[58%_38%] shadow-[0_22px_70px_rgba(14,116,144,0.24)] ring-1 ring-cyan-200/80"
+              className="h-32 w-32 rounded-full border-4 border-white object-cover object-[58%_38%] shadow-[0_22px_70px_rgba(7,55,198,0.22)] ring-1 ring-[#1252aa]/30"
             />
 
             <h1 className="mt-8 max-w-3xl text-5xl font-extrabold leading-[1.04] text-slate-950 drop-shadow-[0_2px_10px_rgba(255,255,255,0.85)] sm:text-6xl lg:text-7xl">
@@ -87,9 +87,9 @@ export default function HomePage() {
                   >
                     <Icon
                       aria-hidden="true"
-                      className="text-[18px] text-cyan-700 transition-colors group-hover:text-fuchsia-700"
+                      className="text-[18px] text-[#1252aa] transition-colors group-hover:text-[#0737c6]"
                     />
-                    <span className="font-semibold text-slate-800 transition-colors group-hover:text-slate-950">
+                    <span className="font-semibold text-slate-800 transition-colors group-hover:text-[#0737c6]">
                       {item.label}
                     </span>
                     <span className="truncate text-slate-700">{item.value}</span>
@@ -119,7 +119,7 @@ export default function HomePage() {
       <section id="portfolio" className="section-muted" aria-labelledby="portfolio-heading">
         <div className="page-container py-20 sm:py-24">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-cyan-700">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#1252aa]">
               Portfolio
             </p>
             <h2
@@ -164,9 +164,9 @@ export default function HomePage() {
                 <Reveal key={title} delay={index * 0.05} y={18}>
                   <a
                     href={href}
-                    className="focus-ring subtle-card group flex items-start gap-4 rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300"
+                    className="focus-ring subtle-card group flex items-start gap-4 rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-[#1252aa]/45"
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-cyan-200 bg-white/75 text-cyan-700 transition-colors group-hover:text-fuchsia-700">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#1252aa]/25 bg-white/75 text-[#1252aa] transition-colors group-hover:text-[#0737c6]">
                       <Icon aria-hidden="true" className="text-xl" />
                     </span>
                     <span>
@@ -200,17 +200,17 @@ export default function HomePage() {
                     .map((certificate) => (
                       <article
                         key={certificate.title}
-                        className="overflow-hidden rounded-lg border border-cyan-100 bg-white/70"
+                        className="overflow-hidden rounded-lg border border-[#1252aa]/15 bg-white/70"
                       >
                         <img
                           src={certificate.image}
                           alt={certificate.title}
                           width={520}
                           height={380}
-                          className="aspect-[4/3] w-full border-b border-cyan-100 object-cover"
+                          className="aspect-[4/3] w-full border-b border-[#1252aa]/15 object-cover"
                         />
                         <div className="p-4">
-                          <p className="text-xs font-medium uppercase tracking-[0.16em] text-cyan-700">
+                          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#1252aa]">
                             {certificate.issuer} - {certificate.year}
                           </p>
                           <h4 className="mt-2 text-lg font-semibold leading-tight text-slate-950">
@@ -244,15 +244,15 @@ export default function HomePage() {
           </Reveal>
 
           <div className="relative mt-12 max-w-4xl">
-            <div className="absolute bottom-0 left-[9px] top-0 w-px bg-gradient-to-b from-cyan-300 via-fuchsia-300 to-emerald-300" />
+            <div className="absolute bottom-0 left-[9px] top-0 w-px bg-gradient-to-b from-[#0737c6] via-[#1252aa] to-emerald-300" />
 
             <div className="space-y-10">
               {minimalTimelineItems.map((item, index) => (
                 <Reveal key={`${item.title}-${item.date}`} delay={index * 0.035} y={18}>
                   <article className="relative pl-10">
-                    <span className="absolute left-0 top-1.5 z-10 h-[19px] w-[19px] rounded-full border border-white bg-gradient-to-br from-cyan-400 to-fuchsia-500 shadow-[0_0_0_6px_rgba(255,255,255,0.86)]" />
+                    <span className="absolute left-0 top-1.5 z-10 h-[19px] w-[19px] rounded-full border border-white bg-gradient-to-br from-[#0737c6] to-[#1252aa] shadow-[0_0_0_6px_rgba(255,255,255,0.86)]" />
                     <div className="grid gap-3 sm:grid-cols-[9rem_1fr]">
-                      <p className="text-sm font-medium text-cyan-700">{item.date}</p>
+                      <p className="text-sm font-medium text-[#1252aa]">{item.date}</p>
                       <div>
                         <h3 className="text-xl font-semibold leading-tight text-slate-950">
                           {item.title}
@@ -294,7 +294,7 @@ export default function HomePage() {
                 <a
                   key={method.label}
                   href={method.href}
-                  className="focus-ring subtle-card flex items-center justify-between gap-4 rounded-lg px-5 py-4 transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300"
+                  className="focus-ring subtle-card flex items-center justify-between gap-4 rounded-lg px-5 py-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#1252aa]/45"
                 >
                   <span className="text-sm font-medium text-slate-500">{method.label}</span>
                   <span className="text-right text-sm font-semibold text-slate-950">
