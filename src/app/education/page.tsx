@@ -53,11 +53,11 @@ export default function EducationPage() {
           Certificates
         </p>
         <h2 className="mt-4 text-3xl font-semibold text-neutral-950 sm:text-4xl">
-          Anthropic Academy courses
+          Certificates and awards
         </h2>
         <p className="mt-4 text-base leading-8 text-neutral-600">
-          These are the certificates I earned on Anthropic Academy&apos;s Skilljar platform.
-          Each card includes the course name, completion date, and proof links.
+          These include my Anthropic Academy certificates, hackathon completion proof, and my
+          2nd place award. Each card includes the title, completion date, and proof links.
         </p>
       </Reveal>
 

@@ -113,12 +113,12 @@ export default function HomePage() {
               id="certificates-heading"
               className="mt-4 text-3xl font-semibold text-slate-950 sm:text-4xl"
             >
-              Anthropic courses I completed
+              Certificates and awards
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-              These certificates came from Anthropic Academy on Skilljar. I completed the
-              courses, passed the final assessments where required, and earned the certificates
-              of completion shown below.
+              These include my Anthropic Academy certificates plus hackathon participation and
+              award certificates. Each card shows the completion date, summary, and available
+              proof links.
             </p>
           </Reveal>
 

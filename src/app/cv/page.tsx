@@ -106,8 +106,8 @@ export default function CvPage() {
               Certificates
             </h2>
             <p className="mt-3 text-sm leading-7 text-neutral-600">
-              Completed through Anthropic Academy on Skilljar, with proof links included for each
-              certificate.
+              Certificates, hackathon proof, and awards from Anthropic Academy and Chungbuk
+              hackathon work, with proof links included where available.
             </p>
             <div className="mt-5 grid gap-4">
               {certifications.map((certificate) => (

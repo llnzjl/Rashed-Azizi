@@ -531,6 +531,28 @@ export const educationItems = [
 
 export const certifications: Certification[] = [
   {
+    title: "Chungbuk Hackathon Completion Certificate",
+    issuer: "Chungbuk Pro Maker Center",
+    platform: "Hackathon",
+    course: "Together Korea Worker Support App",
+    completedOn: "2025",
+    summary:
+      "Completed the Chungbuk hackathon as part of the Together Korea team and received a certificate of participation.",
+    image: publicAsset("/certificates/chungbuk-hackathon-completion.jpg"),
+    courseUrl: "https://www.veritas-a.com/news/articleView.html?idxno=572820",
+  },
+  {
+    title: "Chungbuk Hackathon 2nd Place Award",
+    issuer: "Chungbuk Pro Maker Center",
+    platform: "Hackathon",
+    course: "Together Korea Worker Support App",
+    completedOn: "2025",
+    summary:
+      "Earned 2nd place for the Together Korea worker support concept at the Chungbuk hackathon.",
+    image: publicAsset("/certificates/chungbuk-hackathon-second-place.jpg"),
+    courseUrl: "https://www.veritas-a.com/news/articleView.html?idxno=572820",
+  },
+  {
     title: "Claude Code in Action",
     issuer: "Anthropic Academy",
     platform: "Skilljar",
