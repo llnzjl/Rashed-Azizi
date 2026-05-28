@@ -18,6 +18,10 @@ export const metadata = createPageMetadata({
   path: "/cv",
 });
 
+function getCertificateFrameAspect(title: string) {
+  return title.includes("Hackathon") ? "aspect-[3/4]" : "aspect-[4/3]";
+}
+
 export default function CvPage() {
   return (
     <section className="page-container py-20 sm:py-24">
@@ -116,13 +120,17 @@ export default function CvPage() {
                   className="subtle-card rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-neutral-300"
                 >
                   <div className="grid gap-4 sm:grid-cols-[10rem_1fr]">
-                    <div className="overflow-hidden rounded-lg border border-neutral-200 bg-slate-950/70 p-2">
+                    <div
+                      className={`relative overflow-hidden rounded-lg border border-neutral-200 bg-slate-950/70 p-2 ${getCertificateFrameAspect(
+                        certificate.title,
+                      )}`}
+                    >
                       <Image
                         src={certificate.image}
                         alt={certificate.title}
-                        width={3301}
-                        height={2551}
-                        className="aspect-[4/3] w-full object-contain"
+                        fill
+                        sizes="(max-width: 640px) 100vw, 10rem"
+                        className="object-contain p-1"
                       />
                     </div>
 
