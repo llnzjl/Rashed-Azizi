@@ -32,6 +32,18 @@ export type ContactLink = {
   icon: "email" | "linkedin" | "github" | "instagram";
 };
 
+export type Certification = {
+  title: string;
+  issuer: string;
+  platform: string;
+  course: string;
+  completedOn: string;
+  summary: string;
+  image: string;
+  courseUrl: string;
+  verificationUrl?: string;
+};
+
 const repoName = "Rashed-Azizi";
 const siteOrigin = "https://llnzjl.github.io";
 const siteBasePath = process.env.NODE_ENV === "production" ? `/${repoName}` : "";
@@ -517,27 +529,41 @@ export const educationItems = [
   },
 ];
 
-export const certifications = [
+export const certifications: Certification[] = [
   {
-    title: "Hackathon Completion Certificate",
-    issuer: "Chungbuk Pro Maker Center",
-    year: "2025",
-    note: "Issued for participating in the Together Korea hackathon project.",
-    image: publicAsset("/certificates/chungbuk-hackathon-completion.jpg"),
+    title: "Claude Code in Action",
+    issuer: "Anthropic Academy",
+    platform: "Skilljar",
+    course: "Claude Code in Action",
+    completedOn: "May 27, 2026",
+    summary:
+      "Completed the free Anthropic course focused on integrating Claude Code into a development workflow.",
+    image: publicAsset("/certificates/claude-code-in-action.png"),
+    courseUrl: "https://anthropic.skilljar.com/claude-code-in-action",
+    verificationUrl: "https://verify.skilljar.com/c/oakzcwzck222",
   },
   {
-    title: "2nd Place Award Certificate",
-    issuer: "Chungbuk Pro Maker Center",
-    year: "2025",
-    note: "Awarded to Team Together Korea for placing second in the competition.",
-    image: publicAsset("/certificates/chungbuk-hackathon-second-place.jpg"),
+    title: "Claude with the Anthropic API",
+    issuer: "Anthropic Academy",
+    platform: "Skilljar",
+    course: "Building with the Claude API",
+    completedOn: "May 27, 2026",
+    summary:
+      "Completed the Anthropic API course covering chat, tools, RAG, MCP, and agent workflows.",
+    image: publicAsset("/certificates/claude-with-the-anthropic-api.png"),
+    courseUrl: "https://anthropic.skilljar.com/claude-with-the-anthropic-api",
+    verificationUrl: "https://verify.skilljar.com/c/9hny3g2zeufb",
   },
   {
-    title: "High School Diploma",
-    issuer: "Osong High School",
-    year: "Pending update",
-    note: "Replace this entry with the actual scanned diploma once ready.",
-    image: "",
+    title: "Teaching the AI Fluency Framework",
+    issuer: "Anthropic Academy",
+    platform: "Skilljar",
+    course: "Teaching AI Fluency",
+    completedOn: "May 27, 2026",
+    summary:
+      "Completed the instructor-led AI Fluency course for teaching and assessing the 4D framework.",
+    image: publicAsset("/certificates/teaching-ai-fluency-framework.png"),
+    courseUrl: "https://anthropic.skilljar.com/teaching-ai-fluency",
   },
 ];
 

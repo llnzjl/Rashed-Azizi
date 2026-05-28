@@ -94,10 +94,11 @@ export function EducationSection() {
                   Certifications & Awards
                 </h3>
                 <p className="mt-2 text-sm text-slate-400">
-                  Replace placeholder files with higher-resolution scans any time.
+                  Completed through Anthropic Academy on Skilljar, with course and verification
+                  links attached.
                 </p>
               </div>
-              <span className="chip">Editable archive</span>
+              <span className="chip">{certifications.length} certificates</span>
             </div>
 
             <div className="mt-8 grid gap-4">
@@ -107,28 +108,39 @@ export function EducationSection() {
                   className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <p className="font-display text-lg font-semibold text-white">
                         {certificate.title}
                       </p>
-                      <p className="mt-2 text-sm text-slate-400">
-                        {certificate.issuer} • {certificate.year}
+                      <p className="mt-2 text-sm text-slate-400">{certificate.course}</p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.24em] text-slate-500">
+                        {certificate.issuer} - {certificate.platform} - {certificate.completedOn}
                       </p>
                     </div>
-                    {certificate.image ? (
-                      <Link
-                        href={certificate.image}
-                        target="_blank"
-                        data-cursor-label="View"
-                        className="interactive-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-white"
-                      >
-                        <HiOutlineArrowUpRight />
+
+                    <Link
+                      href={certificate.courseUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor-label="View"
+                      className="interactive-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-white"
+                    >
+                      <HiOutlineArrowUpRight />
+                    </Link>
+                  </div>
+
+                  <p className="mt-4 text-sm leading-7 text-slate-300">{certificate.summary}</p>
+
+                  <div className="mt-4 flex flex-wrap gap-3 text-sm text-slate-300">
+                    <Link href={certificate.courseUrl} target="_blank" rel="noreferrer">
+                      Course page
+                    </Link>
+                    {certificate.verificationUrl ? (
+                      <Link href={certificate.verificationUrl} target="_blank" rel="noreferrer">
+                        Verify
                       </Link>
                     ) : null}
                   </div>
-                  <p className="mt-4 text-sm leading-7 text-slate-300">
-                    {certificate.note}
-                  </p>
                 </div>
               ))}
             </div>

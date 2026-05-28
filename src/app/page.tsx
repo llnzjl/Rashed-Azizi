@@ -1,9 +1,9 @@
 import type { IconType } from "react-icons";
+import Image from "next/image";
 import {
   HiOutlineBookOpen,
   HiOutlineEnvelope,
   HiOutlineFlag,
-  HiOutlineTrophy,
 } from "react-icons/hi2";
 import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 
@@ -103,6 +103,80 @@ export default function HomePage() {
         </Reveal>
       </section>
 
+      <section className="section-muted" aria-labelledby="certificates-heading">
+        <div className="page-container py-20 sm:py-24">
+          <Reveal className="max-w-3xl">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-amber-700">
+              Certificates
+            </p>
+            <h2
+              id="certificates-heading"
+              className="mt-4 text-3xl font-semibold text-slate-950 sm:text-4xl"
+            >
+              Anthropic courses I completed
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
+              These certificates came from Anthropic Academy on Skilljar. I completed the
+              courses, passed the final assessments where required, and earned the certificates
+              of completion shown below.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {certifications.map((certificate, index) => (
+              <Reveal key={certificate.title} delay={index * 0.05} y={18}>
+                <article className="subtle-card overflow-hidden rounded-lg">
+                  <div className="border-b border-[#1252aa]/15 bg-slate-950/70 p-3">
+                    <Image
+                      src={certificate.image}
+                      alt={certificate.title}
+                      width={3301}
+                      height={2551}
+                      className="aspect-[4/3] w-full rounded-md object-contain"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#1252aa]">
+                      {certificate.completedOn}
+                    </p>
+                    <h3 className="mt-2 text-lg font-semibold leading-tight text-slate-950">
+                      {certificate.title}
+                    </h3>
+                    <p className="mt-2 text-sm font-medium text-slate-500">{certificate.course}</p>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {certificate.summary}
+                    </p>
+                    <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-slate-400">
+                      {certificate.issuer} - {certificate.platform}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-3 text-sm font-medium">
+                      <a
+                        href={certificate.courseUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="quiet-link focus-ring rounded"
+                      >
+                        Course page
+                      </a>
+                      {certificate.verificationUrl ? (
+                        <a
+                          href={certificate.verificationUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="quiet-link focus-ring rounded"
+                        >
+                          Verify
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-band" aria-labelledby="intro-heading">
         <div className="page-container py-14 sm:py-16">
           <Reveal className="max-w-4xl">
@@ -152,81 +226,33 @@ export default function HomePage() {
               id="home-more-heading"
               className="mt-4 text-3xl font-semibold text-slate-950 sm:text-4xl"
             >
-              Blog, goals, and awards
+              Blog and goals
             </h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
-              A quick place to see my learning notes, future goals, and certificates from
-              important student project milestones.
+              A quick place to see my learning notes and the future goals I am still working
+              toward.
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="grid gap-4">
-              {homeFeatureLinks.map(({ title, href, description, Icon }, index) => (
-                <Reveal key={title} delay={index * 0.05} y={18}>
-                  <a
-                    href={href}
-                    className="focus-ring subtle-card group flex items-start gap-4 rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-[#1252aa]/45"
-                  >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#1252aa]/25 bg-white/75 text-[#1252aa] transition-colors group-hover:text-[#0737c6]">
-                      <Icon aria-hidden="true" className="text-xl" />
-                    </span>
-                    <span>
-                      <span className="block text-lg font-semibold text-slate-950">{title}</span>
-                      <span className="mt-2 block text-sm leading-7 text-slate-600">
-                        {description}
-                      </span>
-                    </span>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={0.1} y={18}>
-              <div className="subtle-card rounded-lg p-5 sm:p-6">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-md border border-amber-200 bg-white/75 text-amber-700">
-                    <HiOutlineTrophy aria-hidden="true" className="text-xl" />
+          <div className="mt-12 grid gap-4 md:grid-cols-2">
+            {homeFeatureLinks.map(({ title, href, description, Icon }, index) => (
+              <Reveal key={title} delay={index * 0.05} y={18}>
+                <a
+                  href={href}
+                  className="focus-ring subtle-card group flex items-start gap-4 rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-[#1252aa]/45"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#1252aa]/25 bg-white/75 text-[#1252aa] transition-colors group-hover:text-[#0737c6]">
+                    <Icon aria-hidden="true" className="text-xl" />
                   </span>
-                  <div>
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-amber-700">
-                      Award List
-                    </p>
-                    <h3 className="text-2xl font-semibold text-slate-950">Certificates</h3>
-                  </div>
-                </div>
-
-                <div className="mt-6 grid gap-5 md:grid-cols-2">
-                  {certifications
-                    .filter((certificate) => certificate.image)
-                    .map((certificate) => (
-                      <article
-                        key={certificate.title}
-                        className="overflow-hidden rounded-lg border border-[#1252aa]/15 bg-white/70"
-                      >
-                        <img
-                          src={certificate.image}
-                          alt={certificate.title}
-                          width={520}
-                          height={380}
-                          className="aspect-[4/3] w-full border-b border-[#1252aa]/15 object-cover"
-                        />
-                        <div className="p-4">
-                          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#1252aa]">
-                            {certificate.issuer} - {certificate.year}
-                          </p>
-                          <h4 className="mt-2 text-lg font-semibold leading-tight text-slate-950">
-                            {certificate.title}
-                          </h4>
-                          <p className="mt-2 text-sm leading-6 text-slate-600">
-                            {certificate.note}
-                          </p>
-                        </div>
-                      </article>
-                    ))}
-                </div>
-              </div>
-            </Reveal>
+                  <span>
+                    <span className="block text-lg font-semibold text-slate-950">{title}</span>
+                    <span className="mt-2 block text-sm leading-7 text-slate-600">
+                      {description}
+                    </span>
+                  </span>
+                </a>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

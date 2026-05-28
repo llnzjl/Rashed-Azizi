@@ -1,12 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { Reveal } from "@/components/site/reveal";
-import { minimalProjects, minimalTimelineItems, siteData, techStack } from "@/data/portfolio";
+import {
+  certifications,
+  minimalProjects,
+  minimalTimelineItems,
+  siteData,
+  techStack,
+} from "@/data/portfolio";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
   title: "CV",
-  description: "A clean web CV for Rashed Azizi with profile, projects, skills, and contact links.",
+  description:
+    "A clean web CV for Rashed Azizi with profile, projects, skills, certificates, and contact links.",
   path: "/cv",
 });
 
@@ -89,6 +97,73 @@ export default function CvPage() {
                 >
                   {skill.name}
                 </span>
+              ))}
+            </div>
+          </section>
+
+          <section aria-labelledby="cv-certificates">
+            <h2 id="cv-certificates" className="text-2xl font-semibold text-neutral-950">
+              Certificates
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-neutral-600">
+              Completed through Anthropic Academy on Skilljar, with proof links included for each
+              certificate.
+            </p>
+            <div className="mt-5 grid gap-4">
+              {certifications.map((certificate) => (
+                <article
+                  key={certificate.title}
+                  className="subtle-card rounded-lg p-5 transition duration-200 hover:-translate-y-0.5 hover:border-neutral-300"
+                >
+                  <div className="grid gap-4 sm:grid-cols-[10rem_1fr]">
+                    <div className="overflow-hidden rounded-lg border border-neutral-200 bg-slate-950/70 p-2">
+                      <Image
+                        src={certificate.image}
+                        alt={certificate.title}
+                        width={3301}
+                        height={2551}
+                        className="aspect-[4/3] w-full object-contain"
+                      />
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-medium text-neutral-400">{certificate.completedOn}</p>
+                      <h3 className="mt-2 text-lg font-semibold text-neutral-950">
+                        {certificate.title}
+                      </h3>
+                      <p className="mt-2 text-sm font-medium text-neutral-500">
+                        {certificate.course}
+                      </p>
+                      <p className="mt-3 text-sm leading-7 text-neutral-600">
+                        {certificate.summary}
+                      </p>
+                      <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-neutral-400">
+                        {certificate.issuer} - {certificate.platform}
+                      </p>
+
+                      <div className="mt-4 flex flex-wrap gap-3 text-sm font-medium">
+                        <Link
+                          href={certificate.courseUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="quiet-link focus-ring rounded"
+                        >
+                          Course page
+                        </Link>
+                        {certificate.verificationUrl ? (
+                          <Link
+                            href={certificate.verificationUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="quiet-link focus-ring rounded"
+                          >
+                            Verify
+                          </Link>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
           </section>

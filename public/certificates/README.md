@@ -1,13 +1,17 @@
-Place future hackathon certificate photos in this folder.
+Certificate images for the portfolio live in this folder.
 
-Expected filenames:
+Current files:
 
 - chungbuk-hackathon-completion.jpg
 - chungbuk-hackathon-second-place.jpg
-- high-school-diploma.jpg
+- claude-code-in-action.png
+- claude-with-the-anthropic-api.png
+- teaching-ai-fluency-framework.png
 
-The certificate image paths in `src/config.ts` should stay base-relative:
+The certificate image paths in the app should stay base-relative, for example:
 
 - certificates/chungbuk-hackathon-completion.jpg
 - certificates/chungbuk-hackathon-second-place.jpg
-- certificates/high-school-diploma.jpg
+- certificates/claude-code-in-action.png
+- certificates/claude-with-the-anthropic-api.png
+- certificates/teaching-ai-fluency-framework.png
