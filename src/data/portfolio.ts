@@ -559,7 +559,7 @@ export const certifications: Certification[] = [
     course: "Claude Code in Action",
     completedOn: "May 27, 2026",
     summary:
-      "Completed the free Anthropic course focused on integrating Claude Code into a development workflow.",
+      "Completed the course focused on integrating Claude Code into a development workflow.",
     image: publicAsset("/certificates/claude-code-in-action.png"),
     courseUrl: "https://anthropic.skilljar.com/claude-code-in-action",
     verificationUrl: "https://verify.skilljar.com/c/oakzcwzck222",
