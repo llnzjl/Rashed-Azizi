@@ -20,8 +20,8 @@ export default function ProjectsPage() {
           Selected work
         </h1>
         <p className="mt-5 text-base leading-8 text-neutral-600">
-          A small set of projects that show my current learning path across frontend work,
-          software fundamentals, and student collaboration.
+          My latest GitHub projects, from restaurant experiences and day planning to student
+          support in Korea, alongside earlier software projects and team collaborations.
         </p>
       </Reveal>
 

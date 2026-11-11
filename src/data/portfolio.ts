@@ -123,6 +123,38 @@ export const heroSocialLinks = [
 
 export const minimalProjects = [
   {
+    title: "Baraka.uz",
+    description:
+      "A restaurant website with a browsable menu, table reservations, and admin pages for managing menus, orders, and bookings.",
+    href: "https://llnzjl.github.io/baraka.uz/",
+    image: publicAsset("/projects/baraka.svg"),
+    color: "#f6eee3",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    date: "October 2026",
+  },
+  {
+    title: "DateFlow",
+    description:
+      "A day planner that builds itineraries around schedules, budgets, and personal preferences, with collaborative plans and optional AI intent parsing. Currently uses demo places and reservations.",
+    href: "https://llnzjl.github.io/dayflow/",
+    image: publicAsset("/projects/dateflow.svg"),
+    color: "#eef2ff",
+    technologies: ["Next.js", "TypeScript", "SQLite"],
+    date: "October 2026",
+    status: "In development",
+  },
+  {
+    title: "KAA — Korea Assist App",
+    description:
+      "A web app for students in Korea, bringing together university resources, introductory Korean lessons, personal checklists, and saved websites, with optional AI chat and search.",
+    href: "https://llnzjl.github.io/KAA/",
+    image: publicAsset("/projects/kaa.svg"),
+    color: "#e6f4f1",
+    technologies: ["Python", "JavaScript", "SQLite"],
+    date: "September 2026",
+    status: "In development",
+  },
+  {
     title: "Together Korea Worker Support App",
     description:
       "A hackathon product concept for foreign workers in Korea, focused on guidance, accessibility, and practical support through an AI-assisted experience.",

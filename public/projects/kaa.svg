@@ -1,0 +1,20 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#E6F4F1"/>
+  <circle cx="1050" cy="130" r="260" fill="#CDE9E2"/>
+  <rect x="150" y="100" width="900" height="550" rx="28" fill="#FAFFFD" stroke="#C5DED7" stroke-width="3"/>
+  <text x="205" y="185" fill="#146C5B" font-family="Arial, sans-serif" font-size="46" font-weight="700">KAA</text>
+  <text x="205" y="236" fill="#244E43" font-family="Arial, sans-serif" font-size="30">Korea Assist App</text>
+  <text x="205" y="291" fill="#5A7A71" font-family="Arial, sans-serif" font-size="22">A companion for student life in Korea.</text>
+  <rect x="205" y="345" width="225" height="165" rx="18" fill="#DDF1EA"/>
+  <rect x="455" y="345" width="225" height="165" rx="18" fill="#E9EEFF"/>
+  <rect x="705" y="345" width="285" height="165" rx="18" fill="#FFF1D9"/>
+  <path d="M267 404L317 378L367 404L317 430Z M284 414V442Q317 463 350 442V414" stroke="#146C5B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M518 385H555Q568 385 568 400Q568 385 581 385H618V442H581Q568 442 568 454Q568 442 555 442H518Z M568 400V446" stroke="#6366A1" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M760 395L769 404L785 384 M805 395H926 M760 430L769 439L785 419 M805 430H902" stroke="#9B742C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#244E43" font-family="Arial, sans-serif" font-size="21" text-anchor="middle">
+    <text x="317" y="486">Universities</text>
+    <text x="568" y="486">Korean lessons</text>
+    <text x="847" y="486">Personal checklists</text>
+  </g>
+  <text x="205" y="592" fill="#5A7A71" font-family="Arial, sans-serif" font-size="20">LEARN / ORGANIZE / EXPLORE</text>
+</svg>

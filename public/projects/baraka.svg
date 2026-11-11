@@ -1,0 +1,20 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#F6EEE3"/>
+  <circle cx="1060" cy="100" r="240" fill="#EADAC4"/>
+  <rect x="150" y="100" width="900" height="550" rx="28" fill="#FFFDF8" stroke="#DDD1BE" stroke-width="3"/>
+  <rect x="150" y="100" width="900" height="80" rx="28" fill="#284B3C"/>
+  <text x="195" y="152" fill="#FFFDF8" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="6">BARAKA</text>
+  <circle cx="950" cy="140" r="7" fill="#D9B578"/>
+  <circle cx="980" cy="140" r="7" fill="#D9B578"/>
+  <text x="205" y="285" fill="#284B3C" font-family="Georgia, serif" font-size="58">A seat at the table.</text>
+  <rect x="205" y="320" width="340" height="14" rx="7" fill="#E3DBCE"/>
+  <rect x="205" y="350" width="265" height="14" rx="7" fill="#E3DBCE"/>
+  <rect x="205" y="410" width="225" height="58" rx="12" fill="#284B3C"/>
+  <text x="235" y="447" fill="#FFFDF8" font-family="Arial, sans-serif" font-size="21">Reserve a table</text>
+  <circle cx="818" cy="390" r="125" fill="#EEE6D7"/>
+  <circle cx="818" cy="390" r="96" fill="#FFFDF8" stroke="#D8B882" stroke-width="3"/>
+  <circle cx="818" cy="390" r="62" fill="#D9B578"/>
+  <path d="M795 365Q828 345 848 380Q842 426 802 414Q779 396 795 365Z" fill="#658264"/>
+  <text x="205" y="575" fill="#284B3C" font-family="Arial, sans-serif" font-size="34" font-weight="700">Baraka.uz</text>
+  <text x="205" y="610" fill="#766B5C" font-family="Arial, sans-serif" font-size="20">MENU / RESERVATIONS / RESTAURANT MANAGEMENT</text>
+</svg>

@@ -202,8 +202,11 @@ export default function HomePage() {
               id="portfolio-heading"
               className="mt-4 text-3xl font-semibold text-slate-950 sm:text-4xl"
             >
-              My top projects
+              Latest projects & selected work
             </h2>
+            <p className="mt-4 text-sm leading-7 text-slate-600">
+              Recent builds from my GitHub, alongside earlier software projects and team work.
+            </p>
           </Reveal>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
