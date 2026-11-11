@@ -28,7 +28,7 @@ export function createPageMetadata({
   const fullTitle = `${title} | ${siteData.name}`;
 
   return {
-    title,
+    title: { absolute: fullTitle },
     description,
     alternates: {
       canonical: url,

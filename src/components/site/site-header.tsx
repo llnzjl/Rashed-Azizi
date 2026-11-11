@@ -1,139 +1,145 @@
 "use client";
-
-import { useEffect, useMemo, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
-import { HiBars3, HiXMark } from "react-icons/hi2";
-
-import { minimalNavItems, siteData } from "@/data/portfolio";
-
-function normalizePath(pathname: string) {
-  const path = pathname || "/";
-  return path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
-}
+import {
+  HiBars3,
+  HiXMark,
+  HiOutlineMoon,
+  HiOutlineSun,
+  HiArrowUpRight,
+} from "react-icons/hi2";
+import { sectionNavigation } from "@/data/showcase";
 
 export function SiteHeader() {
-  const pathname = usePathname() ?? "/";
-  const activePath = useMemo(() => normalizePath(pathname), [pathname]);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState("dark");
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const isHome = pathname === "/";
 
   useEffect(() => {
-    const updateScroll = () => setIsScrolled(window.scrollY > 18);
-    updateScroll();
-    window.addEventListener("scroll", updateScroll, { passive: true });
-    return () => window.removeEventListener("scroll", updateScroll);
-  }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [activePath]);
-
-  useEffect(() => {
-    if (!open) {
-      return undefined;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
+    setTheme(document.documentElement.dataset.theme || "dark");
+    const update = () => {
+      setScrolled(window.scrollY > 24);
+      if (isHome) {
+        const current = sectionNavigation
+          .filter(
+            ({ id }) =>
+              (document.getElementById(id)?.getBoundingClientRect().top ??
+                Infinity) <= 180,
+          )
+          .pop();
+        setActive(current?.id || "home");
       }
     };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [isHome]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
   }, [open]);
 
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("ra-theme", next);
+    } catch {
+      /* Keep the current theme without storage. */
+    }
+  }
+  const routeSection: Record<string, string> = {
+    "/projects/": "projects",
+    "/about/": "about",
+    "/education/": "certificates",
+    "/experience/": "journey",
+    "/blog/": "blog",
+    "/contact/": "contact",
+  };
+  const selected = isHome
+    ? active
+    : routeSection[(pathname?.replace(/\/$/, "") || "") + "/"];
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <motion.nav
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: "easeInOut" }}
-        className={`transition-all duration-300 ${
-          isScrolled
-            ? "border-b border-[#1252aa]/15 bg-white/[0.76] shadow-[0_14px_42px_rgba(7,55,198,0.14)] backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent"
-        }`}
-        aria-label="Primary navigation"
-      >
-        <div className="page-container flex h-20 items-center justify-between">
-          <Link
-            href="/"
-            className="focus-ring rounded-md text-[15px] font-semibold text-slate-950 transition-colors hover:text-[#0737c6]"
-          >
-            {siteData.name}
-          </Link>
-
-          <div className="hidden items-center gap-1 sm:flex">
-            {minimalNavItems.map((item) => {
-              const itemPath = normalizePath(item.href);
-              const isActive =
-                itemPath === "/"
-                  ? activePath === "/"
-                  : activePath === itemPath || activePath.startsWith(`${itemPath}/`);
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`focus-ring rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "bg-[#1252aa]/10 text-[#0737c6]"
-                      : "text-slate-500 hover:text-[#0737c6]"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-
+    <header className={`site-header ${scrolled || open ? "is-scrolled" : ""}`}>
+      <nav className="nav-shell" aria-label="Primary navigation">
+        <Link href="/" className="brand" aria-label="Rashed Azizi home">
+          <span className="monogram">
+            RA<span>.</span>
+          </span>
+          <span className="brand-name">Rashed Azizi</span>
+        </Link>
+        <div className="desktop-navigation">
+          {sectionNavigation.map((item) => (
+            <Link
+              key={item.id}
+              href={`/#${item.id}`}
+              className={selected === item.id ? "nav-link active" : "nav-link"}
+              aria-current={selected === item.id ? "location" : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        <div className="nav-actions">
           <button
-            type="button"
-            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((current) => !current)}
-            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#1252aa]/20 bg-white/80 text-xl text-[#0737c6] shadow-sm backdrop-blur transition-colors hover:bg-[#1252aa]/10 sm:hidden"
+            className="icon-button theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            title="Change color theme"
           >
-            {open ? <HiXMark aria-hidden="true" /> : <HiBars3 aria-hidden="true" />}
+            {theme === "dark" ? <HiOutlineSun /> : <HiOutlineMoon />}
+          </button>
+          <Link href="/cv" className="nav-cv">
+            View CV <HiArrowUpRight />
+          </Link>
+          <button
+            ref={menuButton}
+            className="icon-button mobile-menu-button"
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <HiXMark /> : <HiBars3 />}
           </button>
         </div>
-      </motion.nav>
-
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="border-b border-[#1252aa]/20 bg-white/86 backdrop-blur-xl sm:hidden"
-          >
-            <div className="page-container grid gap-1 py-3">
-              {minimalNavItems.map((item) => {
-                const isActive = activePath === normalizePath(item.href);
-
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`focus-ring rounded-md px-3 py-3 text-sm font-medium ${
-                      isActive ? "bg-[#1252aa]/10 text-[#0737c6]" : "text-slate-600"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+        {open && (
+          <div id="mobile-navigation" className="mobile-navigation">
+            {sectionNavigation.map((item, index) => (
+              <Link
+                key={item.id}
+                href={`/#${item.id}`}
+                onClick={() => setOpen(false)}
+                aria-current={selected === item.id ? "location" : undefined}
+              >
+                <span className="mono">0{index + 1}</span>
+                {item.label}
+                <HiArrowUpRight />
+              </Link>
+            ))}
+            <Link href="/impossiblelist" onClick={() => setOpen(false)}>
+              The impossible list <HiArrowUpRight />
+            </Link>
+          </div>
+        )}
+      </nav>
     </header>
   );
 }

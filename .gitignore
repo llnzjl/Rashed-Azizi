@@ -3,6 +3,7 @@ dist/
 .dist/
 .astro/
 .next/
+.next-dev/
 out/
 
 # dependencies

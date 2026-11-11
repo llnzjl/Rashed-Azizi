@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "check": "tsc --noEmit"
+    "start": "node scripts/serve-export.mjs",
+    "check": "tsc --noEmit",
+    "check:export": "node scripts/check-export.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.18.2",

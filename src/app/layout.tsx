@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { OceanBackground } from "@/components/site/ocean-background";
+import { AutumnLeaves } from "@/components/site/autumn-leaves";
+import { SiteExperience } from "@/components/site/site-experience";
 import { PageTransition } from "@/components/site/page-transition";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -55,14 +56,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('ra-theme');document.documentElement.dataset.theme=t==='light'?'light':'dark'}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body>
-        <OceanBackground />
-        <SiteHeader />
-        <PageTransition>
-          <main className="relative z-10 pt-20">{children}</main>
-        </PageTransition>
-        <SiteFooter />
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <SiteExperience>
+          <AutumnLeaves />
+          <SiteHeader />
+          <PageTransition>
+            <main id="main-content" tabIndex={-1}>
+              {children}
+            </main>
+          </PageTransition>
+          <SiteFooter />
+        </SiteExperience>
       </body>
     </html>
   );

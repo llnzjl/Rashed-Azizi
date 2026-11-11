@@ -1,15 +1,25 @@
 import type { MetadataRoute } from "next";
 
-import { minimalNavItems } from "@/data/portfolio";
 import { getPageUrl } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return minimalNavItems.map((item) => ({
-    url: getPageUrl(item.href),
+  const routes = [
+    "/",
+    "/about",
+    "/projects",
+    "/blog",
+    "/impossiblelist",
+    "/cv",
+    "/education",
+    "/experience",
+    "/contact",
+  ];
+  return routes.map((path) => ({
+    url: getPageUrl(path),
     lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: item.href === "/" ? 1 : 0.8,
+    priority: path === "/" ? 1 : 0.8,
   }));
 }
