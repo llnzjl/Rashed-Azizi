@@ -563,6 +563,19 @@ export const educationItems = [
 
 export const certifications: Certification[] = [
   {
+    title: "AI Fundamentals: Foundations for Understanding AI",
+    issuer: "IBM SkillsBuild",
+    platform: "IBM SkillsBuild",
+    course: "AI Fundamentals: Foundations for Understanding AI",
+    completedOn: "Nov 24, 2026",
+    summary:
+      "Earning this badge took steady effort. I stuck with the course when the concepts were challenging, and I’m proud to have built a stronger foundation in how AI works. It’s a milestone I can build on as I apply what I’ve learned to future projects.",
+    image: publicAsset("/certificates/ibm-skillsbuild-ai-fundamentals.png"),
+    courseUrl:
+      "https://www.ibm.com/training/badge/ai-fundamentals-foundations-for-understanding-ai",
+    verificationUrl: "https://www.credly.com/go/lWLZrEi1",
+  },
+  {
     title: "Chungbuk Hackathon Completion Certificate",
     issuer: "Chungbuk Pro Maker Center",
     platform: "Hackathon",
