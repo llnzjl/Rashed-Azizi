@@ -563,6 +563,17 @@ export const educationItems = [
 
 export const certifications: Certification[] = [
   {
+    title: "Cybersecurity Fundamentals",
+    issuer: "IBM SkillsBuild",
+    platform: "IBM SkillsBuild",
+    course: "Cybersecurity Fundamentals",
+    completedOn: "Nov 25, 2026",
+    summary: "Earned the IBM SkillsBuild Cybersecurity Fundamentals credential.",
+    image: publicAsset("/certificates/ibm-cybersecurity-fundamentals.png"),
+    courseUrl: "https://www.credly.com/badges/9d73ff77-18ff-4629-855b-4c785ce17188",
+    verificationUrl: "https://www.credly.com/badges/9d73ff77-18ff-4629-855b-4c785ce17188",
+  },
+  {
     title: "AI Fundamentals: Foundations for Understanding AI",
     issuer: "IBM SkillsBuild",
     platform: "IBM SkillsBuild",
