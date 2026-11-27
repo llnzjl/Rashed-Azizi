@@ -564,6 +564,17 @@ export const educationItems = [
 
 export const certifications: Certification[] = [
   {
+    title: "Amazon Aurora MySQL and Amazon RDS MySQL",
+    issuer: "AWS Training & Certification",
+    platform: "AWS Skill Builder",
+    course: "Amazon Aurora MySQL and Amazon RDS MySQL",
+    completedOn: "Nov 27, 2026",
+    summary: "Completed AWS training in managing MySQL databases with Amazon Aurora and Amazon RDS.",
+    image: publicAsset("/certificates/aws-aurora-mysql-and-rds-mysql.png"),
+    pdfUrl: publicAsset("/certificates/aws-aurora-mysql-and-rds-mysql.pdf"),
+    courseUrl: "https://skillbuilder.aws/search?searchText=amazon-aurora-mysql-and-amazon-rds-mysql",
+  },
+  {
     title: "Fundamentals of Machine Learning and Artificial Intelligence",
     issuer: "AWS Training & Certification",
     platform: "AWS Skill Builder",
