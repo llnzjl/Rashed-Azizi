@@ -2106,6 +2106,63 @@ main {
   background: #f7fbff;
 }
 
+:where(
+  .about-photo, .project-card, .certificate-card, .skill-group, .note-card,
+  .education-card, .goals-overview, .goal, .goals-banner, .dialog-content,
+  .availability, .button-primary, .button-secondary, .nav-cv, .icon-button,
+  .filter, .email-row > a
+) {
+  position: relative;
+}
+
+:where(
+  .nav-shell, .mobile-navigation, .language-menu ul, .portrait-frame,
+  .floating-note, .about-photo, .project-card, .certificate-card,
+  .skill-group, .note-card, .education-card, .goals-overview, .goal,
+  .goals-banner, .dialog-content, .availability, .button-primary,
+  .button-secondary, .nav-cv, .icon-button, .filter, .email-row > a
+)::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  inset-block-start: var(--snow-top, 0px);
+  inset-inline-start: var(--snow-offset, 5%);
+  width: var(--snow-width, min(64%, 230px));
+  height: var(--snow-height, 10px);
+  background:
+    radial-gradient(ellipse 20% 68% at 21% 100%, #f6fbff 82%, transparent 94%),
+    radial-gradient(ellipse 18% 98% at 47% 100%, #fff 84%, transparent 96%),
+    radial-gradient(ellipse 21% 77% at 70% 100%, #eff8ff 84%, transparent 96%),
+    radial-gradient(ellipse 51% 49% at 50% 92%, #d6eaff 90%, transparent 100%);
+  filter: drop-shadow(0 2px 1px #6c99c066);
+  transform: rotate(var(--snow-tilt, 0deg));
+}
+
+:where(.nav-shell, .mobile-navigation, .language-menu ul, .portrait-frame, .education-card, .goals-banner) {
+  --snow-top: -6px;
+  --snow-height: 12px;
+}
+
+:where(.project-wrap:nth-child(even) .project-card, .certificate-wrap:nth-child(even) .certificate-card, .note-card, .goal:nth-child(even), .education-card:nth-child(even)) {
+  --snow-offset: 24%;
+  --snow-width: min(52%, 185px);
+}
+
+:where(.availability, .floating-note, .button-primary, .button-secondary, .nav-cv, .icon-button, .filter, .email-row > a) {
+  --snow-top: -4px;
+  --snow-offset: 12%;
+  --snow-width: min(65%, 70px);
+  --snow-height: 6px;
+  --snow-tilt: -2deg;
+}
+
+@media print {
+  :where(.button-primary, .button-secondary, .education-card, .goals-overview, .goal, .goals-banner, .project-card, .certificate-card, .note-card, .skill-group, .portrait-frame, .about-photo, .dialog-content, .email-row > a)::before {
+    content: none;
+  }
+}
+
 .language-menu {
   position: relative;
   z-index: 2;
