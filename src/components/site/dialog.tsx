@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { useEffect, useRef, type ReactNode } from "react";
 import { HiXMark } from "react-icons/hi2";
 export function Dialog({
@@ -12,6 +13,7 @@ export function Dialog({
   children: ReactNode;
   wide?: boolean;
 }) {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const dialog = ref.current;
@@ -37,10 +39,10 @@ export function Dialog({
     >
       <div className="dialog-content">
         <div className="dialog-heading">
-          <h2 id="dialog-title">{title}</h2>
+          <h2 id="dialog-title">{t(title)}</h2>
           <button
             className="icon-button"
-            aria-label="Close preview"
+            aria-label={t("Close preview")}
             onClick={onClose}
             autoFocus
           >

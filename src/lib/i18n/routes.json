@@ -1,0 +1,47 @@
+[
+  {
+    "route": "",
+    "title": "Developer & Creative Thinker",
+    "description": "Rashed Azizi — computer science student at Chungbuk National University, building thoughtful web experiences and exploring AI."
+  },
+  {
+    "route": "about",
+    "title": "About",
+    "description": "A student, a developer, and a work in progress."
+  },
+  {
+    "route": "blog",
+    "title": "Blog",
+    "description": "Short notes on web development, AI, and the things I’m learning as I build."
+  },
+  {
+    "route": "contact",
+    "title": "Contact",
+    "description": "Open to internships, collaboration, and good conversations."
+  },
+  {
+    "route": "cv",
+    "title": "CV",
+    "description": "Rashed Azizi’s education, projects, skills, certifications, and contact details."
+  },
+  {
+    "route": "education",
+    "title": "Education",
+    "description": "Academic foundations, certificates, and hackathon achievements for Rashed Azizi."
+  },
+  {
+    "route": "experience",
+    "title": "Experience",
+    "description": "Real projects, academic milestones, and learning in public."
+  },
+  {
+    "route": "impossiblelist",
+    "title": "Impossible List",
+    "description": "Rashed Azizi’s public goals for learning, building, and growing as a developer."
+  },
+  {
+    "route": "projects",
+    "title": "Projects",
+    "description": "Web applications, foundational software, and collaborative work. Each project is another way to learn."
+  }
+]

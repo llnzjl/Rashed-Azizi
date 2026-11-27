@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { useState } from "react";
 import {
   HiArrowUpRight,
@@ -9,6 +10,7 @@ import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
 import { siteData } from "@/data/portfolio";
 import { Reveal } from "./reveal";
 export function Contact() {
+  const { t } = useTranslation();
   const [copyState, setCopyState] = useState("");
   async function copyEmail() {
     try {
@@ -25,16 +27,19 @@ export function Contact() {
       <div className="contact-orbit" aria-hidden="true" />
       <Reveal className="page-container contact-inner">
         <p className="eyebrow">
-          <span>07 /</span> WHAT’S NEXT?
+          <span>07 /</span> {t("WHAT’S NEXT?")}
         </p>
         <h2>
-          Have an idea?
+          {t("Have an idea?")}
           <br />
-          Let’s build something <span className="gradient-text">great.</span>
+          <span className="gradient-text">
+            {t("Let’s build something great.")}
+          </span>
         </h2>
         <p className="contact-description">
-          An internship, a collaboration, or a conversation about something
-          worth building. I’d love to hear from you.
+          {t(
+            "An internship, a collaboration, or a conversation about something worth building. I’d love to hear from you.",
+          )}
         </p>
         <div className="email-row">
           <a href={`mailto:${siteData.email}`}>
@@ -44,7 +49,7 @@ export function Contact() {
           <button
             className="icon-button"
             onClick={copyEmail}
-            aria-label="Copy email address"
+            aria-label={t("Copy email address")}
           >
             {copyState === "Email copied" ? (
               <HiOutlineCheck />
@@ -54,7 +59,7 @@ export function Contact() {
           </button>
         </div>
         <p className="copy-status" role="status">
-          {copyState}
+          {t(copyState)}
         </p>
         <div className="contact-socials">
           <a href={siteData.github} target="_blank" rel="noreferrer">
@@ -68,7 +73,7 @@ export function Contact() {
             <HiArrowUpRight />
           </a>
           <span>
-            <i className="status-dot" /> Open to opportunities
+            <i className="status-dot" /> {t("Open to opportunities")}
           </span>
         </div>
       </Reveal>

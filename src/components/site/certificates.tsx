@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -18,6 +19,7 @@ const ordered = [...certifications].sort(
     Number(a.title.includes("2nd Place")),
 );
 export function Certificates({ heading = true }: { heading?: boolean }) {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState("All");
   const [selected, setSelected] = useState<Certification | null>(null);
   const items = ordered.filter(
@@ -38,18 +40,20 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
         {heading && (
           <SectionTitle
             number="04"
-            eyebrow="LEARNING, WITH PROOF"
+            eyebrow={t("LEARNING, WITH PROOF")}
             title={
               <>
-                Milestones worth
-                <br />
-                <span className="muted-heading">keeping.</span>
+                <span className="muted-heading">
+                  {t("Milestones worth keeping.")}
+                </span>
               </>
             }
-            description="From a hackathon podium to new ways of working with AI."
+            description={t(
+              "From a hackathon podium to new ways of working with AI.",
+            )}
           />
         )}
-        <div className="filter-bar" aria-label="Filter certificates">
+        <div className="filter-bar" aria-label={t("Filter certificates")}>
           {["All", "Awards & hackathons", "Certifications"].map((value) => (
             <button
               className={filter === value ? "filter active" : "filter"}
@@ -57,7 +61,7 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
               key={value}
               onClick={() => setFilter(value)}
             >
-              {value}
+              {t(value)}
             </button>
           ))}
         </div>
@@ -76,11 +80,11 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
                 <button
                   className="certificate-image"
                   onClick={() => setSelected(certificate)}
-                  aria-label={`Preview ${certificate.title}`}
+                  aria-label={t("Preview {0}", t(certificate.title))}
                 >
                   <Image
                     src={certificate.image}
-                    alt={certificate.title}
+                    alt={t(certificate.title)}
                     width={800}
                     height={620}
                     sizes="(max-width: 700px) 90vw, 440px"
@@ -96,14 +100,14 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
                     ) : (
                       <HiOutlineCheckBadge />
                     )}
-                    <span>{certificate.issuer}</span>
-                    <span>{certificate.completedOn}</span>
+                    <span>{t(certificate.issuer)}</span>
+                    <span>{t(certificate.completedOn)}</span>
                   </div>
-                  <h3>{certificate.title}</h3>
-                  <p>{certificate.summary}</p>
+                  <h3>{t(certificate.title)}</h3>
+                  <p>{t(certificate.summary)}</p>
                   <div className="certificate-links">
                     <button onClick={() => setSelected(certificate)}>
-                      View certificate <HiArrowUpRight />
+                      {t("View certificate")} <HiArrowUpRight />
                     </button>
                     {certificate.verificationUrl ? (
                       <a
@@ -111,7 +115,7 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Verify <HiOutlineCheckBadge />
+                        {t("Verify")} <HiOutlineCheckBadge />
                       </a>
                     ) : (
                       <a
@@ -120,8 +124,8 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
                         rel="noreferrer"
                       >
                         {certificate.platform === "Hackathon"
-                          ? "Event story"
-                          : "Course"}{" "}
+                          ? t("Event story")
+                          : t("Course")}{" "}
                         <HiArrowUpRight />
                       </a>
                     )}
@@ -132,11 +136,15 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
           ))}
         </div>
         {selected && (
-          <Dialog title={selected.title} onClose={() => setSelected(null)} wide>
+          <Dialog
+            title={t(selected.title)}
+            onClose={() => setSelected(null)}
+            wide
+          >
             <div className="certificate-full">
               <Image
                 src={selected.image}
-                alt={selected.title}
+                alt={t(selected.title)}
                 width={1600}
                 height={1200}
                 sizes="95vw"
@@ -144,19 +152,23 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
             </div>
             <div className="certificate-viewer-caption">
               <p>
-                {selected.issuer} · {selected.completedOn}
+                {t(selected.issuer)} · {t(selected.completedOn)}
               </p>
               <a
                 className="text-link"
-                href={selected.pdfUrl || selected.verificationUrl || selected.courseUrl}
+                href={
+                  selected.pdfUrl ||
+                  selected.verificationUrl ||
+                  selected.courseUrl
+                }
                 target="_blank"
                 rel="noreferrer"
               >
                 {selected.pdfUrl
-                  ? "Open original PDF"
+                  ? t("Open original PDF")
                   : selected.verificationUrl
-                  ? "Verify certificate"
-                  : "View source"}{" "}
+                    ? t("Verify certificate")
+                    : t("View source")}{" "}
                 <HiArrowUpRight />
               </a>
             </div>

@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {
+  LocalizedLink as Link,
+  usePortfolioPathname,
+  useTranslation,
+} from "@/lib/i18n/client";
+import { LanguageMenu } from "./language-menu";
 import {
   HiBars3,
   HiXMark,
@@ -12,7 +16,8 @@ import {
 import { sectionNavigation } from "@/data/showcase";
 
 export function SiteHeader() {
-  const pathname = usePathname();
+  const { t } = useTranslation();
+  const pathname = usePortfolioPathname();
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -78,9 +83,9 @@ export function SiteHeader() {
 
   return (
     <header className={`site-header ${scrolled || open ? "is-scrolled" : ""}`}>
-      <nav className="nav-shell" aria-label="Primary navigation">
-        <Link href="/" className="brand" aria-label="Rashed Azizi home">
-          <span className="monogram">
+      <nav className="nav-shell" aria-label={t("Primary navigation")}>
+        <Link href="/" className="brand" aria-label={t("Rashed Azizi home")}>
+          <span className="monogram" dir="ltr">
             RA<span>.</span>
           </span>
           <span className="brand-name">Rashed Azizi</span>
@@ -93,26 +98,32 @@ export function SiteHeader() {
               className={selected === item.id ? "nav-link active" : "nav-link"}
               aria-current={selected === item.id ? "location" : undefined}
             >
-              {item.label}
+              <span className="snow-capped">{t(item.label)}</span>
             </Link>
           ))}
         </div>
         <div className="nav-actions">
+          <LanguageMenu />
           <button
             className="icon-button theme-toggle"
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-            title="Change color theme"
+            aria-label={
+              theme === "dark"
+                ? t("Switch to light theme")
+                : t("Switch to dark theme")
+            }
+            title={t("Change color theme")}
           >
             {theme === "dark" ? <HiOutlineSun /> : <HiOutlineMoon />}
           </button>
           <Link href="/cv" className="nav-cv">
-            View CV <HiArrowUpRight />
+            <span className="snow-capped">{t("View CV")}</span>{" "}
+            <HiArrowUpRight />
           </Link>
           <button
             ref={menuButton}
             className="icon-button mobile-menu-button"
-            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-label={open ? t("Close navigation") : t("Open navigation")}
             aria-expanded={open}
             aria-controls="mobile-navigation"
             onClick={() => setOpen(!open)}
@@ -130,12 +141,21 @@ export function SiteHeader() {
                 aria-current={selected === item.id ? "location" : undefined}
               >
                 <span className="mono">0{index + 1}</span>
-                {item.label}
+                <span className="snow-capped">{t(item.label)}</span>
                 <HiArrowUpRight />
               </Link>
             ))}
             <Link href="/impossiblelist" onClick={() => setOpen(false)}>
-              The impossible list <HiArrowUpRight />
+              <span className="snow-capped">{t("The impossible list")}</span>{" "}
+              <HiArrowUpRight />
+            </Link>
+            <Link
+              href="/cv"
+              className="mobile-cv"
+              onClick={() => setOpen(false)}
+            >
+              <span className="snow-capped">{t("View CV")}</span>{" "}
+              <HiArrowUpRight />
             </Link>
           </div>
         )}

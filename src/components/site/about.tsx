@@ -1,5 +1,7 @@
+"use client";
+import { useTranslation } from "@/lib/i18n/client";
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/client";
 import {
   HiArrowUpRight,
   HiOutlineAcademicCap,
@@ -12,6 +14,7 @@ import { Reveal } from "./reveal";
 import { SectionTitle } from "./section-title";
 
 export function About() {
+  const { t } = useTranslation();
   const facts = [
     {
       Icon: HiOutlineAcademicCap,
@@ -42,12 +45,12 @@ export function About() {
     <section id="about" className="section page-container">
       <SectionTitle
         number="01"
-        eyebrow="THE PERSON BEHIND THE CODE"
+        eyebrow={t("THE PERSON BEHIND THE CODE")}
         title={
           <>
-            Curiosity is my
-            <br />
-            <span className="muted-heading">starting point.</span>
+            <span className="muted-heading">
+              {t("Curiosity is my starting point.")}
+            </span>
           </>
         }
       />
@@ -55,38 +58,38 @@ export function About() {
         <Reveal className="about-photo">
           <Image
             src={portrait}
-            alt="Rashed Azizi outdoors in South Korea"
+            alt={t("Rashed Azizi outdoors in South Korea")}
             width={900}
             height={1445}
             sizes="(max-width: 700px) 90vw, 360px"
           />
           <span className="photo-note mono">
-            FROM AFGHANISTAN, BUILDING IN KOREA ↗
+            {t("FROM AFGHANISTAN, BUILDING IN KOREA ↗")}
           </span>
         </Reveal>
         <Reveal className="about-copy">
           <p className="large-copy">
-            I’m Rashed, a computer science student who likes making things that
-            people can actually use.
+            {t(
+              "I’m Rashed, a computer science student who likes making things that people can actually use.",
+            )}
           </p>
           <p>
-            I grew up in Afghanistan and now study at Chungbuk National
-            University in South Korea. Adapting to a new country taught me to
-            stay curious, ask questions, and keep going when something doesn’t
-            make sense yet.
+            {t(
+              "I grew up in Afghanistan and now study at Chungbuk National University in South Korea. Adapting to a new country taught me to stay curious, ask questions, and keep going when something doesn’t make sense yet.",
+            )}
           </p>
           <p>
-            That’s also how I approach code. From a C program that manages
-            student records to a web app that helps plan a day, I learn best by
-            building, testing, and refining the details.
+            {t(
+              "That’s also how I approach code. From a C program that manages student records to a web app that helps plan a day, I learn best by building, testing, and refining the details.",
+            )}
           </p>
           <p>
-            I’m currently exploring web development, AI, and software
-            engineering. My goal is simple: build practical technology, and make
-            it feel good to use.
+            {t(
+              "I’m currently exploring web development, AI, and software engineering. My goal is simple: build practical technology, and make it feel good to use.",
+            )}
           </p>
           <Link href="/cv" className="text-link">
-            A closer look at my background <HiArrowUpRight />
+            {t("A closer look at my background")} <HiArrowUpRight />
           </Link>
         </Reveal>
       </div>
@@ -95,9 +98,9 @@ export function About() {
           <Reveal key={label}>
             <div className="fact">
               <Icon />
-              <span className="mono">{label}</span>
-              <h3>{title}</h3>
-              <p>{detail}</p>
+              <span className="mono">{t(label)}</span>
+              <h3>{t(title)}</h3>
+              <p>{t(detail)}</p>
             </div>
           </Reveal>
         ))}

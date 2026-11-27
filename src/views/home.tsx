@@ -1,3 +1,5 @@
+"use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { Hero } from "@/components/site/hero";
 import { About } from "@/components/site/about";
 import { ProjectShowcase } from "@/components/site/project-showcase";
@@ -6,24 +8,18 @@ import { Certificates } from "@/components/site/certificates";
 import { Journey } from "@/components/site/journey";
 import { Notes } from "@/components/site/notes";
 import { Contact } from "@/components/site/contact";
-import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = createPageMetadata({
-  title: "Developer & Creative Thinker",
-  description:
-    "Rashed Azizi — computer science student at Chungbuk National University, building thoughtful web experiences and exploring AI.",
-  path: "/",
-});
 export default function HomePage() {
+  const { t } = useTranslation();
   return (
     <>
       <Hero />
       <div className="discipline-strip">
         <div className="page-container">
-          <span>DRIVEN BY CURIOSITY</span>
+          <span>{t("DRIVEN BY CURIOSITY")}</span>
           <p>
-            Software development <i>✦</i> Thoughtful interfaces <i>✦</i> Applied
-            AI <i>✦</i> Always learning
+            {t("Software development")} <i>✦</i> {t("Thoughtful interfaces")}{" "}
+            <i>✦</i> {t("Applied AI")} <i>✦</i> {t("Always learning")}
           </p>
         </div>
       </div>

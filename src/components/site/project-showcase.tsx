@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
@@ -27,6 +28,7 @@ function previewImage(project: Project) {
     : project.image;
 }
 function ProjectLinks({ project }: { project: Project }) {
+  const { t } = useTranslation();
   return (
     <div className="project-links">
       {project.live && (
@@ -36,7 +38,7 @@ function ProjectLinks({ project }: { project: Project }) {
           rel="noreferrer"
           className="text-link"
         >
-          Live website <HiArrowUpRight />
+          {t("Live website")} <HiArrowUpRight />
         </a>
       )}
       {project.github && (
@@ -46,7 +48,7 @@ function ProjectLinks({ project }: { project: Project }) {
           rel="noreferrer"
           className="source-link"
         >
-          <RiGithubLine /> Source <HiArrowUpRight />
+          <RiGithubLine /> {t("Source")} <HiArrowUpRight />
         </a>
       )}
       {project.article && (
@@ -56,13 +58,14 @@ function ProjectLinks({ project }: { project: Project }) {
           rel="noreferrer"
           className="text-link"
         >
-          Read the story <HiArrowUpRight />
+          {t("Read the story")} <HiArrowUpRight />
         </a>
       )}
     </div>
   );
 }
 export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<string>("All work");
   const [selected, setSelected] = useState<Project | null>(null);
   const reduced = useReducedMotion();
@@ -78,13 +81,15 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
       {heading && (
         <SectionTitle
           number="02"
-          eyebrow="SELECTED WORK"
+          eyebrow={t("SELECTED WORK")}
           title={
             <>
-              Ideas, made <span className="muted-heading">real.</span>
+              <span className="muted-heading">{t("Ideas, made real.")}</span>
             </>
           }
-          description="A few things I’ve built, explored, and learned from along the way."
+          description={t(
+            "A few things I’ve built, explored, and learned from along the way.",
+          )}
           action={
             <a
               href="https://github.com/llnzjl"
@@ -92,12 +97,12 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
               rel="noreferrer"
               className="text-link"
             >
-              More on GitHub <HiArrowUpRight />
+              {t("More on GitHub")} <HiArrowUpRight />
             </a>
           }
         />
       )}
-      <div className="filter-bar" aria-label="Filter projects">
+      <div className="filter-bar" aria-label={t("Filter projects")}>
         {filters.map((value) => (
           <button
             key={value}
@@ -105,7 +110,7 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
             className={filter === value ? "filter active" : "filter"}
             onClick={() => setFilter(value)}
           >
-            {value}
+            {t(value)}
             {value === "All work" && (
               <span>{projects.length.toString().padStart(2, "0")}</span>
             )}
@@ -113,7 +118,7 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
         ))}
       </div>
       <p className="sr-only" role="status">
-        {visible.length} projects shown
+        {t("{0} projects shown", visible.length)}
       </p>
       <div className="projects-grid">
         {visible.map((project) => {
@@ -138,7 +143,7 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
                   href={project.live || project.article || project.github}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Open ${project.title}`}
+                  aria-label={t("Open {0}", t(project.title))}
                 >
                   <div className="project-browser" aria-hidden="true">
                     <span />
@@ -148,7 +153,7 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
                       {project.live
                         ? new URL(project.live).hostname +
                           new URL(project.live).pathname
-                        : project.category}
+                        : t(project.category)}
                     </small>
                     <HiArrowUpRight />
                   </div>
@@ -156,8 +161,8 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
                     src={previewImage(project)}
                     alt={
                       screenImages[project.id]
-                        ? `Screenshot of ${project.title}`
-                        : `${project.title} project visual`
+                        ? t("Screenshot of {0}", t(project.title))
+                        : t("{0} project visual", t(project.title))
                     }
                     width={1440}
                     height={950}
@@ -179,20 +184,26 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
                 <div className="project-info">
                   <div className="project-meta">
                     <span className="mono">
-                      {String(index + 1).padStart(2, "0")} / {project.category}
+                      {String(index + 1).padStart(2, "0")} /{" "}
+                      {t(project.category)}
                     </span>
                     <span className="mono">{project.year}</span>
                   </div>
                   {featured && (
                     <p className="featured-label">
-                      <span /> FEATURED PROJECT
+                      <span /> {t("FEATURED PROJECT")}
                     </p>
                   )}
-                  <h3>{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <ul className="tech-tags" aria-label="Project technologies">
+                  <h3>{t(project.title)}</h3>
+                  <p className="project-description">
+                    {t(project.description)}
+                  </p>
+                  <ul
+                    className="tech-tags"
+                    aria-label={t("Project technologies")}
+                  >
                     {project.technologies.map((tech) => (
-                      <li key={tech}>{tech}</li>
+                      <li key={tech}>{t(tech)}</li>
                     ))}
                   </ul>
                   <div className="project-bottom">
@@ -200,10 +211,10 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
                     <button
                       className="project-detail-button"
                       onClick={() => setSelected(project)}
-                      aria-label={`Details about ${project.title}`}
+                      aria-label={t("Details about {0}", t(project.title))}
                     >
                       <HiPlus />
-                      <span>Details</span>
+                      <span>{t("Details")}</span>
                     </button>
                   </div>
                 </div>
@@ -213,21 +224,21 @@ export function ProjectShowcase({ heading = true }: { heading?: boolean }) {
         })}
       </div>
       {selected && (
-        <Dialog title={selected.title} onClose={() => setSelected(null)}>
+        <Dialog title={t(selected.title)} onClose={() => setSelected(null)}>
           <Image
             className="project-dialog-image"
             src={previewImage(selected)}
-            alt={selected.title}
+            alt={t(selected.title)}
             width={1440}
             height={950}
           />
           <p className="eyebrow">
-            {selected.category} / {selected.year}
+            {t(selected.category)} / {selected.year}
           </p>
-          <p className="dialog-copy">{selected.detail}</p>
+          <p className="dialog-copy">{t(selected.detail)}</p>
           <ul className="tech-tags">
             {selected.technologies.map((tech) => (
-              <li key={tech}>{tech}</li>
+              <li key={tech}>{t(tech)}</li>
             ))}
           </ul>
           <ProjectLinks project={selected} />

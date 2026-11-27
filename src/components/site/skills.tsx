@@ -1,3 +1,5 @@
+"use client";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   RiReactjsLine,
   RiJavascriptLine,
@@ -95,35 +97,38 @@ const groups = [
   },
 ];
 export function Skills() {
+  const { t } = useTranslation();
   return (
     <section id="skills" className="section section-tinted">
       <div className="page-container">
         <SectionTitle
           number="03"
-          eyebrow="MY TOOLKIT"
+          eyebrow={t("MY TOOLKIT")}
           title={
             <>
-              The tools behind
-              <br />
-              <span className="muted-heading">the ideas.</span>
+              <span className="muted-heading">
+                {t("The tools behind the ideas.")}
+              </span>
             </>
           }
-          description="A growing toolkit, grounded in projects and hands-on learning."
+          description={t(
+            "A growing toolkit, grounded in projects and hands-on learning.",
+          )}
         />
         <div className="skills-grid">
           {groups.map((group, index) => (
             <Reveal key={group.name} delay={index * 0.06}>
               <div className="skill-group">
                 <span className="mono skill-index">0{index + 1}</span>
-                <h3>{group.name}</h3>
-                <p>{group.detail}</p>
+                <h3>{t(group.name)}</h3>
+                <p>{t(group.detail)}</p>
                 <div className="skill-list">
                   {group.items.map(({ name, Icon, note }) => (
                     <div key={name} className="skill-item" tabIndex={0}>
                       <Icon aria-hidden="true" />
                       <div>
                         <strong>{name}</strong>
-                        <span>{note}</span>
+                        <span>{t(note)}</span>
                       </div>
                       <span className="skill-plus">+</span>
                     </div>
@@ -134,7 +139,8 @@ export function Skills() {
           ))}
         </div>
         <p className="skills-footnote">
-          <HiOutlineSparkles /> Always a student. Always adding something new.
+          <HiOutlineSparkles />{" "}
+          {t("Always a student. Always adding something new.")}
         </p>
       </div>
     </section>

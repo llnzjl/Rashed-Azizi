@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { useEffect, useState, type ReactNode } from "react";
 import {
   MotionConfig,
@@ -9,6 +10,7 @@ import {
 import { HiArrowUp } from "react-icons/hi2";
 
 export function SiteExperience({ children }: { children: ReactNode }) {
+  const { t } = useTranslation();
   const { scrollYProgress } = useScroll();
   const reduced = useReducedMotion();
   const [showTop, setShowTop] = useState(false);
@@ -29,7 +31,7 @@ export function SiteExperience({ children }: { children: ReactNode }) {
       {showTop && (
         <button
           className="back-top icon-button"
-          aria-label="Back to top"
+          aria-label={t("Back to top")}
           onClick={() =>
             window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" })
           }
@@ -42,11 +44,12 @@ export function SiteExperience({ children }: { children: ReactNode }) {
 }
 
 export function SeoulTime() {
+  const { locale, t } = useTranslation();
   const [time, setTime] = useState("");
   useEffect(() => {
     const update = () =>
       setTime(
-        new Intl.DateTimeFormat("en-GB", {
+        new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, {
           timeZone: "Asia/Seoul",
           hour: "2-digit",
           minute: "2-digit",
@@ -56,6 +59,10 @@ export function SeoulTime() {
     update();
     const timer = window.setInterval(update, 60000);
     return () => window.clearInterval(timer);
-  }, []);
-  return <span className="mono">{time ? time + " KST" : "ASIA / SEOUL"}</span>;
+  }, [locale]);
+  return (
+    <span className="mono">
+      {time ? <bdi>{time} KST</bdi> : t("ASIA / SEOUL")}
+    </span>
+  );
 }

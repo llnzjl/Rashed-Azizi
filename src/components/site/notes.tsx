@@ -1,9 +1,12 @@
-import Link from "next/link";
+"use client";
+import { useTranslation } from "@/lib/i18n/client";
+import { LocalizedLink as Link } from "@/lib/i18n/client";
 import { HiArrowUpRight, HiOutlineArrowRight } from "react-icons/hi2";
 import { blogNotes } from "@/data/portfolio";
 import { SectionTitle } from "./section-title";
 import { Reveal } from "./reveal";
 export function Notes({ heading = true }: { heading?: boolean }) {
+  const { t } = useTranslation();
   return (
     <section
       id="blog"
@@ -12,15 +15,15 @@ export function Notes({ heading = true }: { heading?: boolean }) {
       {heading && (
         <SectionTitle
           number="06"
-          eyebrow="NOTES FROM THE WORKBENCH"
+          eyebrow={t("NOTES FROM THE WORKBENCH")}
           title={
             <>
-              Learning <span className="muted-heading">out loud.</span>
+              <span className="muted-heading">{t("Learning in public.")}</span>
             </>
           }
           action={
             <Link href="/blog" className="text-link">
-              All notes <HiArrowUpRight />
+              {t("All notes")} <HiArrowUpRight />
             </Link>
           }
         />
@@ -29,7 +32,11 @@ export function Notes({ heading = true }: { heading?: boolean }) {
         {blogNotes.map((note, index) => (
           <Reveal key={note.title}>
             <article className="note-card" id={`note-${index + 1}`}>
-              <div className={`note-art note-art-${index}`} aria-hidden="true">
+              <div
+                className={`note-art note-art-${index}`}
+                aria-hidden="true"
+                dir="ltr"
+              >
                 {index === 0 ? (
                   <>
                     <span className="code-line">const curiosity = true;</span>
@@ -57,11 +64,15 @@ export function Notes({ heading = true }: { heading?: boolean }) {
               </div>
               <div className="note-content">
                 <div className="note-meta mono">
-                  <span>{index === 0 ? "LEARNING / AI" : "DESIGN / WEB"}</span>
-                  <span>{note.date} · 1 MIN NOTE</span>
+                  <span>
+                    {index === 0 ? t("LEARNING / AI") : t("DESIGN / WEB")}
+                  </span>
+                  <span>
+                    {t(note.date)} · {t("1 min read")}
+                  </span>
                 </div>
-                <h3>{note.title}</h3>
-                <p>{note.description}</p>
+                <h3>{t(note.title)}</h3>
+                <p>{t(note.description)}</p>
               </div>
             </article>
           </Reveal>
@@ -69,9 +80,9 @@ export function Notes({ heading = true }: { heading?: boolean }) {
       </div>
       <Link href="/impossiblelist" className="goals-banner">
         <div>
-          <span className="eyebrow">THE IMPOSSIBLE LIST</span>
-          <h3>A little ambition goes a long way.</h3>
-          <p>The things I’m working toward, one small step at a time.</p>
+          <span className="eyebrow">{t("THE IMPOSSIBLE LIST")}</span>
+          <h3>{t("A little ambition goes a long way.")}</h3>
+          <p>{t("The things I’m working toward, one small step at a time.")}</p>
         </div>
         <span className="round-arrow">
           <HiOutlineArrowRight />

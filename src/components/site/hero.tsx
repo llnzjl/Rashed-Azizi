@@ -1,6 +1,7 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/lib/i18n/client";
 import {
   motion,
   useMotionValue,
@@ -20,6 +21,7 @@ import { Magnetic } from "./magnetic";
 import { SeoulTime } from "./site-experience";
 
 export function Hero() {
+  const { t } = useTranslation();
   const reduced = useReducedMotion();
   const x = useMotionValue(0),
     y = useMotionValue(0);
@@ -47,31 +49,32 @@ export function Hero() {
       <div className="page-container hero-content">
         <div className="hero-copy">
           <div className="availability">
-            <span className="status-dot" /> Open to internships & collaboration
+            <span className="status-dot" />{" "}
+            {t("Open to internships & collaboration")}
           </div>
-          <p className="hero-greeting">Hello, world. I’m Rashed.</p>
+          <p className="hero-greeting">{t("Hello, world. I’m Rashed.")}</p>
           <h1>
-            I build digital
-            <br />
-            <span className="gradient-text">experiences.</span>
+            <span className="gradient-text">
+              {t("I build digital experiences.")}
+            </span>
           </h1>
           <p className="hero-description">
-            A computer science student turning curiosity into thoughtful
-            software. Exploring the intersection of{" "}
-            <strong>web development, AI, and human experience.</strong>
+            {t(
+              "A computer science student turning curiosity into thoughtful software. I explore how web development and AI can make technology more useful to people.",
+            )}
           </p>
           <div className="hero-ctas">
             <Magnetic>
               <Link href="/#projects" className="button-primary">
-                Explore my work <HiArrowUpRight />
+                {t("Explore my work")} <HiArrowUpRight />
               </Link>
             </Magnetic>
             <Link href="/#contact" className="button-secondary magnetic">
-              Let’s talk <span aria-hidden="true">↗</span>
+              {t("Let’s talk")} <span aria-hidden="true">↗</span>
             </Link>
           </div>
           <div className="hero-socials">
-            <span className="mono">FIND ME ON</span>
+            <span className="mono">{t("FIND ME ON")}</span>
             <a href={siteData.github} target="_blank" rel="noreferrer">
               <RiGithubLine /> GitHub <HiArrowUpRight />
             </a>
@@ -95,11 +98,13 @@ export function Hero() {
         >
           <div className="orbit orbit-one" aria-hidden="true" />
           <div className="orbit orbit-two" aria-hidden="true" />
-          <span className="scene-coordinate mono">37° N · SOUTH KOREA</span>
+          <span className="scene-coordinate mono">
+            {t("37° N · SOUTH KOREA")}
+          </span>
           <motion.div className="portrait-frame" style={{ rotateX, rotateY }}>
             <Image
               src={portrait}
-              alt="Rashed Azizi by the river in South Korea"
+              alt={t("Rashed Azizi by the river in South Korea")}
               width={900}
               height={1445}
               priority
@@ -109,7 +114,7 @@ export function Hero() {
             <div className="portrait-shade" />
             <div className="portrait-caption">
               <span>Rashed Azizi</span>
-              <small>DEVELOPER & LIFELONG LEARNER</small>
+              <small>{t("DEVELOPER & LIFELONG LEARNER")}</small>
             </div>
             <span className="portrait-corner top-left" />
             <span className="portrait-corner bottom-right" />
@@ -119,14 +124,14 @@ export function Hero() {
               <HiOutlineCodeBracket />
             </span>
             <div>
-              <small>THE MINDSET</small>
-              <strong>Think. Build. Iterate.</strong>
+              <small>{t("THE MINDSET")}</small>
+              <strong>{t("Think. Build. Iterate.")}</strong>
             </div>
             <span className="note-spark">✦</span>
           </div>
           <div className="floating-note study-note">
             <span className="status-dot" />
-            <span>CS @ Chungbuk National University</span>
+            <span>{t("CS @ Chungbuk National University")}</span>
           </div>
           <span className="scene-plus" aria-hidden="true">
             +
@@ -136,10 +141,10 @@ export function Hero() {
       <div className="page-container hero-bottom">
         <a href="#about" className="scroll-cue">
           <HiArrowDown />
-          <span className="mono">SCROLL TO EXPLORE</span>
+          <span className="mono">{t("SCROLL TO EXPLORE")}</span>
         </a>
         <span className="hero-location">
-          <HiOutlineMapPin /> Based in South Korea <SeoulTime />
+          <HiOutlineMapPin /> {t("Based in South Korea")} <SeoulTime />
         </span>
       </div>
     </section>

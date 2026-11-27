@@ -1,10 +1,12 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { useRef } from "react";
 import { motion, useScroll, useReducedMotion } from "framer-motion";
 import { journey } from "@/data/showcase";
 import { SectionTitle } from "./section-title";
 import { Reveal } from "./reveal";
 export function Journey() {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -15,15 +17,17 @@ export function Journey() {
     <section id="journey" className="section page-container">
       <SectionTitle
         number="05"
-        eyebrow="THE JOURNEY"
+        eyebrow={t("THE JOURNEY")}
         title={
           <>
-            Small steps.
+            {t("Small steps.")}
             <br />
-            <span className="muted-heading">Meaningful progress.</span>
+            <span className="muted-heading">{t("Meaningful progress.")}</span>
           </>
         }
-        description="The learning, projects, and people that are shaping my path."
+        description={t(
+          "The learning, projects, and people that are shaping my path.",
+        )}
       />
       <div className="journey-layout">
         <div className="journey-aside">
@@ -31,11 +35,11 @@ export function Journey() {
             ↗
           </span>
           <p>
-            Still at the beginning.
+            {t("Still at the beginning.")}
             <br />
-            <strong>And that’s the exciting part.</strong>
+            <strong>{t("And that’s the exciting part.")}</strong>
           </p>
-          <span className="mono">LEARN → BUILD → REPEAT</span>
+          <span className="mono">{t("LEARN → BUILD → REPEAT")}</span>
         </div>
         <div className="timeline" ref={ref}>
           <div className="timeline-track">
@@ -46,14 +50,14 @@ export function Journey() {
               <span className="timeline-dot" />
               <details open={index < 4}>
                 <summary>
-                  <span className="mono timeline-date">{item.date}</span>
-                  <h3>{item.title}</h3>
-                  <span className="timeline-subtitle">{item.subtitle}</span>
+                  <span className="mono timeline-date">{t(item.date)}</span>
+                  <h3>{t(item.title)}</h3>
+                  <span className="timeline-subtitle">{t(item.subtitle)}</span>
                   <span className="timeline-expand" aria-hidden="true">
                     +
                   </span>
                 </summary>
-                <p>{item.description}</p>
+                <p>{t(item.description)}</p>
               </details>
             </Reveal>
           ))}

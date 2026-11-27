@@ -4,31 +4,57 @@ import path from "node:path";
 
 const root = path.resolve("out");
 const prefix = "/Rashed-Azizi";
-const routes = [
-  "",
-  "about",
-  "projects",
-  "education",
-  "experience",
-  "blog",
-  "impossiblelist",
-  "cv",
-  "contact",
-];
+const pages = JSON.parse(await readFile("src/lib/i18n/routes.json", "utf8"));
+const directions = { en: "ltr", ko: "ltr", ps: "rtl", fa: "rtl" };
+const languages = Object.keys(directions);
+const routes = languages.flatMap((locale) =>
+  pages.map(({ route }) => ({
+    locale,
+    route,
+    directory: [locale === "en" ? "" : locale, route].filter(Boolean).join("/"),
+  })),
+);
 const resources = new Set();
 
-for (const route of routes) {
-  const html = await readFile(path.join(root, route, "index.html"), "utf8");
-  assert.match(html, /<h1[\s>]/, `${route || "Home"} needs a primary heading`);
+for (const { locale, route, directory } of routes) {
+  const html = await readFile(path.join(root, directory, "index.html"), "utf8");
   assert.match(
     html,
-    /<title>[^<]*Rashed Azizi/,
-    `${route || "Home"} needs a branded title`,
+    /<h1[\s>]/,
+    `${directory || "Home"} needs a primary heading`,
+  );
+  assert(
+    html.includes(`<html lang="${locale}" dir="${directions[locale]}"`),
+    `Incorrect document language or direction for ${directory || "Home"}`,
   );
   assert.match(
     html,
-    /rel="canonical" href="https:\/\/llnzjl.github.io\/Rashed-Azizi/,
-    "Canonical URL needs the repository path",
+    /<title>[^<]*Rashed Azizi/,
+    `${directory || "Home"} needs a branded title`,
+  );
+  const deployment = `https://llnzjl.github.io${prefix}/`;
+  const canonical = deployment + (directory ? directory + "/" : "");
+  assert(
+    html.includes(`rel="canonical" href="${canonical}"`),
+    `Missing canonical URL ${canonical}`,
+  );
+  for (const language of languages) {
+    const alternate = [language === "en" ? "" : language, route]
+      .filter(Boolean)
+      .join("/");
+    const url = deployment + (alternate ? alternate + "/" : "");
+    assert(
+      html.includes(`hrefLang="${language}" href="${url}"`),
+      `Missing language alternate ${url}`,
+    );
+  }
+  assert(
+    html.includes('class="snowfall" aria-hidden="true"'),
+    `Missing snowfall on ${canonical}`,
+  );
+  assert(
+    html.includes('class="snow-capped"'),
+    `Missing menu snow on ${canonical}`,
   );
   for (const match of html.matchAll(
     /(?:src|href)="(\/[^"?#]+)(?:[?#][^"]*)?"/g,

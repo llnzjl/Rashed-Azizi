@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 import { useState } from "react";
 import {
   HiOutlineCheckCircle,
@@ -16,19 +17,20 @@ const notes = [
   "A writing space is here. Longer technical articles are a next step.",
 ];
 export function Goals() {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState("All");
   return (
     <>
       <div className="goals-overview">
         <strong>01 / 05</strong>
         <div>
-          <p>One milestone reached.</p>
-          <p>Plenty of room to grow.</p>
+          <p>{t("One milestone reached.")}</p>
+          <p>{t("Plenty of room to grow.")}</p>
         </div>
         <div
           className="goal-track"
           role="progressbar"
-          aria-label="Goals completed"
+          aria-label={t("Goals completed")}
           aria-valuemin={0}
           aria-valuemax={5}
           aria-valuenow={1}
@@ -36,7 +38,7 @@ export function Goals() {
           <span />
         </div>
       </div>
-      <div className="filter-bar" aria-label="Filter goals">
+      <div className="filter-bar" aria-label={t("Filter goals")}>
         {["All", "Completed", "In progress", "Future"].map((state) => (
           <button
             key={state}
@@ -44,7 +46,7 @@ export function Goals() {
             aria-pressed={state === filter}
             onClick={() => setFilter(state)}
           >
-            {state}
+            {t(state)}
           </button>
         ))}
       </div>
@@ -63,13 +65,13 @@ export function Goals() {
                   <HiOutlineFlag />
                 )}
                 <div>
-                  <h2>{item}</h2>
-                  <p>{notes[index]}</p>
+                  <h2>{t(item)}</h2>
+                  <p>{t(notes[index])}</p>
                 </div>
                 <span
                   className={`goal-status ${states[index].toLowerCase().replace(" ", "-")}`}
                 >
-                  {states[index]}
+                  {t(states[index])}
                 </span>
               </article>
             </Reveal>
