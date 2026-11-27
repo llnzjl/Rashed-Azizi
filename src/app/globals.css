@@ -453,7 +453,7 @@ main {
   font-weight: 600;
   line-height: 1.06;
   letter-spacing: -0.065em;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 .hero-description {
   max-width: 445px;
@@ -2176,7 +2176,6 @@ html[dir="rtl"] .goals-banner .round-arrow { transform: scaleX(-1); }
 @media (max-width: 520px) {
   .language-menu summary { min-width: 38px; }
   .nav-actions { gap: 7px; }
-  .mobile-navigation .mobile-cv { display: flex !important; }
 }
 @media (min-width: 1600px) {
   .page-container {
@@ -2481,6 +2480,9 @@ html[dir="rtl"] .goals-banner .round-arrow { transform: scaleX(-1); }
   }
 }
 @media (max-width: 650px) {
+  .mobile-navigation .mobile-cv {
+    display: flex !important;
+  }
   .page-container {
     width: calc(100% - 40px);
   }
