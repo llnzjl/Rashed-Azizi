@@ -148,11 +148,13 @@ export function Certificates({ heading = true }: { heading?: boolean }) {
               </p>
               <a
                 className="text-link"
-                href={selected.verificationUrl || selected.courseUrl}
+                href={selected.pdfUrl || selected.verificationUrl || selected.courseUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                {selected.verificationUrl
+                {selected.pdfUrl
+                  ? "Open original PDF"
+                  : selected.verificationUrl
                   ? "Verify certificate"
                   : "View source"}{" "}
                 <HiArrowUpRight />

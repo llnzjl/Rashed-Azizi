@@ -42,6 +42,7 @@ export type Certification = {
   image: string;
   courseUrl: string;
   verificationUrl?: string;
+  pdfUrl?: string;
 };
 
 const repoName = "Rashed-Azizi";
@@ -562,6 +563,17 @@ export const educationItems = [
 ];
 
 export const certifications: Certification[] = [
+  {
+    title: "Fundamentals of Machine Learning and Artificial Intelligence",
+    issuer: "AWS Training & Certification",
+    platform: "AWS Skill Builder",
+    course: "Fundamentals of Machine Learning and Artificial Intelligence",
+    completedOn: "Nov 27, 2026",
+    summary: "Completed AWS training in the foundations of machine learning and artificial intelligence.",
+    image: publicAsset("/certificates/aws-machine-learning-and-ai-fundamentals.png"),
+    pdfUrl: publicAsset("/certificates/aws-machine-learning-and-ai-fundamentals.pdf"),
+    courseUrl: "https://skillbuilder.aws/learn/16ASDUHF86/fundamentals-of-machine-learning-and-artificial-intelligence/M7JZCTA94N",
+  },
   {
     title: "Cybersecurity Fundamentals",
     issuer: "IBM SkillsBuild",
